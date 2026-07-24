@@ -77,7 +77,7 @@
             align-items: center;
             gap: 0.6rem;
         }
-        .file-list { display: flex; flex-direction: column; gap: 0.7rem; margin-bottom: 1.5rem; }
+        .file-list { display: flex; flex-direction: column; gap: 0.7rem; }
         .file-item {
             display: flex;
             align-items: center;
@@ -142,28 +142,6 @@
             flex-wrap: wrap;
             gap: 0.5rem;
         }
-        .status {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: #f1f5f9;
-            padding: 0.2rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-        }
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            display: inline-block;
-        }
-        .status-dot.online { background: #22c55e; animation: pulse 2s infinite; }
-        .status-dot.offline { background: #ef4444; }
-        @keyframes pulse {
-            0% { opacity: 1; }
-            50% { opacity: 0.3; }
-            100% { opacity: 1; }
-        }
         .file-count {
             background: #4f46e5;
             color: white;
@@ -171,22 +149,26 @@
             border-radius: 20px;
             font-size: 0.8rem;
         }
-        .toast {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background: #0f172a;
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            animation: slideUp 0.3s ease;
-            z-index: 1000;
-            font-size: 0.9rem;
+        .last-update {
+            font-size: 0.7rem;
+            color: #94a3b8;
         }
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .refresh-btn {
+            background: #4f46e5;
+            color: white;
+            border: none;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.2s ease;
+        }
+        .refresh-btn:hover {
+            background: #4338ca;
+            transform: scale(1.05);
+        }
+        .refresh-btn:active {
+            transform: scale(0.95);
         }
         @media (max-width: 600px) {
             .container { padding: 1.5rem 1rem; }
@@ -197,7 +179,6 @@
             .file-item { flex-wrap: wrap; padding: 0.6rem 0.8rem; }
             .file-item .file-path { margin-left: auto; }
             .footer { flex-direction: column; text-align: center; }
-            .toast { bottom: 1rem; right: 1rem; left: 1rem; }
         }
     </style>
 </head>
@@ -208,10 +189,7 @@
                 <div class="badge">🌍 Global Privacy Policy</div>
             </div>
             <div style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap;">
-                <div class="status">
-                    <span class="status-dot online" id="statusDot"></span>
-                    <span id="statusText">Online</span>
-                </div>
+                <button class="refresh-btn" onclick="loadFiles()">🔄 Yangilash</button>
                 <div class="lang-selector">
                     <button class="lang-btn" data-lang="uz" onclick="changeLanguage('uz')">🇺🇿 O'zbek</button>
                     <button class="lang-btn" data-lang="ru" onclick="changeLanguage('ru')">🇷🇺 Русский</button>
@@ -231,20 +209,28 @@
             <div class="info-box" id="infoBox">
                 <p>📌 <strong id="infoTitle">Qo'llanma:</strong></p>
                 <p id="infoText">
-                    Loyiha <span class="code">Global-Privacy-Policy</span> nomi bilan Vercel'da deploy qilingan.
-                    Yuqoridagi havolalar orqali har bir privacy policy sahifasiga o'tishingiz mumkin.
+                    Loyiha <span class="code">Global-Privacy-Policy</span> GitHub repository'sidan avtomatik yuklanadi.
                 </p>
             </div>
         </div>
 
         <div class="footer">
-            <span>⚡ Vercel · Global Privacy Policy</span>
-            <span id="fileCount" class="file-count">0 ta fayl</span>
+            <span>⚡ GitHub · Global Privacy Policy</span>
+            <div style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap;">
+                <span class="last-update" id="lastUpdate">Oxirgi yangilanish: -</span>
+                <span id="fileCount" class="file-count">0 ta fayl</span>
+            </div>
         </div>
     </div>
-    <div id="toastContainer"></div>
 
     <script>
+        // ==================== KONFIGURATSIYA ====================
+        // GitHub repository ma'lumotlari
+        const GITHUB_USER = 'musoxon-pro';
+        const GITHUB_REPO = 'Global-Privacy-Policy';
+        const GITHUB_BRANCH = 'main';
+        const GITHUB_API = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents`;
+
         // ==================== TILLAR ====================
         const translations = {
             uz: {
@@ -252,53 +238,42 @@
                 subtitle: 'Barcha maxfiylik siyosati sahifalariga havolalar',
                 sectionTitle: '📁 Mavjud sahifalar',
                 infoTitle: "Qo'llanma:",
-                infoText: `Loyiha <span class="code">Global-Privacy-Policy</span> nomi bilan Vercel'da deploy qilingan.`,
+                infoText: `Loyiha <span class="code">${GITHUB_USER}/${GITHUB_REPO}</span> GitHub repository'sidan avtomatik yuklanadi.`,
                 loading: '⏳ Yuklanmoqda...',
                 noFiles: '📭 Hozircha hech qanday privacy policy fayli mavjud emas',
                 error: '❌ Fayllarni yuklashda xatolik',
                 fileCount: 'ta fayl',
-                newFile: 'Yangi fayl qo\'shildi',
-                removedFile: 'Fayl o\'chirildi',
-                online: 'Online',
-                offline: 'Offline'
+                lastUpdate: 'Oxirgi yangilanish'
             },
             ru: {
                 title: 'Политика Конфиденциальности',
                 subtitle: 'Ссылки на все страницы политики конфиденциальности',
                 sectionTitle: '📁 Доступные страницы',
                 infoTitle: "Руководство:",
-                infoText: `Проект развернут на Vercel под названием <span class="code">Global-Privacy-Policy</span>.`,
+                infoText: `Проект автоматически загружается из репозитория <span class="code">${GITHUB_USER}/${GITHUB_REPO}</span> на GitHub.`,
                 loading: '⏳ Загрузка...',
                 noFiles: '📭 Пока нет ни одной страницы политики конфиденциальности',
                 error: '❌ Ошибка при загрузке файлов',
                 fileCount: 'файлов',
-                newFile: 'Добавлен новый файл',
-                removedFile: 'Файл удален',
-                online: 'Онлайн',
-                offline: 'Офлайн'
+                lastUpdate: 'Последнее обновление'
             },
             en: {
                 title: 'Privacy Policy',
                 subtitle: 'Links to all privacy policy pages',
                 sectionTitle: '📁 Available pages',
                 infoTitle: "Guide:",
-                infoText: `The project is deployed on Vercel as <span class="code">Global-Privacy-Policy</span>.`,
+                infoText: `The project is automatically loaded from the <span class="code">${GITHUB_USER}/${GITHUB_REPO}</span> GitHub repository.`,
                 loading: '⏳ Loading...',
                 noFiles: '📭 No privacy policy files available yet',
                 error: '❌ Error loading files',
                 fileCount: 'files',
-                newFile: 'New file added',
-                removedFile: 'File removed',
-                online: 'Online',
-                offline: 'Offline'
+                lastUpdate: 'Last updated'
             }
         };
 
         let currentLang = 'uz';
         let allFiles = [];
-        let eventSource = null;
-        let reconnectAttempts = 0;
-        const maxReconnectAttempts = 5;
+        let fileData = {};
 
         // ==================== TILNI ANIQLASH ====================
         function detectLanguage() {
@@ -328,26 +303,73 @@
             document.getElementById('infoTitle').textContent = t.infoTitle;
             document.getElementById('infoText').innerHTML = t.infoText;
             document.getElementById('fileCount').textContent = `${allFiles.length} ${t.fileCount}`;
-            document.getElementById('statusText').textContent = t.online;
         }
 
-        // ==================== TOAST XABAR ====================
-        function showToast(message, type = 'info') {
-            const container = document.getElementById('toastContainer');
-            const toast = document.createElement('div');
-            toast.className = 'toast';
-            toast.style.borderLeft = `4px solid ${type === 'success' ? '#22c55e' : '#ef4444'}`;
-            toast.textContent = message;
-            container.appendChild(toast);
-            setTimeout(() => {
-                toast.style.opacity = '0';
-                toast.style.transform = 'translateY(-20px)';
-                setTimeout(() => toast.remove(), 300);
-            }, 3000);
+        // ==================== GITHUBDAN FAYLLARNI YUKLASH ====================
+        async function loadFiles() {
+            const list = document.getElementById('fileList');
+            const t = translations[currentLang];
+            
+            list.innerHTML = `<div class="loading">${t.loading}</div>`;
+
+            try {
+                // GitHub API orqali repository contents ni olish
+                const response = await fetch(GITHUB_API, {
+                    headers: {
+                        'Accept': 'application/vnd.github.v3+json'
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                
+                // .html fayllarni filter qilish (index.html dan tashqari)
+                const htmlFiles = data
+                    .filter(item => item.name.endsWith('.html') && item.name !== 'index.html')
+                    .map(item => ({
+                        name: item.name,
+                        path: item.path,
+                        url: `https://${GITHUB_USER}.github.io/${GITHUB_REPO}/${item.name}`,
+                        download_url: item.download_url,
+                        size: item.size,
+                        sha: item.sha
+                    }))
+                    .sort((a, b) => a.name.localeCompare(b.name));
+
+                allFiles = htmlFiles;
+                
+                // Yangilangan vaqtni saqlash
+                document.getElementById('lastUpdate').textContent = 
+                    `${t.lastUpdate}: ${new Date().toLocaleString()}`;
+
+                renderFiles(currentLang);
+                updateContent(currentLang);
+
+            } catch (error) {
+                console.error('Yuklash xatoligi:', error);
+                list.innerHTML = `
+                    <div style="color:#ef4444; text-align:center; padding:1rem;">
+                        ${t.error}
+                        <br><br>
+                        <button onclick="loadFiles()" style="
+                            background:#4f46e5;
+                            color:white;
+                            border:none;
+                            padding:0.5rem 1.5rem;
+                            border-radius:8px;
+                            cursor:pointer;
+                            font-size:0.9rem;
+                        ">🔄 Qayta urinib ko'rish</button>
+                    </div>
+                `;
+            }
         }
 
         // ==================== FAYLLARNI KO'RSATISH ====================
-        function renderFiles(lang, newFiles = []) {
+        function renderFiles(lang) {
             const list = document.getElementById('fileList');
             const t = translations[lang];
             
@@ -358,15 +380,13 @@
             }
 
             list.innerHTML = allFiles.map(file => {
-                const displayName = file.replace('.html', '').replace(/[-_]/g, ' ');
-                const isNew = newFiles.includes(file);
+                const displayName = file.name.replace('.html', '').replace(/[-_]/g, ' ');
                 return `
-                    <div class="file-item" data-file="${file}">
-                        <a href="/${file}">
+                    <div class="file-item" data-file="${file.name}">
+                        <a href="${file.url}" target="_blank">
                             <span class="icon">📋</span>
                             <span class="file-name">${displayName}</span>
-                            <span class="file-path">/${file}</span>
-                            ${isNew ? '<span class="new-badge" style="background:#22c55e;color:white;font-size:0.6rem;padding:0.1rem 0.5rem;border-radius:10px;animation:blink 1s ease;">NEW</span>' : ''}
+                            <span class="file-path">/${file.name}</span>
                             <span class="arrow">→</span>
                         </a>
                     </div>
@@ -376,97 +396,15 @@
             document.getElementById('fileCount').textContent = `${allFiles.length} ${t.fileCount}`;
         }
 
-        // ==================== BACKENDDAN FAYLLARNI YUKLASH ====================
-        async function loadFilesFromBackend() {
-            try {
-                const response = await fetch('/api/files');
-                if (!response.ok) throw new Error('Network response was not ok');
-                const files = await response.json();
-                
-                const oldFiles = [...allFiles];
-                const newFiles = files || [];
-                
-                const added = newFiles.filter(f => !oldFiles.includes(f));
-                const removed = oldFiles.filter(f => !newFiles.includes(f));
-                
-                allFiles = newFiles;
-                renderFiles(currentLang, added);
-                updateContent(currentLang);
-                
-                const t = translations[currentLang];
-                if (added.length > 0) {
-                    showToast(`${t.newFile}: ${added.join(', ')}`, 'success');
-                }
-                if (removed.length > 0) {
-                    showToast(`${t.removedFile}: ${removed.join(', ')}`, 'info');
-                }
-                
-                return newFiles;
-            } catch (error) {
-                console.error('Backenddan yuklash xatoligi:', error);
-                document.getElementById('fileList').innerHTML = 
-                    `<div style="color:#ef4444; text-align:center; padding:1rem;">${translations[currentLang].error}</div>`;
-                return [];
-            }
-        }
+        // ==================== AVTOMATIK YANGILANISH ====================
+        // Har 30 sekundda yangilash
+        let autoUpdateInterval = null;
 
-        // ==================== SSE (Server-Sent Events) ====================
-        function connectSSE() {
-            const t = translations[currentLang];
-            
-            try {
-                eventSource = new EventSource('/api/events');
-                
-                eventSource.onopen = () => {
-                    document.getElementById('statusDot').className = 'status-dot online';
-                    document.getElementById('statusText').textContent = t.online;
-                    reconnectAttempts = 0;
-                    console.log('🔗 SSE ulandi');
-                };
-                
-                eventSource.onmessage = async (event) => {
-                    try {
-                        const data = JSON.parse(event.data);
-                        console.log('📨 SSE xabar:', data);
-                        
-                        if (data.type === 'update') {
-                            // Backenddan yangi fayllarni yuklash
-                            await loadFilesFromBackend();
-                        }
-                    } catch (e) {
-                        console.error('SSE xabarni parse qilishda xatolik:', e);
-                    }
-                };
-                
-                eventSource.onerror = (error) => {
-                    console.error('❌ SSE xatolik:', error);
-                    document.getElementById('statusDot').className = 'status-dot offline';
-                    document.getElementById('statusText').textContent = t.offline;
-                    
-                    if (reconnectAttempts < maxReconnectAttempts) {
-                        reconnectAttempts++;
-                        console.log(`🔄 Qayta ulanish ${reconnectAttempts}/${maxReconnectAttempts}...`);
-                        setTimeout(() => {
-                            eventSource.close();
-                            connectSSE();
-                        }, 3000 * reconnectAttempts);
-                    } else {
-                        console.log('⛔ Maksimal qayta ulanish. Polling rejimiga o\'tish.');
-                        startPolling();
-                    }
-                };
-                
-            } catch (error) {
-                console.error('SSE ulanishda xatolik:', error);
-                startPolling();
+        function startAutoUpdate() {
+            if (autoUpdateInterval) {
+                clearInterval(autoUpdateInterval);
             }
-        }
-
-        // ==================== POLLING (FALLBACK) ====================
-        function startPolling() {
-            console.log('🔄 Polling rejimi ishga tushdi');
-            loadFilesFromBackend();
-            setInterval(loadFilesFromBackend, 3000); // Har 3 sekundda
+            autoUpdateInterval = setInterval(loadFiles, 30000); // 30 sekund
         }
 
         // ==================== BOSHLASH ====================
@@ -482,14 +420,23 @@
             
             updateContent(currentLang);
             
-            // Dastlabki fayllarni yuklash
-            await loadFilesFromBackend();
+            // Fayllarni yuklash
+            await loadFiles();
             
-            // SSE ulanish (real-time)
-            connectSSE();
+            // Avtomatik yangilanish
+            startAutoUpdate();
         }
 
         document.addEventListener('DOMContentLoaded', init);
+
+        // ==================== VISUAL EFFECTS ====================
+        // Hover animatsiyasi
+        document.addEventListener('mouseover', (e) => {
+            const item = e.target.closest('.file-item');
+            if (item) {
+                item.style.transition = 'all 0.15s ease';
+            }
+        });
     </script>
 </body>
 </html>
