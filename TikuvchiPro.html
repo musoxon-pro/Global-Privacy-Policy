@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#4f7df3" />
+    <title>Maxfiylik siyosati | TikuvchiPro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+    <style>
+        /* ===== RESET & VARIABLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            --bg: #f0f4f8;
+            --surface: #ffffff;
+            --surface-secondary: #eef2f7;
+            --text: #1a2332;
+            --text-secondary: #5a6a7e;
+            --border: #dce1e9;
+            --primary: #4f7df3;
+            --primary-dark: #3a5fc9;
+            --primary-light: #e8edfd;
+            --shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            --radius: 20px;
+            --radius-sm: 12px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body.dark {
+            --bg: #0d1520;
+            --surface: #192433;
+            --surface-secondary: #1e2b3d;
+            --text: #e8edf5;
+            --text-secondary: #8a9bb0;
+            --border: #2a3a50;
+            --primary: #6b9aff;
+            --primary-light: #1e2f4a;
+            --shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            padding: 0;
+            min-height: 100vh;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ===== CONTAINER ===== */
+        .container {
+            max-width: 820px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 16px 16px 30px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0 16px;
+            gap: 12px;
+            flex-wrap: wrap;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 20px;
+            transition: var(--transition);
+        }
+
+        .logo-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            color: white;
+            box-shadow: 0 4px 15px rgba(79, 125, 243, 0.3);
+            flex-shrink: 0;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .logo-text .app-name {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text);
+            transition: var(--transition);
+        }
+
+        .logo-text .app-version {
+            font-size: 11px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+
+        .logo-text .app-version span {
+            background: var(--primary-light);
+            color: var(--primary);
+            padding: 1px 10px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 10px;
+        }
+
+        body.dark .logo-text .app-version span {
+            background: var(--primary-light);
+            color: var(--primary);
+        }
+
+        /* ===== HEADER ACTIONS ===== */
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        /* ===== LANGUAGE BUTTONS ===== */
+        .lang-group {
+            display: flex;
+            gap: 4px;
+            background: var(--surface-secondary);
+            padding: 4px;
+            border-radius: 30px;
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .lang-btn {
+            padding: 6px 14px;
+            border: none;
+            border-radius: 24px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            background: transparent;
+            color: var(--text-secondary);
+            font-family: inherit;
+        }
+
+        .lang-btn:hover {
+            color: var(--text);
+            background: rgba(79, 125, 243, 0.08);
+        }
+
+        .lang-btn.active {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 2px 12px rgba(79, 125, 243, 0.3);
+        }
+
+        .lang-btn.active:hover {
+            background: var(--primary-dark);
+        }
+
+        body.dark .lang-btn.active {
+            box-shadow: 0 2px 12px rgba(79, 125, 243, 0.2);
+        }
+
+        /* ===== DARK MODE TOGGLE ===== */
+        .dark-toggle {
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 50%;
+            background: var(--surface-secondary);
+            color: var(--text);
+            font-size: 18px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border);
+            flex-shrink: 0;
+        }
+
+        .dark-toggle:hover {
+            background: var(--primary-light);
+            transform: rotate(15deg);
+        }
+
+        .dark-toggle:active {
+            transform: scale(0.92);
+        }
+
+        /* ===== CARD ===== */
+        .card {
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: 28px 24px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: var(--transition);
+            flex: 1;
+        }
+
+        /* ===== TITLE ===== */
+        .title-block {
+            margin-bottom: 20px;
+        }
+
+        .title-block .badge-icon {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--primary-light);
+            color: var(--primary);
+            padding: 4px 16px 4px 12px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .title-block h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text);
+            transition: var(--transition);
+            letter-spacing: -0.5px;
+        }
+
+        .title-block .sub {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-top: 2px;
+            transition: var(--transition);
+        }
+
+        .update-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 12px;
+            background: var(--surface-secondary);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .update-badge strong {
+            color: var(--primary);
+        }
+
+        /* ===== SECTION ===== */
+        .section {
+            margin-bottom: 26px;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section h2 {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+        }
+
+        .section h2 .num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 26px;
+            height: 26px;
+            background: var(--primary-light);
+            color: var(--primary);
+            border-radius: 50%;
+            font-size: 13px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .section p,
+        .section li {
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            transition: var(--transition);
+        }
+
+        .section p strong {
+            color: var(--text);
+        }
+
+        .section ul {
+            padding-left: 20px;
+            margin-top: 4px;
+            list-style-type: none;
+        }
+
+        .section ul li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 4px;
+        }
+
+        .section ul li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .section ul ul {
+            padding-left: 20px;
+            margin-top: 0;
+        }
+
+        .section ul ul li::before {
+            content: "◦";
+            color: var(--text-secondary);
+        }
+
+        /* ===== TABLE ===== */
+        .table-wrap {
+            overflow-x: auto;
+            margin: 10px 0 6px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .table-wrap table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            min-width: 340px;
+        }
+
+        .table-wrap th,
+        .table-wrap td {
+            padding: 10px 14px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .table-wrap tr:last-child td {
+            border-bottom: none;
+        }
+
+        .table-wrap th {
+            background: var(--surface-secondary);
+            font-weight: 600;
+            color: var(--text);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .table-wrap td {
+            color: var(--text-secondary);
+        }
+
+        .table-wrap td:first-child {
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        /* ===== NOTE BOX ===== */
+        .note-box {
+            background: var(--primary-light);
+            border-radius: var(--radius-sm);
+            padding: 12px 18px;
+            margin-top: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: var(--primary);
+            font-weight: 500;
+            border-left: 4px solid var(--primary);
+            transition: var(--transition);
+        }
+
+        .note-box span {
+            font-size: 18px;
+        }
+
+        /* ===== CONTACT BOX ===== */
+        .contact-box {
+            background: var(--surface-secondary);
+            border-radius: var(--radius-sm);
+            padding: 16px 20px;
+            margin-top: 8px;
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .contact-box p {
+            font-size: 14px;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        .contact-box a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .contact-box a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer-note {
+            margin-top: 24px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-secondary);
+            transition: var(--transition);
+        }
+
+        /* ===== BACK BUTTON ===== */
+        .back-row {
+            margin-top: 20px;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
+            background: var(--surface-secondary);
+            color: var(--text);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            font-family: inherit;
+        }
+
+        .back-btn:hover {
+            background: var(--primary-light);
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateX(-4px);
+        }
+
+        .back-btn:active {
+            transform: scale(0.97);
+        }
+
+        /* ===== LANGUAGE CONTENT ===== */
+        .lang-content {
+            display: none;
+            animation: fadeUp 0.35s ease;
+        }
+
+        .lang-content.active {
+            display: block;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px 10px 20px;
+            }
+
+            .card {
+                padding: 18px 14px;
+            }
+
+            .header {
+                padding: 8px 0 12px;
+            }
+
+            .logo-icon {
+                width: 38px;
+                height: 38px;
+                font-size: 18px;
+                border-radius: 12px;
+            }
+
+            .logo-text .app-name {
+                font-size: 17px;
+            }
+
+            .logo-text .app-version {
+                font-size: 10px;
+            }
+
+            .title-block h1 {
+                font-size: 22px;
+            }
+
+            .title-block .sub {
+                font-size: 14px;
+            }
+
+            .section h2 {
+                font-size: 16px;
+            }
+
+            .section p,
+            .section li {
+                font-size: 14px;
+            }
+
+            .table-wrap table {
+                font-size: 13px;
+                min-width: 280px;
+            }
+
+            .table-wrap th,
+            .table-wrap td {
+                padding: 8px 10px;
+            }
+
+            .lang-btn {
+                padding: 5px 10px;
+                font-size: 12px;
+            }
+
+            .dark-toggle {
+                width: 36px;
+                height: 36px;
+                font-size: 16px;
+            }
+
+            .note-box {
+                font-size: 13px;
+                padding: 10px 14px;
+                flex-wrap: wrap;
+            }
+
+            .back-btn {
+                padding: 8px 18px;
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .header {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+            }
+
+            .header-actions {
+                justify-content: space-between;
+            }
+
+            .lang-group {
+                flex: 1;
+            }
+
+            .lang-btn {
+                flex: 1;
+                text-align: center;
+                padding: 6px 8px;
+                font-size: 11px;
+            }
+        }
+
+        /* ===== PRINT ===== */
+        @media print {
+            .header-actions {
+                display: none !important;
+            }
+
+            .back-row {
+                display: none !important;
+            }
+
+            body,
+            .card {
+                background: white !important;
+                color: black !important;
+                border: none !important;
+                box-shadow: none !important;
+            }
+
+            .container {
+                padding: 0 !important;
+            }
+
+            .card {
+                padding: 20px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- ===== HEADER ===== -->
+        <header class="header">
+            <div class="logo-group">
+                <div class="logo-icon">🧵</div>
+                <div class="logo-text">
+                    <span class="app-name">TikuvchiPro</span>
+                    <span class="app-version">v2.0 <span>Beta</span></span>
+                </div>
+            </div>
+
+            <div class="header-actions">
+                <div class="lang-group">
+                    <button class="lang-btn" data-lang="uz" onclick="switchLang('uz')">O'zbek</button>
+                    <button class="lang-btn" data-lang="ru" onclick="switchLang('ru')">Русский</button>
+                    <button class="lang-btn" data-lang="en" onclick="switchLang('en')">English</button>
+                </div>
+                <button class="dark-toggle" onclick="toggleDark()" id="darkToggle" aria-label="Toggle dark mode">🌙</button>
+            </div>
+        </header>
+
+        <!-- ===== CARD ===== -->
+        <main class="card">
+
+            <!-- ===== ENGLISH ===== -->
+            <div class="lang-content" id="lang-en">
+                <div class="title-block">
+                    <div class="badge-icon">🔐 Privacy</div>
+                    <h1>Privacy Policy</h1>
+                    <p class="sub">Privacy policy for TikuvchiPro app users</p>
+                    <div class="update-badge">📅 Last updated: <strong>July 25, 2026</strong></div>
+                </div>
+
+                <div class="section">
+                    <h2><span class="num">1</span> What data is collected?</h2>
+                    <p>The app collects the following data voluntarily entered by the user:</p>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr><th>Data type</th><th>Description</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Full name</td><td>Entered during registration</td></tr>
+                                <tr><td>Phone number</td><td>Entered during registration</td></tr>
+                                <tr><td>4-digit PIN code</td><td>Stored locally on the device</td></tr>
+                                <tr><td>Work data</td><td>Code, batch, quantity, price, total</td></tr>
+                                <tr><td>Advance data</td><td>Amount and note</td></tr>
+                                <tr><td>Avatar (optional)</td><td>Image uploaded by the user</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="note-box"><span>✅</span> All data is stored only on your device (localStorage).</div>
+                </div>
+
+                <div class="section">
+                    <h2><span class="num">2</span> How is data used?</h2>
+                    <ul>
+                        <li>Entering and calculating work</li>
+                        <li>Managing advances</li>
+                        <li>Viewing work history</li>
+                        <li>Saving and displaying profile</li>
+                        <li>Only the user can view and manage their own data</li>
+                    </ul>
+                </div>
+
+                <div class="section">
+                    <h2><span class="num">3</span> How is data protected?</h2>
+                    <ul>
+                        <li>All data is stored <strong>on your device</strong> (localStorage)</li>
+                        <li>PIN code is stored in <strong>base64</strong> format</li>
+                        <li>Data is sent online only in the following <strong>optional</strong> cases:
+                            <ul>
+                                <li>Registration</li>
+                                <li>Password reset</li>
+                                <li>Profile update</li>
+                                <li>Sending a message to the developer via Forum</li>
+                            </ul>
+                        </li>
+                        <li>Data sent via Telegram bot is visible <strong>only to the developer</strong></li>
+                    </ul>
+                </div>
+
+                <div class="section">
+                    <h2><span class="num">4</span> Is data shared with third parties?</h2>
+                    <p><strong>No.</strong> Data is not shared with any third parties, advertising companies, or external organizations.</p>
+                </div>
+
+                <div class="section">
+                    <h2><span class="num">5</span> User rights</h2>
+                    <ul>
+                        <li>View, edit, and delete your data</li>
+                        <li>Completely delete your profile (Settings → Delete account)</li>
+                        <li>Stop using the app and delete all data</li>
+                    </ul>
+                </div>
+
+                <div class="section">
+                    <h2><span class="num">6</span> Children's privacy</h2>
+                    <p>The app is <strong>not intended</strong> for children under 13 years of age. If data from a child under 13 is submitted, it will be deleted immediately.</p>
+                </div>
+
+                <div class="section">
+                    <h2><span class="num">7</span> Changes</h2>
+                    <p>This privacy policy may be updated from time to time. Changes will be announced within the app.</p>
+                </div>
+
+                <div class="section">
+                    <h2><span class="num">8</span> Contact</h2>
+                    <div class="contact-box">
+                        <p>For any questions, please contact us via:</p>
+                        <p>📱 Telegram: <a href="https://t.me/Musoxon2002" target="_blank">@Musoxon2002</a></p>
+                        <p>📩 Through the <strong>Forum</strong> inside the app</p>
+                    </div>
+                </div>
+
+                <div class="footer-note">© 2026 TikuvchiPro. All rights reserved.</div>
+            </div>
+
+            <!-- ===== RUSSIAN ===== -->
+            <div class="lang-content" id="lang-ru">
+                <div class="title-block">
+                    <div class="badge-icon">🔐 Конфиденциальность</div>
+                    <h1>Политика конфиденциальности</h1>
+                    <p class="sub">Политика защиты персональных данных пользователей TikuvchiPro</p>
+                    <div class="update-badge">📅 Последнее обновление: <strong>25 июля 2026 г.</strong></div>
+                </div>
+
+                <div class="section">
+                    <h2><span class="num">1</span> Какие данные собираются?</h2>
+                    <p>Приложение собирает следующие данные, вводимые пользователем добровольно:</p>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Тип данных</th><th>Описание</th></tr></thead>
+                            <tbody>
+                                <tr><td>Имя и фамилия</td><td>Вводятся при регистрации</td></tr>
+                                <tr><td>Номер телефона</td><td>Вводится при регистрации</td></tr>
+                                <tr><td>4-значный PIN-код</td><td>Хранится локально на устройстве</td></tr>
+                                <tr><td>Данные о работе</td><td>Код, партия, количество, цена, итог</td></tr>
+                                <tr><td>Данные об авансе</td><td>Сумма и примечание</td></tr>
+                                <tr><td>Аватар (опционально)</td><td>Изображение, загруженное пользователем</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="note-box"><span>✅</span> Все данные хранятся только на вашем устройстве (localStorage).</div>
+                </div>
+
+                <div class="section">
+                    <h2><span class="num">2</span> Как используются данные?</h2>
+                    <ul>
+                        <li>Ввод и расчёт работы</li>
+                        <li>Получение и управление авансами</li>
+                        <li>Просмотр истории работ</li>
+                        <li>Сохранение и отображение профиля</li>
+                        <li>Только сам пользователь видит и управляет данными</li>
+                    </ul>
+                </div>
+
+                <div class="section">
+                    <h2><span class="num">3</span> Как защищаются данные?</h2>
+                    <ul>
+                        <li>Все данные хранятся <strong>на вашем устройстве</strong> (localStorage)</li>
+                        <li>PIN-код хранится в формате <strong>base64</strong></li>
+                        <li>Данные отправляются в интернет только в следующих <strong>добровольных</strong> случаях:
+                            <ul>
+                                <li>Регистрация</li>
+                                <li>Восстановление пароля</li>
+                                <li>Обновление профиля</li>
+                                <li>Отправка сообщения разработчику через Форум</li>
+                            </ul>
+                        </li>
+                        <li>Данные, отправленные через Telegram-бота, видны <strong>только разработчику</strong></li>
+                    </ul>
+                </div>
+
+                <div class="section">
+                    <h2><span class="num">4</span> Передаются ли данные третьим лицам?</h2>
+                    <p><strong>Нет.</strong> Данные не передаются третьим лицам, рекламным компаниям или внешним организациям.</p>
+                </div>
+
+                <div class="section">
+                    <h2><span class="num">5</span> Права пользователя</h2>
+                    <ul>
+                        <li>Просмотр, редактирование и удаление своих данных</li>
+                        <li>Полное удаление профиля (Настройки → Удалить аккаунт)</li>
+                        <li>Прекращение использования приложения и удаление всех данных</li>
+                    </ul>
+                </div>
+
+                <div class="section">
+                    <h2><span class="num">6</span> Конфиденциальность детей</h2>
+                    <p>Приложение <strong>не предназначено</strong> для детей младше 13 лет. Если данные ребёнка младше 13 лет были отправлены, они будут немедленно удалены.</p>
+                </div>
+
+                <div class="section">
+                    <h2><span class="num">7</span> Изменения</h2>
+                    <p>Данная политика конфиденциальности может время от времени обновляться. Об изменениях будет сообщено в приложении.</p>
+                </div>
+
+                <div class="section">
+                    <h2><span class="num">8</span> Контакты</h2>
+                    <div class="contact-box">
+                        <p>По вопросам обращайтесь по следующим контактам:</p>
+                        <p>📱 Telegram: <a href="https://t.me/Musoxon2002" target="_blank">@Musoxon2002</a></p>
+                        <p>📩 Через <strong>Форум</strong> в приложении</p>
+                    </div>
+                </div>
+
+                <div class="footer-note">© 2026 TikuvchiPro. Все права защищены.</div>
+            </div>
+
+            <!-- ===== UZBEK ===== -->
+            <div class="lang-content" id="lang-uz">
+                <div class="title-block">
+                    <div class="badge-icon">🔐 Maxfiylik</div>
+                    <h1>Maxfiylik siyosati</h1>
+                    <p class="sub">TikuvchiPro ilovasi foydalanuvchilari uchun maxfiylik siyosati</p>
+                    <div class="update-badge">📅 Oxirgi yangilanish: <strong>2026-yil 25-iyul</strong></div>
+                </div>
+
+                <div class="section">
+                    <h2><span class="num">1</span> Qanday maʼlumotlar yigʻiladi?</h2>
+                    <p>Ilova foydalanuvchi tomonidan ixtiyoriy ravishda kiritilgan quyidagi maʼlumotlarni toʻplaydi:</p>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Maʼlumot turi</th><th>Tavsif</th></tr></thead>
+                            <tbody>
+                                <tr><td>Ism va familiya</td><td>Roʻyxatdan oʻtishda kiritiladi</td></tr>
+                                <tr><td>Telefon raqami</td><td>Roʻyxatdan oʻtishda kiritiladi</td></tr>
+                                <tr><td>4 xonali PIN-kod</td><td>Mahalliy qurilmada saqlanadi</td></tr>
+                                <tr><td>Ish maʼlumotlari</td><td>Kod, partiya, miqdor, narx, jami</td></tr>
+                                <tr><td>Avans maʼlumotlari</td><td>Miqdor va izoh</td></tr>
+                                <tr><td>Avatar (ixtiyoriy)</td><td>Foydalanuvchi tomonidan yuklangan rasm</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="note-box"><span>✅</span> Barcha maʼlumotlar faqat qurilmangizda (localStorage) saqlanadi.</div>
+                </div>
+
+                <div class="section">
+                    <h2><span class="num">2</span> Maʼlumotlar qanday ishlatiladi?</h2>
+                    <ul>
+                        <li>Ish kiritish va hisob-kitob qilish</li>
+                        <li>Avans olish va boshqarish</li>
+                        <li>Ish tarixini koʻrish</li>
+                        <li>Profilni saqlash va koʻrsatish</li>
+                        <li>Faqat foydalanuvchining oʻzi koʻradi va boshqara oladi</li>
+                    </ul>
+                </div>
+
+                <div class="section">
+                    <h2><span class="num">3</span> Maʼlumotlar qanday himoya qilinadi?</h2>
+                    <ul>
+                        <li>Barcha maʼlumotlar <strong>qurilmangizda</strong> (localStorage) saqlanadi</li>
+                        <li>PIN-kod <strong>base64</strong> formatida saqlanadi</li>
+                        <li>Internetga faqat quyidagi <strong>ixtiyoriy</strong> holatlarda maʼlumot yuboriladi:
+                            <ul>
+                                <li>Roʻyxatdan oʻtish</li>
+                                <li>Parol tiklash</li>
+                                <li>Profil yangilash</li>
+                                <li>Forum orqali dasturchiga xabar yuborish</li>
+                            </ul>
+                        </li>
+                        <li>Telegram bot orqali yuborilgan maʼlumotlar <strong>faqat dasturchi</strong> tomonidan koʻriladi</li>
+                    </ul>
+                </div>
+
+                <div class="section">
+                    <h2><span class="num">4</span> Maʼlumotlar uchinchi shaxslarga beriladimi?</h2>
+                    <p><strong>Yoʻq.</strong> Maʼlumotlar hech qanday uchinchi shaxsga, reklama kompaniyalariga yoki tashqi tashkilotlarga berilmaydi.</p>
+                </div>
+
+                <div class="section">
+                    <h2><span class="num">5</span> Foydalanuvchi huquqlari</h2>
+                    <ul>
+                        <li>Oʻz maʼlumotlarini koʻrish, tahrirlash va oʻchirish</li>
+                        <li>Profilni butunlay oʻchirib tashlash (Sozlamalar → Hisobni oʻchirish)</li>
+                        <li>Ilovani ishlatishni toʻxtatish va barcha maʼlumotlarni oʻchirish</li>
+                    </ul>
+                </div>
+
+                <div class="section">
+                    <h2><span class="num">6</span> Bolalar maxfiyligi</h2>
+                    <p>Ilova <strong>13 yoshdan kichik</strong> bolalar uchun moʻljallanmagan. Agar 13 yoshdan kichik foydalanuvchi maʼlumotlarini yuborgan boʻlsa, darhol oʻchirib tashlaymiz.</p>
+                </div>
+
+                <div class="section">
+                    <h2><span class="num">7</span> Oʻzgarishlar</h2>
+                    <p>Ushbu maxfiylik siyosati vaqti-vaqti bilan yangilanishi mumkin. Oʻzgarishlar haqida ilova ichida xabar beriladi.</p>
+                </div>
+
+                <div class="section">
+                    <h2><span class="num">8</span> Bogʻlanish</h2>
+                    <div class="contact-box">
+                        <p>Savollaringiz boʻlsa, quyidagi manzillar orqali bogʻlanishingiz mumkin:</p>
+                        <p>📱 Telegram: <a href="https://t.me/Musoxon2002" target="_blank">@Musoxon2002</a></p>
+                        <p>📩 Ilova ichidagi <strong>Forum</strong> orqali</p>
+                    </div>
+                </div>
+
+                <div class="footer-note">© 2026 TikuvchiPro. Barcha huquqlar himoyalangan.</div>
+            </div>
+
+            <!-- ===== BACK BUTTON ===== -->
+            <div class="back-row">
+                <button class="back-btn" onclick="history.back(); return false;">⬅️ Orqaga / Назад / Back</button>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        // ============================================================
+        // LANGUAGE SWITCH
+        // ============================================================
+        function switchLang(lang) {
+            // Hide all
+            document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+
+            // Show selected
+            const target = document.getElementById('lang-' + lang);
+            if (target) target.classList.add('active');
+
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+
+            // Save preference
+            try {
+                localStorage.setItem('privacy_lang', lang);
+            } catch (_) {}
+        }
+
+        // ============================================================
+        // AUTO LANGUAGE DETECTION
+        // ============================================================
+        function detectLanguage() {
+            // 1. Check if user previously selected a language
+            const saved = localStorage.getItem('privacy_lang');
+            if (saved) {
+                const btn = document.querySelector(`.lang-btn[data-lang="${saved}"]`);
+                if (btn) return saved;
+            }
+
+            // 2. Detect browser language
+            const browserLang = navigator.language || navigator.languages?.[0] || 'en';
+            const langCode = browserLang.split('-')[0].toLowerCase();
+
+            // 3. Map to available languages
+            const langMap = {
+                'uz': 'uz',
+                'ru': 'ru',
+                'en': 'en'
+            };
+
+            // 4. Check if detected language is available
+            if (langMap[langCode]) {
+                return langMap[langCode];
+            }
+
+            // 5. Check if browser language contains Uzbek or Russian
+            if (browserLang.includes('uz') || browserLang.includes('UZ')) return 'uz';
+            if (browserLang.includes('ru') || browserLang.includes('RU')) return 'ru';
+
+            // 6. Default to English
+            return 'en';
+        }
+
+        // Auto-detect and apply language on load
+        (function autoDetectLang() {
+            const detected = detectLanguage();
+            const btn = document.querySelector(`.lang-btn[data-lang="${detected}"]`);
+            if (btn) {
+                switchLang(detected);
+            } else {
+                // Fallback to English
+                switchLang('en');
+            }
+        })();
+
+        // ============================================================
+        // DARK MODE
+        // ============================================================
+        function toggleDark() {
+            document.body.classList.toggle('dark');
+            const isDark = document.body.classList.contains('dark');
+            document.getElementById('darkToggle').textContent = isDark ? '☀️' : '🌙';
+            try {
+                localStorage.setItem('privacy_dark', isDark ? 'true' : 'false');
+            } catch (_) {}
+        }
+
+        // Load dark mode
+        (function loadDark() {
+            try {
+                const dark = localStorage.getItem('privacy_dark') === 'true';
+                if (dark) {
+                    document.body.classList.add('dark');
+                    document.getElementById('darkToggle').textContent = '☀️';
+                }
+            } catch (_) {}
+        })();
+    </script>
+
+</body>
+</html>
