@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Maxfiylik Siyosati - Global Privacy Policy</title>
+    <title>Global Privacy Policy</title>
     <style>
         * {
             margin: 0;
@@ -18,25 +18,12 @@
             line-height: 1.7;
         }
 
+        /* ===== HEADER ===== */
         .header {
             background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
             color: white;
             padding: 4rem 2rem 3rem;
             text-align: center;
-        }
-
-        .header h1 {
-            font-size: 2.8rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.02em;
-        }
-
-        .header p {
-            font-size: 1.2rem;
-            color: #94a3b8;
-            max-width: 700px;
-            margin: 0 auto;
         }
 
         .header .badge {
@@ -50,27 +37,46 @@
             margin-bottom: 1rem;
         }
 
-        .container {
+        .header h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .header .subtitle {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* ===== LANGUAGE BAR ===== */
+        .lang-bar-wrap {
             max-width: 900px;
-            margin: -2rem auto 3rem;
+            margin: -2rem auto 0;
             padding: 0 1.5rem;
+            position: relative;
+            z-index: 10;
         }
 
-        .main-card {
-            background: white;
-            border-radius: 24px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06);
-            padding: 3rem;
-        }
-
-        /* Language Selector */
         .lang-bar {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            padding: 0.75rem 1.5rem;
             display: flex;
             justify-content: flex-end;
             gap: 0.5rem;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid #e9edf2;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .lang-bar .label {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-right: auto;
+            font-weight: 500;
         }
 
         .lang-btn {
@@ -95,9 +101,60 @@
             color: white;
         }
 
-        /* Content */
+        /* ===== CONTAINER ===== */
+        .container {
+            max-width: 900px;
+            margin: 2rem auto 3rem;
+            padding: 0 1.5rem;
+        }
+
+        .main-card {
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06);
+            padding: 3rem;
+        }
+
+        /* ===== TOC ===== */
+        .toc {
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .toc h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            color: #0f172a;
+        }
+
+        .toc-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.3rem 1.5rem;
+            list-style: none;
+            padding: 0;
+        }
+
+        .toc-grid li {
+            font-size: 0.95rem;
+            padding: 0.2rem 0;
+        }
+
+        .toc-grid a {
+            color: #4f46e5;
+            text-decoration: none;
+        }
+
+        .toc-grid a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== SECTIONS ===== */
         .section {
             margin-bottom: 2.5rem;
+            scroll-margin-top: 2rem;
         }
 
         .section:last-child {
@@ -124,7 +181,8 @@
             margin-bottom: 1rem;
         }
 
-        .section ul, .section ol {
+        .section ul,
+        .section ol {
             padding-left: 1.5rem;
             margin-bottom: 1rem;
         }
@@ -153,6 +211,10 @@
             margin-bottom: 0 !important;
         }
 
+        .highlight-box.danger {
+            border-left-color: #dc2626;
+        }
+
         .grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -167,6 +229,12 @@
             border: 1px solid #e9edf2;
         }
 
+        .grid-item .emoji {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
         .grid-item h4 {
             font-size: 1.1rem;
             color: #0f172a;
@@ -179,27 +247,37 @@
             margin-bottom: 0 !important;
         }
 
-        .emoji-big {
-            font-size: 2rem;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
         .important {
             color: #dc2626;
             font-weight: 600;
         }
 
-        .tag {
-            display: inline-block;
-            background: #eef2ff;
-            color: #4f46e5;
-            padding: 0.15rem 0.6rem;
-            border-radius: 12px;
-            font-size: 0.8rem;
-            font-weight: 600;
+        /* ===== CONTACT ===== */
+        .contact-section {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid #e9edf2;
         }
 
+        .contact-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-section p {
+            color: #475569;
+        }
+
+        .contact-section a {
+            color: #4f46e5;
+            text-decoration: none;
+        }
+
+        .contact-section a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== FOOTER ===== */
         .footer {
             text-align: center;
             padding: 2rem 1.5rem;
@@ -218,46 +296,12 @@
             text-decoration: underline;
         }
 
-        /* Table of Contents */
-        .toc {
-            background: #f8fafc;
-            border-radius: 16px;
-            padding: 1.5rem 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .toc h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.8rem;
-            color: #0f172a;
-        }
-
-        .toc ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem 1.5rem;
-        }
-
-        .toc li {
-            font-size: 0.95rem;
-        }
-
-        .toc a {
-            color: #4f46e5;
-            text-decoration: none;
-        }
-
-        .toc a:hover {
-            text-decoration: underline;
-        }
-
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .header h1 {
                 font-size: 2rem;
             }
-            .header p {
+            .header .subtitle {
                 font-size: 1rem;
             }
             .main-card {
@@ -269,9 +313,17 @@
             .section-title {
                 font-size: 1.3rem;
             }
+            .toc-grid {
+                grid-template-columns: 1fr;
+            }
             .lang-bar {
                 justify-content: center;
-                flex-wrap: wrap;
+            }
+            .lang-bar .label {
+                margin-right: 0;
+                width: 100%;
+                text-align: center;
+                margin-bottom: 0.3rem;
             }
         }
 
@@ -285,227 +337,252 @@
             .main-card {
                 padding: 1rem;
             }
-            .section p, .section li {
+            .section p,
+            .section li {
                 font-size: 0.95rem;
+            }
+            .lang-bar {
+                padding: 0.5rem 1rem;
+            }
+            .lang-btn {
+                padding: 0.3rem 0.7rem;
+                font-size: 0.75rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- HEADER -->
+    <!-- ===== HEADER ===== -->
     <header class="header">
-        <div class="badge">🌍 Global Privacy Policy</div>
-        <h1>Maxfiylik Siyosati</h1>
-        <p>Shaxsiy ma'lumotlaringiz qanday himoya qilinadi va nima uchun bu muhim</p>
+        <div class="badge" id="header_badge">🌍 Global Privacy Policy</div>
+        <h1 id="header_title">Maxfiylik Siyosati</h1>
+        <p class="subtitle" id="header_subtitle">Shaxsiy ma'lumotlaringiz qanday himoya qilinadi va nima uchun bu muhim</p>
     </header>
 
-    <!-- MAIN CONTENT -->
-    <div class="container">
-        <div class="main-card">
-
-            <!-- Language Selector -->
-            <div class="lang-bar">
-                <button class="lang-btn active" data-lang="uz" onclick="changeLanguage('uz')">🇺🇿 O'zbekcha</button>
-                <button class="lang-btn" data-lang="ru" onclick="changeLanguage('ru')">🇷🇺 Русский</button>
-                <button class="lang-btn" data-lang="en" onclick="changeLanguage('en')">🇬🇧 English</button>
-            </div>
-
-            <!-- ==================== CONTENT ==================== -->
-            <div id="content">
-
-                <!-- TOC -->
-                <div class="toc" id="toc">
-                    <h3>📑 Mundarija</h3>
-                    <ul>
-                        <li><a href="#section1">1. Privacy Policy nima?</a></li>
-                        <li><a href="#section2">2. Nima uchun kerak?</a></li>
-                        <li><a href="#section3">3. Qanday ma'lumotlar yig'iladi?</a></li>
-                        <li><a href="#section4">4. Ma'lumotlar qanday ishlatiladi?</a></li>
-                        <li><a href="#section5">5. Ma'lumotlar bilan kimlar bo'lishadi?</a></li>
-                        <li><a href="#section6">6. Sizning huquqlaringiz</a></li>
-                        <li><a href="#section7">7. Xavfsizlik choralari</a></li>
-                        <li><a href="#section8">8. Cookie fayllari</a></li>
-                    </ul>
-                </div>
-
-                <!-- SECTION 1 -->
-                <div class="section" id="section1">
-                    <h2 class="section-title"><span class="icon">🔍</span> <span id="s1_title">Privacy Policy nima?</span></h2>
-                    <p id="s1_text">
-                        <strong>Privacy Policy</strong> (Maxfiylik Siyosati) — bu veb-sayt yoki ilova <span class="important">foydalanuvchilarning shaxsiy ma'lumotlarini</span> qanday yig'ishi, saqlashi, ishlatishi va himoya qilishi haqidagi <strong>rasmiy hujjat</strong>.
-                    </p>
-                    <p id="s1_text2">
-                        Bu hujjat sizga <span class="important">qanday ma'lumotlar</span> yig'ilayotgani, <span class="important">nima maqsadda</span> ishlatilayotgani va <span class="important">qanday himoya</span> qilinayotgani haqida to'liq ma'lumot beradi.
-                    </p>
-                    <div class="highlight-box">
-                        <h4>📌 Qisqacha</h4>
-                        <p id="s1_highlight">Privacy Policy — bu sizning shaxsiy ma'lumotlaringizni himoya qilish bo'yicha kompaniyaning <strong>va'dasi</strong> va <strong>qonuniy majburiyati</strong>.</p>
-                    </div>
-                </div>
-
-                <!-- SECTION 2 -->
-                <div class="section" id="section2">
-                    <h2 class="section-title"><span class="icon">❓</span> <span id="s2_title">Nima uchun Privacy Policy kerak?</span></h2>
-                    <p id="s2_text">
-                        Privacy Policy <strong>bir nechta muhim sabablarga</strong> ko'ra kerak:
-                    </p>
-                    <ul id="s2_list">
-                        <li><strong>🔒 Shaxsiy hayotni himoya qilish</strong> — sizning ma'lumotlaringiz kimga va qanday maqsadda yetib borishini nazorat qilish</li>
-                        <li><strong>📜 Qonuniy talab</strong> — ko'plab mamlakatlarda (masalan, Yevropa Ittifoqida GDPR) Privacy Policy bo'lishi <span class="important">majburiy</span></li>
-                        <li><strong>🤝 Ishonch</strong> — foydalanuvchilarga ularning ma'lumotlari xavfsiz ekanligini ko'rsatadi</li>
-                        <li><strong>⚠️ Xatarlarni oldini olish</strong> — ma'lumotlar noto'g'ri ishlatilishining oldini oladi</li>
-                    </ul>
-                </div>
-
-                <!-- SECTION 3 -->
-                <div class="section" id="section3">
-                    <h2 class="section-title"><span class="icon">📊</span> <span id="s3_title">Qanday ma'lumotlar yig'iladi?</span></h2>
-                    <p id="s3_text">
-                        Odatda quyidagi <strong>3 turdagi</strong> ma'lumotlar yig'iladi:
-                    </p>
-                    <div class="grid-2">
-                        <div class="grid-item">
-                            <span class="emoji-big">👤</span>
-                            <h4 id="s3_personal_title">Shaxsiy ma'lumotlar</h4>
-                            <p id="s3_personal_text">Ism, familiya, elektron pochta, telefon raqami, manzil kabi sizni <strong>aniq identifikatsiya</strong> qiladigan ma'lumotlar.</p>
-                        </div>
-                        <div class="grid-item">
-                            <span class="emoji-big">📱</span>
-                            <h4 id="s3_tech_title">Texnik ma'lumotlar</h4>
-                            <p id="s3_tech_text">IP-manzil, brauzer turi, operatsion tizim, qurilma modeli, saytda qanday harakat qilganingiz.</p>
-                        </div>
-                        <div class="grid-item">
-                            <span class="emoji-big">🍪</span>
-                            <h4 id="s3_cookie_title">Cookie fayllari</h4>
-                            <p id="s3_cookie_text">Sizning saytdagi <strong>sozlamalaringiz</strong> va <strong>afzalliklaringiz</strong> haqidagi kichik fayllar.</p>
-                        </div>
-                        <div class="grid-item">
-                            <span class="emoji-big">💳</span>
-                            <h4 id="s3_payment_title">To'lov ma'lumotlari</h4>
-                            <p id="s3_payment_text">Agar to'lov amalga oshirilsa, karta ma'lumotlari, to'lov tarixi (maxsus himoyalangan).</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- SECTION 4 -->
-                <div class="section" id="section4">
-                    <h2 class="section-title"><span class="icon">⚙️</span> <span id="s4_title">Ma'lumotlar qanday ishlatiladi?</span></h2>
-                    <p id="s4_text">
-                        Yig'ilgan ma'lumotlar quyidagi <strong>maqsadlarda</strong> ishlatiladi:
-                    </p>
-                    <ul id="s4_list">
-                        <li><strong>📧 Xizmat ko'rsatish</strong> — sizga xizmatlar yetkazib berish va qo'llab-quvvatlash</li>
-                        <li><strong>📈 Saytni yaxshilash</strong> — foydalanuvchi tajribasini tahlil qilish va yaxshilash</li>
-                        <li><strong>📣 Yangiliklar va aksiyalar</strong> — (faqat sizning roziligingiz bilan) reklama va yangiliklar yuborish</li>
-                        <li><strong>🔐 Xavfsizlik</strong> — firibgarlik va kiberhujumlardan himoya qilish</li>
-                        <li><strong>📊 Statistika</strong> — sayt qanday ishlatilayotganini tushunish</li>
-                    </ul>
-                    <div class="highlight-box">
-                        <h4>⚠️ Muhim</h4>
-                        <p id="s4_warning">Ma'lumotlar <span class="important">faqat siz rozilik bergan maqsadlarda</span> ishlatiladi va hech qachon <span class="important">sizning xabaringizsiz</span> sotilmaydi yoki uchinchi shaxslarga berilmaydi.</p>
-                    </div>
-                </div>
-
-                <!-- SECTION 5 -->
-                <div class="section" id="section5">
-                    <h2 class="section-title"><span class="icon">🤝</span> <span id="s5_title">Ma'lumotlar bilan kimlar bo'lishadi?</span></h2>
-                    <p id="s5_text">
-                        Sizning ma'lumotlaringiz <strong>quyidagi holatlarda</strong> uchinchi shaxslar bilan bo'linishi mumkin:
-                    </p>
-                    <ul id="s5_list">
-                        <li><strong>🏢 Xizmat provayderlari</strong> — hosting, to'lov tizimlari, elektron pochta xizmatlari (faqat xizmat ko'rsatish uchun)</li>
-                        <li><strong>⚖️ Qonuniy talab</strong> — sud yoki davlat organlarining qonuniy talabi bo'yicha</li>
-                        <li><strong>📊 Statistika</strong> — anonimlashtirilgan (sizni identifikatsiya qilib bo'lmaydigan) ma'lumotlar tahlil uchun</li>
-                        <li><strong>🔀 Biznes o'zgarishlari</strong> — kompaniya sotilganda yoki birlashganda</li>
-                    </ul>
-                    <div class="highlight-box" style="border-left-color: #dc2626;">
-                        <h4>🔒 Kafolat</h4>
-                        <p id="s5_guarantee">Biz <span class="important">hech qachon</span> sizning shaxsiy ma'lumotlaringizni <span class="important">sotmaymiz</span> yoki <span class="important">reklama maqsadlarida</span> uchinchi shaxslarga bermaymiz.</p>
-                    </div>
-                </div>
-
-                <!-- SECTION 6 -->
-                <div class="section" id="section6">
-                    <h2 class="section-title"><span class="icon">🛡️</span> <span id="s6_title">Sizning huquqlaringiz</span></h2>
-                    <p id="s6_text">
-                        Privacy Policy sizga <strong>quyidagi huquqlarni</strong> beradi:
-                    </p>
-                    <ul id="s6_list">
-                        <li><strong>👁️ Ko'rish huquqi</strong> — siz haqingizda qanday ma'lumotlar saqlanayotganini bilish</li>
-                        <li><strong>✏️ Tuzatish huquqi</strong> — noto'g'ri ma'lumotlarni tuzatish</li>
-                        <li><strong>🗑️ O'chirish huquqi</strong> — ma'lumotlaringizni o'chirishni talab qilish (GDPR "unutilish huquqi")</li>
-                        <li><strong>⛔ Cheklash huquqi</strong> — ma'lumotlarni ishlatishni cheklash</li>
-                        <li><strong>📤 Ko'chirish huquqi</strong> — ma'lumotlaringizni boshqa xizmatga ko'chirish</li>
-                        <li><strong>🚫 Rozilikni qaytarib olish</strong> — istalgan vaqtda roziligingizni qaytarib olish</li>
-                    </ul>
-                </div>
-
-                <!-- SECTION 7 -->
-                <div class="section" id="section7">
-                    <h2 class="section-title"><span class="icon">🔐</span> <span id="s7_title">Xavfsizlik choralari</span></h2>
-                    <p id="s7_text">
-                        Sizning ma'lumotlaringizni himoya qilish uchun <strong>quyidagi choralar</strong> ko'riladi:
-                    </p>
-                    <ul id="s7_list">
-                        <li><strong>🔒 SSL/TLS shifrlash</strong> — barcha ma'lumotlar internet orqali shifrlangan holda uzatiladi</li>
-                        <li><strong>🛡️ Xavfsiz serverlar</strong> — ma'lumotlar maxsus himoyalangan serverlarda saqlanadi</li>
-                        <li><strong>🔑 Cheklangan kirish</strong> — ma'lumotlarga faqat vakolatli xodimlar kirishi mumkin</li>
-                        <li><strong>📋 Muntazam tekshiruvlar</strong> — xavfsizlik tizimlari doimiy ravishda tekshirilib turiladi</li>
-                        <li><strong>🔄 Zaxira nusxalar</strong> — ma'lumotlar muntazam ravishda zaxiralanadi</li>
-                    </ul>
-                </div>
-
-                <!-- SECTION 8 -->
-                <div class="section" id="section8">
-                    <h2 class="section-title"><span class="icon">🍪</span> <span id="s8_title">Cookie fayllari</span></h2>
-                    <p id="s8_text">
-                        Saytimiz <strong>cookie fayllaridan</strong> foydalanadi. Bu kichik matnli fayllar:
-                    </p>
-                    <ul id="s8_list">
-                        <li><strong>🎯 Saytni yaxshilaydi</strong> — sizning afzalliklaringizni eslab qoladi</li>
-                        <li><strong>📊 Tahlil</strong> — sayt qanday ishlatilayotganini tushunishga yordam beradi</li>
-                        <li><strong>🔐 Xavfsizlik</strong> — sessiyalar va autentifikatsiya uchun</li>
-                    </ul>
-                    <div class="highlight-box">
-                        <h4>⚙️ Cookie sozlamalari</h4>
-                        <p id="s8_cookie">Siz istalgan vaqtda brauzer sozlamalaridan <strong>cookielarni o'chirib</strong> yoki <strong>cheklab</strong> qo'yishingiz mumkin. Lekin bu saytning ba'zi funksiyalariga ta'sir qilishi mumkin.</p>
-                    </div>
-                </div>
-
-                <!-- CONTACT / FOOTER -->
-                <div style="margin-top: 3rem; padding-top: 2rem; border-top: 2px solid #e9edf2;">
-                    <h3 id="contact_title" style="font-size: 1.3rem; margin-bottom: 0.5rem;">📬 Savollar bormi?</h3>
-                    <p id="contact_text" style="color: #475569;">
-                        Agar Privacy Policy haqida <strong>savollaringiz</strong> bo'lsa, biz bilan bog'laning:
-                    </p>
-                    <p style="margin-top: 0.5rem;">
-                        📧 <a href="mailto:privacy@example.com" style="color: #4f46e5; text-decoration: none;">privacy@example.com</a>
-                    </p>
-                    <p style="font-size: 0.9rem; color: #94a3b8; margin-top: 0.5rem;">
-                        <span id="update_text">Oxirgi yangilanish:</span> <span id="update_date">2026 yil 25 iyul</span>
-                    </p>
-                </div>
-
-            </div>
-            <!-- END CONTENT -->
-
-        </div>
-
-        <!-- Footer -->
-        <div class="footer">
-            <p>© 2026 <a href="#">Global Privacy Policy</a> · Barcha huquqlar himoyalangan</p>
+    <!-- ===== LANGUAGE BAR ===== -->
+    <div class="lang-bar-wrap">
+        <div class="lang-bar">
+            <span class="label" id="lang_label">🌐 Til:</span>
+            <button class="lang-btn active" data-lang="uz" onclick="changeLanguage('uz')">🇺🇿 O'zbekcha</button>
+            <button class="lang-btn" data-lang="ru" onclick="changeLanguage('ru')">🇷🇺 Русский</button>
+            <button class="lang-btn" data-lang="en" onclick="changeLanguage('en')">🇬🇧 English</button>
         </div>
     </div>
 
+    <!-- ===== MAIN CONTENT ===== -->
+    <div class="container">
+        <div class="main-card">
+
+            <!-- TOC -->
+            <div class="toc">
+                <h3 id="toc_title">📑 Mundarija</h3>
+                <ul class="toc-grid" id="toc_list">
+                    <li><a href="#section1">1. <span id="toc1">Privacy Policy nima?</span></a></li>
+                    <li><a href="#section2">2. <span id="toc2">Nima uchun kerak?</span></a></li>
+                    <li><a href="#section3">3. <span id="toc3">Qanday ma'lumotlar yig'iladi?</span></a></li>
+                    <li><a href="#section4">4. <span id="toc4">Ma'lumotlar qanday ishlatiladi?</span></a></li>
+                    <li><a href="#section5">5. <span id="toc5">Ma'lumotlar bilan kimlar bo'lishadi?</span></a></li>
+                    <li><a href="#section6">6. <span id="toc6">Sizning huquqlaringiz</span></a></li>
+                    <li><a href="#section7">7. <span id="toc7">Xavfsizlik choralari</span></a></li>
+                    <li><a href="#section8">8. <span id="toc8">Cookie fayllari</span></a></li>
+                </ul>
+            </div>
+
+            <!-- ===== SECTION 1 ===== -->
+            <div class="section" id="section1">
+                <h2 class="section-title"><span class="icon">🔍</span> <span id="s1_title">Privacy Policy nima?</span></h2>
+                <p id="s1_text">
+                    <strong>Privacy Policy</strong> (Maxfiylik Siyosati) — bu veb-sayt yoki ilova <span class="important">foydalanuvchilarning shaxsiy ma'lumotlarini</span> qanday yig'ishi, saqlashi, ishlatishi va himoya qilishi haqidagi <strong>rasmiy hujjat</strong>.
+                </p>
+                <p id="s1_text2">
+                    Bu hujjat sizga <span class="important">qanday ma'lumotlar</span> yig'ilayotgani, <span class="important">nima maqsadda</span> ishlatilayotgani va <span class="important">qanday himoya</span> qilinayotgani haqida to'liq ma'lumot beradi.
+                </p>
+                <div class="highlight-box">
+                    <h4>📌 <span id="s1_box_title">Qisqacha</span></h4>
+                    <p id="s1_box_text">Privacy Policy — bu sizning shaxsiy ma'lumotlaringizni himoya qilish bo'yicha kompaniyaning <strong>va'dasi</strong> va <strong>qonuniy majburiyati</strong>.</p>
+                </div>
+            </div>
+
+            <!-- ===== SECTION 2 ===== -->
+            <div class="section" id="section2">
+                <h2 class="section-title"><span class="icon">❓</span> <span id="s2_title">Nima uchun Privacy Policy kerak?</span></h2>
+                <p id="s2_text">
+                    Privacy Policy <strong>bir nechta muhim sabablarga</strong> ko'ra kerak:
+                </p>
+                <ul id="s2_list">
+                    <li><strong>🔒 Shaxsiy hayotni himoya qilish</strong> — sizning ma'lumotlaringiz kimga va qanday maqsadda yetib borishini nazorat qilish</li>
+                    <li><strong>📜 Qonuniy talab</strong> — ko'plab mamlakatlarda (masalan, Yevropa Ittifoqida GDPR) Privacy Policy bo'lishi <span class="important">majburiy</span></li>
+                    <li><strong>🤝 Ishonch</strong> — foydalanuvchilarga ularning ma'lumotlari xavfsiz ekanligini ko'rsatadi</li>
+                    <li><strong>⚠️ Xatarlarni oldini olish</strong> — ma'lumotlar noto'g'ri ishlatilishining oldini oladi</li>
+                </ul>
+            </div>
+
+            <!-- ===== SECTION 3 ===== -->
+            <div class="section" id="section3">
+                <h2 class="section-title"><span class="icon">📊</span> <span id="s3_title">Qanday ma'lumotlar yig'iladi?</span></h2>
+                <p id="s3_text">
+                    Odatda quyidagi <strong>4 turdagi</strong> ma'lumotlar yig'iladi:
+                </p>
+                <div class="grid-2">
+                    <div class="grid-item">
+                        <span class="emoji">👤</span>
+                        <h4 id="s3_personal_title">Shaxsiy ma'lumotlar</h4>
+                        <p id="s3_personal_text">Ism, familiya, elektron pochta, telefon raqami, manzil kabi sizni <strong>aniq identifikatsiya</strong> qiladigan ma'lumotlar.</p>
+                    </div>
+                    <div class="grid-item">
+                        <span class="emoji">📱</span>
+                        <h4 id="s3_tech_title">Texnik ma'lumotlar</h4>
+                        <p id="s3_tech_text">IP-manzil, brauzer turi, operatsion tizim, qurilma modeli, saytda qanday harakat qilganingiz.</p>
+                    </div>
+                    <div class="grid-item">
+                        <span class="emoji">🍪</span>
+                        <h4 id="s3_cookie_title">Cookie fayllari</h4>
+                        <p id="s3_cookie_text">Sizning saytdagi <strong>sozlamalaringiz</strong> va <strong>afzalliklaringiz</strong> haqidagi kichik fayllar.</p>
+                    </div>
+                    <div class="grid-item">
+                        <span class="emoji">💳</span>
+                        <h4 id="s3_payment_title">To'lov ma'lumotlari</h4>
+                        <p id="s3_payment_text">Agar to'lov amalga oshirilsa, karta ma'lumotlari, to'lov tarixi (maxsus himoyalangan).</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== SECTION 4 ===== -->
+            <div class="section" id="section4">
+                <h2 class="section-title"><span class="icon">⚙️</span> <span id="s4_title">Ma'lumotlar qanday ishlatiladi?</span></h2>
+                <p id="s4_text">
+                    Yig'ilgan ma'lumotlar quyidagi <strong>maqsadlarda</strong> ishlatiladi:
+                </p>
+                <ul id="s4_list">
+                    <li><strong>📧 Xizmat ko'rsatish</strong> — sizga xizmatlar yetkazib berish va qo'llab-quvvatlash</li>
+                    <li><strong>📈 Saytni yaxshilash</strong> — foydalanuvchi tajribasini tahlil qilish va yaxshilash</li>
+                    <li><strong>📣 Yangiliklar va aksiyalar</strong> — (faqat sizning roziligingiz bilan) reklama va yangiliklar yuborish</li>
+                    <li><strong>🔐 Xavfsizlik</strong> — firibgarlik va kiberhujumlardan himoya qilish</li>
+                    <li><strong>📊 Statistika</strong> — sayt qanday ishlatilayotganini tushunish</li>
+                </ul>
+                <div class="highlight-box">
+                    <h4>⚠️ <span id="s4_box_title">Muhim</span></h4>
+                    <p id="s4_box_text">Ma'lumotlar <span class="important">faqat siz rozilik bergan maqsadlarda</span> ishlatiladi va hech qachon <span class="important">sizning xabaringizsiz</span> sotilmaydi yoki uchinchi shaxslarga berilmaydi.</p>
+                </div>
+            </div>
+
+            <!-- ===== SECTION 5 ===== -->
+            <div class="section" id="section5">
+                <h2 class="section-title"><span class="icon">🤝</span> <span id="s5_title">Ma'lumotlar bilan kimlar bo'lishadi?</span></h2>
+                <p id="s5_text">
+                    Sizning ma'lumotlaringiz <strong>quyidagi holatlarda</strong> uchinchi shaxslar bilan bo'linishi mumkin:
+                </p>
+                <ul id="s5_list">
+                    <li><strong>🏢 Xizmat provayderlari</strong> — hosting, to'lov tizimlari, elektron pochta xizmatlari (faqat xizmat ko'rsatish uchun)</li>
+                    <li><strong>⚖️ Qonuniy talab</strong> — sud yoki davlat organlarining qonuniy talabi bo'yicha</li>
+                    <li><strong>📊 Statistika</strong> — anonimlashtirilgan (sizni identifikatsiya qilib bo'lmaydigan) ma'lumotlar tahlil uchun</li>
+                    <li><strong>🔀 Biznes o'zgarishlari</strong> — kompaniya sotilganda yoki birlashganda</li>
+                </ul>
+                <div class="highlight-box danger">
+                    <h4>🔒 <span id="s5_box_title">Kafolat</span></h4>
+                    <p id="s5_box_text">Biz <span class="important">hech qachon</span> sizning shaxsiy ma'lumotlaringizni <span class="important">sotmaymiz</span> yoki <span class="important">reklama maqsadlarida</span> uchinchi shaxslarga bermaymiz.</p>
+                </div>
+            </div>
+
+            <!-- ===== SECTION 6 ===== -->
+            <div class="section" id="section6">
+                <h2 class="section-title"><span class="icon">🛡️</span> <span id="s6_title">Sizning huquqlaringiz</span></h2>
+                <p id="s6_text">
+                    Privacy Policy sizga <strong>quyidagi huquqlarni</strong> beradi:
+                </p>
+                <ul id="s6_list">
+                    <li><strong>👁️ Ko'rish huquqi</strong> — siz haqingizda qanday ma'lumotlar saqlanayotganini bilish</li>
+                    <li><strong>✏️ Tuzatish huquqi</strong> — noto'g'ri ma'lumotlarni tuzatish</li>
+                    <li><strong>🗑️ O'chirish huquqi</strong> — ma'lumotlaringizni o'chirishni talab qilish (GDPR "unutilish huquqi")</li>
+                    <li><strong>⛔ Cheklash huquqi</strong> — ma'lumotlarni ishlatishni cheklash</li>
+                    <li><strong>📤 Ko'chirish huquqi</strong> — ma'lumotlaringizni boshqa xizmatga ko'chirish</li>
+                    <li><strong>🚫 Rozilikni qaytarib olish</strong> — istalgan vaqtda roziligingizni qaytarib olish</li>
+                </ul>
+            </div>
+
+            <!-- ===== SECTION 7 ===== -->
+            <div class="section" id="section7">
+                <h2 class="section-title"><span class="icon">🔐</span> <span id="s7_title">Xavfsizlik choralari</span></h2>
+                <p id="s7_text">
+                    Sizning ma'lumotlaringizni himoya qilish uchun <strong>quyidagi choralar</strong> ko'riladi:
+                </p>
+                <ul id="s7_list">
+                    <li><strong>🔒 SSL/TLS shifrlash</strong> — barcha ma'lumotlar internet orqali shifrlangan holda uzatiladi</li>
+                    <li><strong>🛡️ Xavfsiz serverlar</strong> — ma'lumotlar maxsus himoyalangan serverlarda saqlanadi</li>
+                    <li><strong>🔑 Cheklangan kirish</strong> — ma'lumotlarga faqat vakolatli xodimlar kirishi mumkin</li>
+                    <li><strong>📋 Muntazam tekshiruvlar</strong> — xavfsizlik tizimlari doimiy ravishda tekshirilib turiladi</li>
+                    <li><strong>🔄 Zaxira nusxalar</strong> — ma'lumotlar muntazam ravishda zaxiralanadi</li>
+                </ul>
+            </div>
+
+            <!-- ===== SECTION 8 ===== -->
+            <div class="section" id="section8">
+                <h2 class="section-title"><span class="icon">🍪</span> <span id="s8_title">Cookie fayllari</span></h2>
+                <p id="s8_text">
+                    Saytimiz <strong>cookie fayllaridan</strong> foydalanadi. Bu kichik matnli fayllar:
+                </p>
+                <ul id="s8_list">
+                    <li><strong>🎯 Saytni yaxshilaydi</strong> — sizning afzalliklaringizni eslab qoladi</li>
+                    <li><strong>📊 Tahlil</strong> — sayt qanday ishlatilayotganini tushunishga yordam beradi</li>
+                    <li><strong>🔐 Xavfsizlik</strong> — sessiyalar va autentifikatsiya uchun</li>
+                </ul>
+                <div class="highlight-box">
+                    <h4>⚙️ <span id="s8_box_title">Cookie sozlamalari</span></h4>
+                    <p id="s8_box_text">Siz istalgan vaqtda brauzer sozlamalaridan <strong>cookielarni o'chirib</strong> yoki <strong>cheklab</strong> qo'yishingiz mumkin. Lekin bu saytning ba'zi funksiyalariga ta'sir qilishi mumkin.</p>
+                </div>
+            </div>
+
+            <!-- ===== CONTACT ===== -->
+            <div class="contact-section">
+                <h3 id="contact_title">📬 Savollar bormi?</h3>
+                <p id="contact_text">
+                    Agar Privacy Policy haqida <strong>savollaringiz</strong> bo'lsa, biz bilan bog'laning:
+                </p>
+                <p style="margin-top: 0.5rem;">
+                    📧 <a href="mailto:privacy@example.com">privacy@example.com</a>
+                </p>
+                <p style="font-size: 0.9rem; color: #94a3b8; margin-top: 0.5rem;">
+                    <span id="update_label">Oxirgi yangilanish:</span> <span id="update_date">2026 yil 25 iyul</span>
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <div class="footer">
+        <p>© 2026 <a href="#">Global Privacy Policy</a> · <span id="footer_rights">Barcha huquqlar himoyalangan</span></p>
+    </div>
+
     <script>
-        // ==================== TIL TARJIMALARI ====================
+        // ============================================================
+        //  TARJIMALAR
+        // ============================================================
         const translations = {
+
+            // ===== O'ZBEKCHA =====
             uz: {
+                header_badge: '🌍 Global Privacy Policy',
+                header_title: 'Maxfiylik Siyosati',
+                header_subtitle: 'Shaxsiy ma\'lumotlaringiz qanday himoya qilinadi va nima uchun bu muhim',
+                lang_label: '🌐 Til:',
+
+                toc_title: '📑 Mundarija',
+                toc1: 'Privacy Policy nima?',
+                toc2: 'Nima uchun kerak?',
+                toc3: 'Qanday ma\'lumotlar yig\'iladi?',
+                toc4: 'Ma\'lumotlar qanday ishlatiladi?',
+                toc5: 'Ma\'lumotlar bilan kimlar bo\'lishadi?',
+                toc6: 'Sizning huquqlaringiz',
+                toc7: 'Xavfsizlik choralari',
+                toc8: 'Cookie fayllari',
+
                 s1_title: 'Privacy Policy nima?',
                 s1_text: '<strong>Privacy Policy</strong> (Maxfiylik Siyosati) — bu veb-sayt yoki ilova <span class="important">foydalanuvchilarning shaxsiy ma\'lumotlarini</span> qanday yig\'ishi, saqlashi, ishlatishi va himoya qilishi haqidagi <strong>rasmiy hujjat</strong>.',
                 s1_text2: 'Bu hujjat sizga <span class="important">qanday ma\'lumotlar</span> yig\'ilayotgani, <span class="important">nima maqsadda</span> ishlatilayotgani va <span class="important">qanday himoya</span> qilinayotgani haqida to\'liq ma\'lumot beradi.',
-                s1_highlight: 'Privacy Policy — bu sizning shaxsiy ma\'lumotlaringizni himoya qilish bo\'yicha kompaniyaning <strong>va\'dasi</strong> va <strong>qonuniy majburiyati</strong>.',
+                s1_box_title: 'Qisqacha',
+                s1_box_text: 'Privacy Policy — bu sizning shaxsiy ma\'lumotlaringizni himoya qilish bo\'yicha kompaniyaning <strong>va\'dasi</strong> va <strong>qonuniy majburiyati</strong>.',
 
                 s2_title: 'Nima uchun Privacy Policy kerak?',
                 s2_text: 'Privacy Policy <strong>bir nechta muhim sabablarga</strong> ko\'ra kerak:',
@@ -517,7 +594,7 @@
                 `,
 
                 s3_title: 'Qanday ma\'lumotlar yig\'iladi?',
-                s3_text: 'Odatda quyidagi <strong>3 turdagi</strong> ma\'lumotlar yig\'iladi:',
+                s3_text: 'Odatda quyidagi <strong>4 turdagi</strong> ma\'lumotlar yig\'iladi:',
                 s3_personal_title: 'Shaxsiy ma\'lumotlar',
                 s3_personal_text: 'Ism, familiya, elektron pochta, telefon raqami, manzil kabi sizni <strong>aniq identifikatsiya</strong> qiladigan ma\'lumotlar.',
                 s3_tech_title: 'Texnik ma\'lumotlar',
@@ -536,7 +613,8 @@
                     <li><strong>🔐 Xavfsizlik</strong> — firibgarlik va kiberhujumlardan himoya qilish</li>
                     <li><strong>📊 Statistika</strong> — sayt qanday ishlatilayotganini tushunish</li>
                 `,
-                s4_warning: 'Ma\'lumotlar <span class="important">faqat siz rozilik bergan maqsadlarda</span> ishlatiladi va hech qachon <span class="important">sizning xabaringizsiz</span> sotilmaydi yoki uchinchi shaxslarga berilmaydi.',
+                s4_box_title: 'Muhim',
+                s4_box_text: 'Ma\'lumotlar <span class="important">faqat siz rozilik bergan maqsadlarda</span> ishlatiladi va hech qachon <span class="important">sizning xabaringizsiz</span> sotilmaydi yoki uchinchi shaxslarga berilmaydi.',
 
                 s5_title: 'Ma\'lumotlar bilan kimlar bo\'lishadi?',
                 s5_text: 'Sizning ma\'lumotlaringiz <strong>quyidagi holatlarda</strong> uchinchi shaxslar bilan bo\'linishi mumkin:',
@@ -546,7 +624,8 @@
                     <li><strong>📊 Statistika</strong> — anonimlashtirilgan (sizni identifikatsiya qilib bo\'lmaydigan) ma\'lumotlar tahlil uchun</li>
                     <li><strong>🔀 Biznes o\'zgarishlari</strong> — kompaniya sotilganda yoki birlashganda</li>
                 `,
-                s5_guarantee: 'Biz <span class="important">hech qachon</span> sizning shaxsiy ma\'lumotlaringizni <span class="important">sotmaymiz</span> yoki <span class="important">reklama maqsadlarida</span> uchinchi shaxslarga bermaymiz.',
+                s5_box_title: 'Kafolat',
+                s5_box_text: 'Biz <span class="important">hech qachon</span> sizning shaxsiy ma\'lumotlaringizni <span class="important">sotmaymiz</span> yoki <span class="important">reklama maqsadlarida</span> uchinchi shaxslarga bermaymiz.',
 
                 s6_title: 'Sizning huquqlaringiz',
                 s6_text: 'Privacy Policy sizga <strong>quyidagi huquqlarni</strong> beradi:',
@@ -576,17 +655,37 @@
                     <li><strong>📊 Tahlil</strong> — sayt qanday ishlatilayotganini tushunishga yordam beradi</li>
                     <li><strong>🔐 Xavfsizlik</strong> — sessiyalar va autentifikatsiya uchun</li>
                 `,
-                s8_cookie: 'Siz istalgan vaqtda brauzer sozlamalaridan <strong>cookielarni o\'chirib</strong> yoki <strong>cheklab</strong> qo\'yishingiz mumkin. Lekin bu saytning ba\'zi funksiyalariga ta\'sir qilishi mumkin.',
+                s8_box_title: 'Cookie sozlamalari',
+                s8_box_text: 'Siz istalgan vaqtda brauzer sozlamalaridan <strong>cookielarni o\'chirib</strong> yoki <strong>cheklab</strong> qo\'yishingiz mumkin. Lekin bu saytning ba\'zi funksiyalariga ta\'sir qilishi mumkin.',
 
                 contact_title: '📬 Savollar bormi?',
                 contact_text: 'Agar Privacy Policy haqida <strong>savollaringiz</strong> bo\'lsa, biz bilan bog\'laning:',
-                update_text: 'Oxirgi yangilanish:'
+                update_label: 'Oxirgi yangilanish:',
+                footer_rights: 'Barcha huquqlar himoyalangan'
             },
+
+            // ===== RUSCHA =====
             ru: {
+                header_badge: '🌍 Global Privacy Policy',
+                header_title: 'Политика Конфиденциальности',
+                header_subtitle: 'Как защищаются ваши личные данные и почему это важно',
+                lang_label: '🌐 Язык:',
+
+                toc_title: '📑 Содержание',
+                toc1: 'Что такое Политика Конфиденциальности?',
+                toc2: 'Зачем она нужна?',
+                toc3: 'Какие данные собираются?',
+                toc4: 'Как используются данные?',
+                toc5: 'С кем делятся данные?',
+                toc6: 'Ваши права',
+                toc7: 'Меры безопасности',
+                toc8: 'Cookie-файлы',
+
                 s1_title: 'Что такое Политика Конфиденциальности?',
                 s1_text: '<strong>Политика Конфиденциальности</strong> (Privacy Policy) — это официальный документ, объясняющий, как веб-сайт или приложение <span class="important">собирает, хранит, использует и защищает</span> личные данные пользователей.',
                 s1_text2: 'Этот документ дает вам полную информацию о том, <span class="important">какие данные</span> собираются, <span class="important">для каких целей</span> используются и <span class="important">как защищаются</span>.',
-                s1_highlight: 'Политика Конфиденциальности — это <strong>обещание</strong> и <strong>юридическое обязательство</strong> компании защищать ваши личные данные.',
+                s1_box_title: 'Кратко',
+                s1_box_text: 'Политика Конфиденциальности — это <strong>обещание</strong> и <strong>юридическое обязательство</strong> компании защищать ваши личные данные.',
 
                 s2_title: 'Зачем нужна Политика Конфиденциальности?',
                 s2_text: 'Политика Конфиденциальности необходима по <strong>нескольким важным причинам</strong>:',
@@ -598,7 +697,7 @@
                 `,
 
                 s3_title: 'Какие данные собираются?',
-                s3_text: 'Обычно собираются <strong>3 типа</strong> данных:',
+                s3_text: 'Обычно собираются <strong>4 типа</strong> данных:',
                 s3_personal_title: 'Личные данные',
                 s3_personal_text: 'Имя, фамилия, электронная почта, номер телефона, адрес — данные, которые <strong>точно идентифицируют</strong> вас.',
                 s3_tech_title: 'Технические данные',
@@ -617,7 +716,8 @@
                     <li><strong>🔐 Безопасность</strong> — защита от мошенничества и кибератак</li>
                     <li><strong>📊 Статистика</strong> — понимание того, как используется сайт</li>
                 `,
-                s4_warning: 'Данные используются <span class="important">только для целей, на которые вы дали согласие</span>, и <span class="important">никогда не продаются</span> и не передаются третьим лицам <span class="important">без вашего ведома</span>.',
+                s4_box_title: 'Важно',
+                s4_box_text: 'Данные используются <span class="important">только для целей, на которые вы дали согласие</span>, и <span class="important">никогда не продаются</span> и не передаются третьим лицам <span class="important">без вашего ведома</span>.',
 
                 s5_title: 'С кем делятся данные?',
                 s5_text: 'Ваши данные могут передаваться третьим лицам в <strong>следующих случаях</strong>:',
@@ -627,7 +727,8 @@
                     <li><strong>📊 Статистика</strong> — анонимные (не идентифицирующие вас) данные для анализа</li>
                     <li><strong>🔀 Бизнес-изменения</strong> — при продаже или слиянии компании</li>
                 `,
-                s5_guarantee: 'Мы <span class="important">никогда не продаем</span> ваши личные данные и <span class="important">не передаем</span> их третьим лицам <span class="important">в рекламных целях</span>.',
+                s5_box_title: 'Гарантия',
+                s5_box_text: 'Мы <span class="important">никогда не продаем</span> ваши личные данные и <span class="important">не передаем</span> их третьим лицам <span class="important">в рекламных целях</span>.',
 
                 s6_title: 'Ваши права',
                 s6_text: 'Политика Конфиденциальности дает вам <strong>следующие права</strong>:',
@@ -657,17 +758,37 @@
                     <li><strong>📊 Аналитика</strong> — помогают понять, как используется сайт</li>
                     <li><strong>🔐 Безопасность</strong> — для сессий и аутентификации</li>
                 `,
-                s8_cookie: 'Вы можете в любое время <strong>удалить</strong> или <strong>ограничить</strong> использование cookie-файлов в настройках браузера. Но это может повлиять на некоторые функции сайта.',
+                s8_box_title: 'Настройки cookie',
+                s8_box_text: 'Вы можете в любое время <strong>удалить</strong> или <strong>ограничить</strong> использование cookie-файлов в настройках браузера. Но это может повлиять на некоторые функции сайта.',
 
                 contact_title: '📬 Есть вопросы?',
                 contact_text: 'Если у вас есть <strong>вопросы</strong> о Политике Конфиденциальности, свяжитесь с нами:',
-                update_text: 'Последнее обновление:'
+                update_label: 'Последнее обновление:',
+                footer_rights: 'Все права защищены'
             },
+
+            // ===== INGLIZCHA =====
             en: {
+                header_badge: '🌍 Global Privacy Policy',
+                header_title: 'Privacy Policy',
+                header_subtitle: 'How your personal data is protected and why it matters',
+                lang_label: '🌐 Language:',
+
+                toc_title: '📑 Table of Contents',
+                toc1: 'What is a Privacy Policy?',
+                toc2: 'Why is it needed?',
+                toc3: 'What data is collected?',
+                toc4: 'How is data used?',
+                toc5: 'Who is data shared with?',
+                toc6: 'Your rights',
+                toc7: 'Security measures',
+                toc8: 'Cookies',
+
                 s1_title: 'What is a Privacy Policy?',
                 s1_text: 'A <strong>Privacy Policy</strong> is an official document that explains how a website or application <span class="important">collects, stores, uses, and protects</span> users\' personal information.',
                 s1_text2: 'This document gives you complete information about <span class="important">what data</span> is collected, <span class="important">for what purposes</span> it is used, and <span class="important">how it is protected</span>.',
-                s1_highlight: 'A Privacy Policy is the company\'s <strong>promise</strong> and <strong>legal obligation</strong> to protect your personal data.',
+                s1_box_title: 'In short',
+                s1_box_text: 'A Privacy Policy is the company\'s <strong>promise</strong> and <strong>legal obligation</strong> to protect your personal data.',
 
                 s2_title: 'Why is a Privacy Policy needed?',
                 s2_text: 'A Privacy Policy is needed for <strong>several important reasons</strong>:',
@@ -679,7 +800,7 @@
                 `,
 
                 s3_title: 'What data is collected?',
-                s3_text: 'Typically, <strong>3 types</strong> of data are collected:',
+                s3_text: 'Typically, <strong>4 types</strong> of data are collected:',
                 s3_personal_title: 'Personal Data',
                 s3_personal_text: 'Name, surname, email, phone number, address — data that <strong>identifies</strong> you.',
                 s3_tech_title: 'Technical Data',
@@ -698,7 +819,8 @@
                     <li><strong>🔐 Security</strong> — protecting against fraud and cyberattacks</li>
                     <li><strong>📊 Statistics</strong> — understanding how the site is used</li>
                 `,
-                s4_warning: 'Data is used <span class="important">only for purposes you have consented to</span> and is <span class="important">never sold</span> or shared with third parties <span class="important">without your knowledge</span>.',
+                s4_box_title: 'Important',
+                s4_box_text: 'Data is used <span class="important">only for purposes you have consented to</span> and is <span class="important">never sold</span> or shared with third parties <span class="important">without your knowledge</span>.',
 
                 s5_title: 'Who is data shared with?',
                 s5_text: 'Your data may be shared with third parties in <strong>the following cases</strong>:',
@@ -708,7 +830,8 @@
                     <li><strong>📊 Statistics</strong> — anonymized (non-identifying) data for analysis</li>
                     <li><strong>🔀 Business changes</strong> — when the company is sold or merged</li>
                 `,
-                s5_guarantee: 'We <span class="important">never sell</span> your personal data or <span class="important">share</span> it with third parties <span class="important">for advertising purposes</span>.',
+                s5_box_title: 'Guarantee',
+                s5_box_text: 'We <span class="important">never sell</span> your personal data or <span class="important">share</span> it with third parties <span class="important">for advertising purposes</span>.',
 
                 s6_title: 'Your rights',
                 s6_text: 'The Privacy Policy gives you <strong>the following rights</strong>:',
@@ -738,15 +861,19 @@
                     <li><strong>📊 Analytics</strong> — help understand how the site is used</li>
                     <li><strong>🔐 Security</strong> — for sessions and authentication</li>
                 `,
-                s8_cookie: 'You can <strong>delete</strong> or <strong>restrict</strong> cookies at any time in your browser settings. However, this may affect some features of the site.',
+                s8_box_title: 'Cookie settings',
+                s8_box_text: 'You can <strong>delete</strong> or <strong>restrict</strong> cookies at any time in your browser settings. However, this may affect some features of the site.',
 
                 contact_title: '📬 Have questions?',
                 contact_text: 'If you have <strong>questions</strong> about the Privacy Policy, contact us:',
-                update_text: 'Last updated:'
+                update_label: 'Last updated:',
+                footer_rights: 'All rights reserved'
             }
         };
 
-        // ==================== TILNI O'ZGARTIRISH ====================
+        // ============================================================
+        //  TILNI O'ZGARTIRISH
+        // ============================================================
         let currentLang = 'uz';
 
         function detectLanguage() {
@@ -766,26 +893,105 @@
                 btn.classList.toggle('active', btn.dataset.lang === lang);
             });
 
-            // Kontentni yangilash
-            const t = translations[lang];
-            for (const key in t) {
-                const elements = document.querySelectorAll(`[id="${key}"]`);
-                elements.forEach(el => {
-                    if (el.tagName === 'UL' || el.tagName === 'OL') {
-                        el.innerHTML = t[key];
-                    } else if (el.tagName === 'P' || el.tagName === 'H2' || el.tagName === 'H3' || el.tagName === 'H4') {
-                        el.innerHTML = t[key];
-                    } else {
-                        el.innerHTML = t[key];
-                    }
-                });
-            }
+            // HTML lang attribute
+            document.documentElement.lang = lang;
 
-            // Yangilanish sanasini o'zgartirish
-            document.getElementById('update_date').textContent = new Date().toLocaleDateString();
+            // Tarjimalarni qo'llash
+            const t = translations[lang];
+
+            // HEADER
+            document.getElementById('header_badge').textContent = t.header_badge;
+            document.getElementById('header_title').textContent = t.header_title;
+            document.getElementById('header_subtitle').textContent = t.header_subtitle;
+            document.getElementById('lang_label').textContent = t.lang_label;
+
+            // TOC
+            document.getElementById('toc_title').textContent = t.toc_title;
+            document.getElementById('toc1').textContent = t.toc1;
+            document.getElementById('toc2').textContent = t.toc2;
+            document.getElementById('toc3').textContent = t.toc3;
+            document.getElementById('toc4').textContent = t.toc4;
+            document.getElementById('toc5').textContent = t.toc5;
+            document.getElementById('toc6').textContent = t.toc6;
+            document.getElementById('toc7').textContent = t.toc7;
+            document.getElementById('toc8').textContent = t.toc8;
+
+            // SECTION 1
+            document.getElementById('s1_title').textContent = t.s1_title;
+            document.getElementById('s1_text').innerHTML = t.s1_text;
+            document.getElementById('s1_text2').innerHTML = t.s1_text2;
+            document.getElementById('s1_box_title').textContent = t.s1_box_title;
+            document.getElementById('s1_box_text').innerHTML = t.s1_box_text;
+
+            // SECTION 2
+            document.getElementById('s2_title').textContent = t.s2_title;
+            document.getElementById('s2_text').innerHTML = t.s2_text;
+            document.getElementById('s2_list').innerHTML = t.s2_list;
+
+            // SECTION 3
+            document.getElementById('s3_title').textContent = t.s3_title;
+            document.getElementById('s3_text').innerHTML = t.s3_text;
+            document.getElementById('s3_personal_title').textContent = t.s3_personal_title;
+            document.getElementById('s3_personal_text').innerHTML = t.s3_personal_text;
+            document.getElementById('s3_tech_title').textContent = t.s3_tech_title;
+            document.getElementById('s3_tech_text').innerHTML = t.s3_tech_text;
+            document.getElementById('s3_cookie_title').textContent = t.s3_cookie_title;
+            document.getElementById('s3_cookie_text').innerHTML = t.s3_cookie_text;
+            document.getElementById('s3_payment_title').textContent = t.s3_payment_title;
+            document.getElementById('s3_payment_text').innerHTML = t.s3_payment_text;
+
+            // SECTION 4
+            document.getElementById('s4_title').textContent = t.s4_title;
+            document.getElementById('s4_text').innerHTML = t.s4_text;
+            document.getElementById('s4_list').innerHTML = t.s4_list;
+            document.getElementById('s4_box_title').textContent = t.s4_box_title;
+            document.getElementById('s4_box_text').innerHTML = t.s4_box_text;
+
+            // SECTION 5
+            document.getElementById('s5_title').textContent = t.s5_title;
+            document.getElementById('s5_text').innerHTML = t.s5_text;
+            document.getElementById('s5_list').innerHTML = t.s5_list;
+            document.getElementById('s5_box_title').textContent = t.s5_box_title;
+            document.getElementById('s5_box_text').innerHTML = t.s5_box_text;
+
+            // SECTION 6
+            document.getElementById('s6_title').textContent = t.s6_title;
+            document.getElementById('s6_text').innerHTML = t.s6_text;
+            document.getElementById('s6_list').innerHTML = t.s6_list;
+
+            // SECTION 7
+            document.getElementById('s7_title').textContent = t.s7_title;
+            document.getElementById('s7_text').innerHTML = t.s7_text;
+            document.getElementById('s7_list').innerHTML = t.s7_list;
+
+            // SECTION 8
+            document.getElementById('s8_title').textContent = t.s8_title;
+            document.getElementById('s8_text').innerHTML = t.s8_text;
+            document.getElementById('s8_list').innerHTML = t.s8_list;
+            document.getElementById('s8_box_title').textContent = t.s8_box_title;
+            document.getElementById('s8_box_text').innerHTML = t.s8_box_text;
+
+            // CONTACT
+            document.getElementById('contact_title').textContent = t.contact_title;
+            document.getElementById('contact_text').innerHTML = t.contact_text;
+            document.getElementById('update_label').textContent = t.update_label;
+
+            // FOOTER
+            document.getElementById('footer_rights').textContent = t.footer_rights;
+
+            // Update date
+            const now = new Date();
+            const dateStr = now.toLocaleDateString(lang === 'uz' ? 'uz-UZ' : lang === 'ru' ? 'ru-RU' : 'en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            document.getElementById('update_date').textContent = dateStr;
         }
 
-        // ==================== BOSHLASH ====================
+        // ============================================================
+        //  BOSHLASH
+        // ============================================================
         document.addEventListener('DOMContentLoaded', () => {
             const savedLang = localStorage.getItem('preferredLang');
             const detectedLang = savedLang || detectLanguage();
