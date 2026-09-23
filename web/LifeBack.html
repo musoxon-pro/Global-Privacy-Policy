@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="LifeBack — diqqatingizni qaytaring. Ilovalarda vaqtni kuzating, maqsadingizni eslab qoling.">
+<title>LifeBack — Ongli vaqt / Mindful Time</title>
+<style>
+    :root {
+        --bg: #F5F7F9;
+        --surface: #FFFFFF;
+        --text: #141C26;
+        --text-secondary: #5B6B7A;
+        --accent: #2F9C82;
+        --accent-hover: #24806B;
+        --accent-soft: rgba(47, 156, 130, 0.1);
+        --border: #E2E8ED;
+        --radius-card: 24px;
+        --radius-btn: 16px;
+    }
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg: #0F1620;
+            --surface: #1E2C40;
+            --text: #F2F5F7;
+            --text-secondary: #A9B7C6;
+            --accent: #5AC8A8;
+            --accent-hover: #7DD8BD;
+            --accent-soft: rgba(90, 200, 168, 0.12);
+            --border: #2A3648;
+        }
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        line-height: 1.65;
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+    }
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 clamp(16px, 5vw, 24px);
+    }
+
+    /* ===== NAVIGATSIYA ===== */
+    nav {
+        position: sticky;
+        top: 0;
+        background: var(--bg);
+        z-index: 100;
+        padding: 14px 0;
+        border-bottom: 1px solid var(--border);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+    }
+    .nav-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+    }
+    .logo {
+        font-weight: 800;
+        font-size: 20px;
+        color: var(--accent);
+        text-decoration: none;
+        letter-spacing: -0.02em;
+    }
+    .nav-links {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+    }
+    .nav-links a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+        transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-links .cta {
+        background: var(--accent);
+        color: #fff;
+        padding: 8px 16px;
+        border-radius: 10px;
+        font-weight: 600;
+    }
+    .nav-links .cta:hover { background: var(--accent-hover); color: #fff; }
+
+    /* ===== HERO ===== */
+    .hero {
+        text-align: center;
+        padding: clamp(50px, 10vw, 90px) 0 clamp(40px, 8vw, 70px);
+    }
+    .hero-badge {
+        display: inline-block;
+        background: var(--accent-soft);
+        color: var(--accent);
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 13px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        letter-spacing: 0.02em;
+    }
+    .hero h1 {
+        font-size: clamp(30px, 7.5vw, 52px);
+        font-weight: 800;
+        line-height: 1.15;
+        letter-spacing: -0.03em;
+        margin-bottom: 18px;
+    }
+    .hero h1 .accent { color: var(--accent); }
+    .hero p {
+        font-size: clamp(16px, 4vw, 19px);
+        color: var(--text-secondary);
+        max-width: 620px;
+        margin: 0 auto 32px;
+        line-height: 1.6;
+    }
+    .hero-buttons {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 14px 28px;
+        border-radius: var(--radius-btn);
+        font-size: 16px;
+        font-weight: 600;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.2s;
+        border: none;
+        font-family: inherit;
+        touch-action: manipulation;
+    }
+    .btn-primary {
+        background: var(--accent);
+        color: #fff;
+    }
+    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
+    .btn-secondary {
+        background: var(--surface);
+        color: var(--text);
+        border: 1.5px solid var(--border);
+    }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+    .hero-tagline {
+        margin-top: 40px;
+        font-style: italic;
+        color: var(--text-secondary);
+        font-size: 15px;
+        padding: 0 20px;
+        line-height: 1.6;
+    }
+
+    /* ===== SECTIONS ===== */
+    section { padding: clamp(50px, 9vw, 80px) 0; }
+    .section-title {
+        font-size: clamp(24px, 5.5vw, 36px);
+        font-weight: 800;
+        text-align: center;
+        margin-bottom: 14px;
+        letter-spacing: -0.02em;
+        line-height: 1.25;
+    }
+    .section-subtitle {
+        text-align: center;
+        color: var(--text-secondary);
+        font-size: clamp(15px, 3.8vw, 17px);
+        max-width: 600px;
+        margin: 0 auto 50px;
+    }
+
+    /* Features */
+    .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 16px;
+    }
+    .feature-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-card);
+        padding: 28px 24px;
+        transition: transform 0.2s, border-color 0.2s;
+    }
+    .feature-card:hover {
+        transform: translateY(-3px);
+        border-color: var(--accent);
+    }
+    .feature-icon {
+        width: 48px;
+        height: 48px;
+        background: var(--accent-soft);
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        margin-bottom: 18px;
+    }
+    .feature-card h3 {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 8px;
+        letter-spacing: -0.01em;
+    }
+    .feature-card p {
+        font-size: 15px;
+        color: var(--text-secondary);
+        line-height: 1.6;
+    }
+
+    /* How it works */
+    .steps {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+        counter-reset: step;
+    }
+    .step {
+        text-align: center;
+        position: relative;
+        padding: 20px 10px;
+        counter-increment: step;
+    }
+    .step::before {
+        content: counter(step);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        background: var(--accent);
+        color: #fff;
+        border-radius: 50%;
+        font-weight: 800;
+        font-size: 20px;
+        margin-bottom: 14px;
+    }
+    .step h3 {
+        font-size: 16px;
+        font-weight: 700;
+        margin-bottom: 6px;
+    }
+    .step p {
+        font-size: 14px;
+        color: var(--text-secondary);
+        line-height: 1.55;
+    }
+
+    /* Why us */
+    .why-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 14px;
+    }
+    .why-item {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 18px 20px;
+    }
+    .why-item .check {
+        color: var(--accent);
+        font-size: 20px;
+        font-weight: 700;
+        flex-shrink: 0;
+        line-height: 1.4;
+    }
+    .why-item p {
+        font-size: 15px;
+        line-height: 1.55;
+    }
+    .why-item strong { color: var(--accent); }
+
+    /* Quote */
+    .quote {
+        text-align: center;
+        padding: clamp(40px, 8vw, 60px) clamp(20px, 5vw, 40px);
+        background: var(--surface);
+        border-radius: var(--radius-card);
+        border: 1px solid var(--border);
+        position: relative;
+        overflow: hidden;
+    }
+    .quote::before {
+        content: '"';
+        position: absolute;
+        top: -30px;
+        left: 20px;
+        font-size: 140px;
+        color: var(--accent);
+        opacity: 0.15;
+        font-family: Georgia, serif;
+        line-height: 1;
+    }
+    .quote p {
+        font-size: clamp(17px, 4.2vw, 22px);
+        font-style: italic;
+        font-weight: 500;
+        line-height: 1.5;
+        color: var(--text);
+        max-width: 640px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+    }
+    .quote .author {
+        margin-top: 18px;
+        font-size: 14px;
+        font-style: normal;
+        color: var(--text-secondary);
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+    }
+
+    /* CTA */
+    .cta-section {
+        background: var(--accent);
+        border-radius: var(--radius-card);
+        padding: clamp(40px, 8vw, 60px) clamp(24px, 5vw, 50px);
+        text-align: center;
+        color: #fff;
+    }
+    .cta-section h2 {
+        font-size: clamp(24px, 5.5vw, 34px);
+        font-weight: 800;
+        margin-bottom: 14px;
+        letter-spacing: -0.02em;
+        line-height: 1.25;
+    }
+    .cta-section p {
+        font-size: clamp(15px, 3.8vw, 17px);
+        opacity: 0.9;
+        margin-bottom: 28px;
+        max-width: 520px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .cta-section .btn-primary {
+        background: #fff;
+        color: var(--accent);
+    }
+    .cta-section .btn-primary:hover {
+        background: #fff;
+        opacity: 0.92;
+    }
+
+    /* Footer */
+    footer {
+        border-top: 1px solid var(--border);
+        padding: 40px 0 30px;
+        text-align: center;
+    }
+    .footer-links {
+        display: flex;
+        gap: 24px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+    }
+    .footer-links a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-size: 14px;
+        transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--accent); }
+    footer .copyright {
+        color: var(--text-secondary);
+        font-size: 13px;
+        line-height: 1.6;
+    }
+
+    @media (max-width: 640px) {
+        .nav-links { gap: 14px; }
+        .nav-links a:not(.cta) { display: none; }
+        .nav-links .cta { padding: 7px 14px; font-size: 13px; }
+        .hero-buttons { flex-direction: column; align-items: stretch; }
+        .btn { width: 100%; }
+    }
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav>
+    <div class="container nav-inner">
+        <a href="#" class="logo">LifeBack</a>
+        <div class="nav-links">
+            <a href="#features">Imkoniyatlar</a>
+            <a href="#how">Qanday ishlaydi</a>
+            <a href="#why">Nega biz</a>
+            <a href="#download" class="cta">Yuklab olish</a>
+        </div>
+    </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+    <div class="container">
+        <span class="hero-badge">🌱 Digital Wellbeing</span>
+        <h1>
+            Vaqtingizni <span class="accent">qaytarib</span> oling
+        </h1>
+        <p>
+            Ijtimoiy tarmoqlarda, qisqa videolarda yoki o'yinlarda vaqt qanday
+            o'tib ketganini sezmay qolasizmi? LifeBack sizga aynan shu daqiqada —
+            belgilangan vaqt chegarasiga yetganingizda — nozik, lekin kuchli
+            eslatma ko'rsatadi.
+        </p>
+        <div class="hero-buttons">
+            <a href="https://play.google.com/store/apps/details?id=com.lifeback.app" class="btn btn-primary" target="_blank" rel="noopener">
+                📱 Google Play'dan yuklab olish
+            </a>
+            <a href="#features" class="btn btn-secondary">
+                Batafsil ma'lumot
+            </a>
+        </div>
+        <p class="hero-tagline">
+            "Men sizni o'zgartira olmayman. Men sizga yo'l ko'rsataman."
+        </p>
+    </div>
+</header>
+
+<!-- ===== FEATURES ===== -->
+<section id="features">
+    <div class="container">
+        <h2 class="section-title">Nima uchun LifeBack?</h2>
+        <p class="section-subtitle">
+            Boshqa ilovalar sizni ayblaydi. LifeBack — yo'naltiradi.
+        </p>
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">⏱️</div>
+                <h3>Real vaqt kuzatuvi</h3>
+                <p>Har bir ilovada kuniga qancha vaqt o'tkazganingizni aniq ko'ring. Hech narsa yashirin qolmaydi.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Shaxsiy maqsadlar</h3>
+                <p>"15 daqiqa kitob o'qish" kabi maqsadlaringizni belgilang — LifeBack ularni aynan kerakli daqiqada eslatadi.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔥</div>
+                <h3>Kunlik streak</h3>
+                <p>Maqsadlaringizni har kuni bajaring va ketma-ketlikni (streak) saqlang. Bu sizni motivatsiya qiladi.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>To'liq maxfiylik</h3>
+                <p>Barcha ma'lumotlar faqat qurilmangizda saqlanadi. Hech qachon serverga yuborilmaydi.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌙</div>
+                <h3>Tinch soatlar</h3>
+                <p>Tunda yoki ishda eslatmalarni o'chirib qo'ying. Siz nazorat qilasiz.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌐</div>
+                <h3>Ikki tilli</h3>
+                <p>To'liq o'zbek va ingliz tillarida. O'zingizga qulay tilni tanlang.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== HOW IT WORKS ===== -->
+<section id="how" style="background: var(--surface);">
+    <div class="container">
+        <h2 class="section-title">Qanday ishlaydi?</h2>
+        <p class="section-subtitle">Uch oddiy qadam — va siz nazoratni qo'lga olasiz.</p>
+        <div class="steps">
+            <div class="step">
+                <h3>Ilovalarni tanlang</h3>
+                <p>Kuzatmoqchi bo'lgan ilovalarni belgilang — Instagram, TikTok, YouTube, o'yinlar va boshqalar.</p>
+            </div>
+            <div class="step">
+                <h3>Vaqt chegarasini qo'ying</h3>
+                <p>Har bir ilova uchun o'zingizga mos vaqt chegarasini belgilang. Masalan, kuniga 30 daqiqa.</p>
+            </div>
+            <div class="step">
+                <h3>Eslatmani oling</h3>
+                <p>Chegaraga yetganingizda ekranda motivatsion xabar va shaxsiy maqsadingiz paydo bo'ladi.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== WHY US ===== -->
+<section id="why">
+    <div class="container">
+        <h2 class="section-title">Nega boshqalardan farq qilamiz?</h2>
+        <p class="section-subtitle">LifeBack — bu sizning ittifoqdosingiz, nazoratchi emas.</p>
+        <div class="why-grid">
+            <div class="why-item">
+                <span class="check">✓</span>
+                <p><strong>Ayblamaydi.</strong> Boshqa ilovalar sizni "yomon" his qildiradi. LifeBack — qo'llab-quvvatlaydi.</p>
+            </div>
+            <div class="why-item">
+                <span class="check">✓</span>
+                <p><strong>To'liq oflayn.</strong> Internet kerak emas. Ma'lumotlaringiz qurilmangizdan chiqmaydi.</p>
+            </div>
+            <div class="why-item">
+                <span class="check">✓</span>
+                <p><strong>Reklamasiz Pro.</strong> Bepul versiyada ham bezovta qiluvchi reklamalar yo'q.</p>
+            </div>
+            <div class="why-item">
+                <span class="check">✓</span>
+                <p><strong>Bepul boshlash.</strong> Asosiy funksiyalar bepul. Pro — ixtiyoriy.</p>
+            </div>
+            <div class="why-item">
+                <span class="check">✓</span>
+                <p><strong>Maxfiylik birinchi o'rinda.</strong> Hech qanday kuzatuv, hech qanday ma'lumot yig'ish.</p>
+            </div>
+            <div class="why-item">
+                <span class="check">✓</span>
+                <p><strong>O'zbek tilida.</strong> Mahalliy foydalanuvchilar uchun to'liq qo'llab-quvvatlanadi.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== QUOTE ===== -->
+<section>
+    <div class="container">
+        <div class="quote">
+            <p>
+                "Diqqatingiz — eng qimmatli boyligingiz. LifeBack uni qaytarib
+                olishga yordam beradi."
+            </p>
+            <div class="author">— LifeBack jamoasi</div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section id="download">
+    <div class="container">
+        <div class="cta-section">
+            <h2>Bugun boshlang</h2>
+            <p>
+                Bepul yuklab oling. Bir necha daqiqada sozlang. Vaqtingizni
+                qaytarib oling.
+            </p>
+            <a href="https://play.google.com/store/apps/details?id=com.lifeback.app" class="btn btn-primary" target="_blank" rel="noopener">
+                📱 Google Play'dan yuklab olish
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+    <div class="container">
+        <div class="footer-links">
+            <a href="privacy.html">Maxfiylik siyosati</a>
+            <a href="delete-account.html">Ma'lumotlarni o'chirish</a>
+            <a href="mailto:biznesmusoxon@gmail.com">Bog'lanish</a>
+        </div>
+        <p class="copyright">
+            LifeBack © <span id="year"></span> · Barcha huquqlar himoyalangan.<br>
+            "Men sizni o'zgartira olmayman. Men sizga yo'l ko'rsataman."
+        </p>
+    </div>
+</footer>
+
+<script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
