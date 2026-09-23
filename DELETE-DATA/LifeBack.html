@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>LifeBack — Ma'lumotlarni o'chirish / Data Deletion</title>
+<style>
+    :root {
+        --bg: #F5F7F9;
+        --surface: #FFFFFF;
+        --text: #141C26;
+        --text-secondary: #5B6B7A;
+        --accent: #2F9C82;
+        --accent-soft: rgba(47, 156, 130, 0.1);
+        --border: #E2E8ED;
+        --danger: #D9534F;
+        --danger-soft: rgba(217, 83, 79, 0.08);
+        --radius-card: 20px;
+        --radius-btn: 14px;
+    }
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg: #0F1620;
+            --surface: #1E2C40;
+            --text: #F2F5F7;
+            --text-secondary: #A9B7C6;
+            --accent: #5AC8A8;
+            --accent-soft: rgba(90, 200, 168, 0.12);
+            --border: #2A3648;
+            --danger: #FF7A76;
+            --danger-soft: rgba(255, 122, 118, 0.1);
+        }
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    html { scroll-behavior: smooth; }
+    body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        line-height: 1.65;
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+    }
+    .container {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: clamp(16px, 4vw, 40px) clamp(14px, 5vw, 24px) clamp(48px, 10vw, 80px);
+    }
+    .brand {
+        color: var(--accent);
+        font-weight: 700;
+        font-size: 14px;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+    }
+    h1 {
+        font-size: clamp(22px, 6vw, 30px);
+        margin: 0 0 8px;
+        font-weight: 700;
+        line-height: 1.25;
+        word-break: break-word;
+    }
+    .subtitle {
+        color: var(--text-secondary);
+        font-size: 15px;
+        margin-bottom: 28px;
+    }
+    .lang-toggle {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 28px;
+    }
+    .lang-toggle button {
+        flex: 1;
+        background: var(--surface);
+        border: 1.5px solid var(--border);
+        color: var(--text);
+        padding: 12px 16px;
+        border-radius: var(--radius-btn);
+        font-size: 15px;
+        font-weight: 500;
+        cursor: pointer;
+        font-family: inherit;
+        transition: all 0.2s;
+        touch-action: manipulation;
+    }
+    .lang-toggle button.active {
+        background: var(--accent);
+        color: var(--bg);
+        border-color: var(--accent);
+        font-weight: 600;
+    }
+    .lang-toggle button:active { transform: scale(0.98); }
+
+    .card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-card);
+        padding: clamp(18px, 4.5vw, 26px);
+        margin-bottom: 16px;
+    }
+    h2 {
+        font-size: clamp(17px, 4.5vw, 19px);
+        margin: 0 0 14px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        line-height: 1.35;
+    }
+    h2 .num {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 28px;
+        height: 28px;
+        background: var(--accent-soft);
+        color: var(--accent);
+        border-radius: 8px;
+        font-size: 15px;
+        font-weight: 700;
+        flex-shrink: 0;
+    }
+    p { font-size: 15px; margin: 0 0 12px; word-break: break-word; }
+    p:last-child { margin-bottom: 0; }
+
+    .steps {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        counter-reset: step;
+    }
+    .steps li {
+        position: relative;
+        padding: 14px 0 14px 52px;
+        border-bottom: 1px solid var(--border);
+        counter-increment: step;
+        font-size: 15px;
+    }
+    .steps li:last-child { border-bottom: none; padding-bottom: 4px; }
+    .steps li::before {
+        content: counter(step);
+        position: absolute;
+        left: 0;
+        top: 13px;
+        width: 34px;
+        height: 34px;
+        background: var(--accent);
+        color: #fff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 15px;
+    }
+    .steps li strong { color: var(--accent); }
+
+    .callout {
+        background: var(--accent-soft);
+        border: 1.5px solid var(--accent);
+        border-radius: 14px;
+        padding: 16px 18px;
+        margin: 14px 0;
+        font-size: 14.5px;
+        line-height: 1.6;
+    }
+    .callout.danger {
+        background: var(--danger-soft);
+        border-color: var(--danger);
+    }
+    .callout strong { color: var(--accent); }
+    .callout.danger strong { color: var(--danger); }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 8px 0 4px;
+        font-size: 14px;
+    }
+    th, td {
+        text-align: left;
+        padding: 12px 10px;
+        border-bottom: 1px solid var(--border);
+        vertical-align: top;
+        word-break: break-word;
+    }
+    th {
+        color: var(--text-secondary);
+        font-weight: 600;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+    .badge {
+        display: inline-block;
+        padding: 3px 10px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 700;
+        white-space: nowrap;
+    }
+    .badge.del {
+        background: var(--danger-soft);
+        color: var(--danger);
+    }
+    .badge.keep {
+        background: var(--accent-soft);
+        color: var(--accent);
+    }
+
+    .contact-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+        background: var(--accent);
+        color: #fff;
+        text-decoration: none;
+        padding: 16px 24px;
+        border-radius: var(--radius-btn);
+        font-weight: 600;
+        font-size: 16px;
+        margin-top: 6px;
+        transition: opacity 0.2s;
+        word-break: break-word;
+        text-align: center;
+    }
+    .contact-btn:active { opacity: 0.85; }
+
+    .lang-block { display: none; }
+    .lang-block.active { display: block; }
+
+    footer {
+        text-align: center;
+        color: var(--text-secondary);
+        font-size: 13px;
+        margin-top: 36px;
+        line-height: 1.6;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        background: var(--accent-soft);
+        color: var(--accent);
+        padding: 2px 6px;
+        border-radius: 6px;
+        font-size: 0.9em;
+        word-break: break-all;
+    }
+
+    @media (max-width: 480px) {
+        .container { padding: 16px 14px 48px; }
+        .card { padding: 18px 14px; border-radius: 16px; }
+        h2 { font-size: 16.5px; }
+        p, .steps li { font-size: 14.5px; }
+        th, td { padding: 10px 8px; font-size: 13px; }
+        .steps li { padding-left: 46px; }
+        .steps li::before { width: 30px; height: 30px; font-size: 14px; }
+    }
+</style>
+</head>
+<body>
+<div class="container">
+
+    <div class="brand">LifeBack</div>
+    <h1 id="title">Ma'lumotlarni o'chirish<br><span style="font-weight:400;font-size:0.65em;color:var(--text-secondary);">Data Deletion</span></h1>
+    <div class="subtitle" id="subtitle">Oxirgi yangilanish: <strong>2025</strong></div>
+
+    <div class="lang-toggle">
+        <button id="btnUz" class="active" onclick="showLang('uz')">O'zbekcha</button>
+        <button id="btnEn" onclick="showLang('en')">English</button>
+    </div>
+
+    <!-- ================= UZBEK ================= -->
+    <div class="lang-block active" id="lang-uz">
+
+        <div class="card">
+            <h2>📌 Qisqacha ma'lumot</h2>
+            <p>
+                <strong>LifeBack</strong> ilovasi <strong>markaziy serverda hech qanday
+                shaxsiy ma'lumot saqlamaydi</strong>. Sizning barcha ma'lumotlaringiz
+                (maqsadlar, sozlamalar, foydalanish statistikasi) faqat sizning
+                qurilmangizda saqlanadi. Shu sababli, ma'lumotlaringizni o'chirish
+                juda oson — bir necha soniya ichida.
+            </p>
+        </div>
+
+        <div class="card">
+            <h2><span class="num">1</span> Ma'lumotlaringizni qanday o'chirish mumkin</h2>
+            <p>Quyidagi qadamlarni bajaring:</p>
+            <ol class="steps">
+                <li>
+                    Telefoningizda <strong>Sozlamalar</strong> (Settings) ilovasini oching.
+                </li>
+                <li>
+                    <strong>Ilovalar</strong> (Apps) yoki <strong>Ilovalarni boshqarish</strong>
+                    (Manage apps) bo'limiga o'ting.
+                </li>
+                <li>
+                    Ro'yxatdan <strong>LifeBack</strong> ilovasini toping va ustiga bosing.
+                </li>
+                <li>
+                    <strong>"O'chirish"</strong> (Uninstall) tugmasini bosing va tasdiqlang.
+                </li>
+                <li>
+                    Tamom! Ilova va u bilan birga <strong>barcha shaxsiy ma'lumotlaringiz
+                    darhol va butunlay o'chiriladi</strong>.
+                </li>
+            </ol>
+        </div>
+
+        <div class="card">
+            <h2><span class="num">2</span> Qanday ma'lumotlar o'chiriladi</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ma'lumot turi</th>
+                        <th>Holati</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Siz kiritgan shaxsiy maqsadlar</td>
+                        <td><span class="badge del">O'chiriladi</span></td>
+                    </tr>
+                    <tr>
+                        <td>Kuzatiladigan ilovalar ro'yxati va vaqt chegaralari</td>
+                        <td><span class="badge del">O'chiriladi</span></td>
+                    </tr>
+                    <tr>
+                        <td>Kunlik foydalanish statistikasi va streak tarixi</td>
+                        <td><span class="badge del">O'chiriladi</span></td>
+                    </tr>
+                    <tr>
+                        <td>Til, tovush, tebranish va tinch soatlar sozlamalari</td>
+                        <td><span class="badge del">O'chiriladi</span></td>
+                    </tr>
+                    <tr>
+                        <td>Pro versiya holati (faqat qurilmadagi belgi)</td>
+                        <td><span class="badge del">O'chiriladi</span></td>
+                    </tr>
+                    <tr>
+                        <td>Google Play orqali amalga oshirilgan xarid tarixi</td>
+                        <td><span class="badge keep">Google'da saqlanadi</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="callout">
+                <strong>Eslatma:</strong> Google Play xarid tarixi <strong>Google
+                kompaniyasi</strong> tomonidan boshqariladi va biz unga kira olmaymiz.
+                Uni o'chirish uchun <a href="https://support.google.com/googleplay/answer/7018481"
+                target="_blank" rel="noopener">Google Play yordam markaziga</a> murojaat qiling.
+            </div>
+        </div>
+
+        <div class="card">
+            <h2><span class="num">3</span> Qo'shimcha savollar</h2>
+            <p>
+                Agar ilovani o'chirish imkoni bo'lmasa yoki boshqa savollaringiz bo'lsa,
+                biz bilan bog'laning. Biz <strong>30 kun ichida</strong> javob beramiz
+                va barcha mumkin bo'lgan yordamni ko'rsatamiz.
+            </p>
+            <a class="contact-btn" href="mailto:biznesmusoxon@gmail.com?subject=LifeBack%20—%20Data%20Deletion%20Request">
+                ✉️ Bizga email yozing
+            </a>
+            <p style="margin-top:14px;font-size:13px;color:var(--text-secondary);text-align:center;">
+                <code>biznesmusoxon@gmail.com</code>
+            </p>
+        </div>
+
+        <div class="card">
+            <h2>🔒 Maxfiylik kafolati</h2>
+            <p>
+                LifeBack hech qachon sizning shaxsiy ma'lumotlaringizni serverga
+                yubormaydi, uchinchi tomonlarga sotmaydi yoki reklama maqsadida
+                ishlatmaydi. Batafsil ma'lumot uchun
+                <a href="privacy.html">Maxfiylik siyosatimizni</a> o'qing.
+            </p>
+        </div>
+
+    </div>
+
+    <!-- ================= ENGLISH ================= -->
+    <div class="lang-block" id="lang-en">
+
+        <div class="card">
+            <h2>📌 Overview</h2>
+            <p>
+                <strong>LifeBack</strong> <strong>does not store any personal data on
+                a central server</strong>. All of your data (goals, settings, usage
+                statistics) is stored only on your own device. This makes deleting
+                your data simple — it takes just a few seconds.
+            </p>
+        </div>
+
+        <div class="card">
+            <h2><span class="num">1</span> How to delete your data</h2>
+            <p>Follow these steps:</p>
+            <ol class="steps">
+                <li>
+                    Open the <strong>Settings</strong> app on your phone.
+                </li>
+                <li>
+                    Go to <strong>Apps</strong> or <strong>Manage apps</strong>.
+                </li>
+                <li>
+                    Find <strong>LifeBack</strong> in the list and tap it.
+                </li>
+                <li>
+                    Tap <strong>"Uninstall"</strong> and confirm.
+                </li>
+                <li>
+                    Done! The app and <strong>all of your personal data will be
+                    permanently deleted immediately</strong>.
+                </li>
+            </ol>
+        </div>
+
+        <div class="card">
+            <h2><span class="num">2</span> What data gets deleted</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Data type</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Personal goals you have entered</td>
+                        <td><span class="badge del">Deleted</span></td>
+                    </tr>
+                    <tr>
+                        <td>List of watched apps and time thresholds</td>
+                        <td><span class="badge del">Deleted</span></td>
+                    </tr>
+                    <tr>
+                        <td>Daily usage statistics and streak history</td>
+                        <td><span class="badge del">Deleted</span></td>
+                    </tr>
+                    <tr>
+                        <td>Language, sound, vibration, and quiet-hours settings</td>
+                        <td><span class="badge del">Deleted</span></td>
+                    </tr>
+                    <tr>
+                        <td>Pro version status (local device flag only)</td>
+                        <td><span class="badge del">Deleted</span></td>
+                    </tr>
+                    <tr>
+                        <td>Purchase history made through Google Play</td>
+                        <td><span class="badge keep">Retained by Google</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="callout">
+                <strong>Note:</strong> Google Play purchase history is managed by
+                <strong>Google</strong> and we cannot access it. To delete it, please
+                contact the <a href="https://support.google.com/googleplay/answer/7018481"
+                target="_blank" rel="noopener">Google Play Help Center</a>.
+            </div>
+        </div>
+
+        <div class="card">
+            <h2><span class="num">3</span> Additional questions</h2>
+            <p>
+                If you cannot uninstall the app or have other questions, contact us.
+                We will respond within <strong>30 days</strong> and provide any
+                assistance we can.
+            </p>
+            <a class="contact-btn" href="mailto:biznesmusoxon@gmail.com?subject=LifeBack%20—%20Data%20Deletion%20Request">
+                ✉️ Email us
+            </a>
+            <p style="margin-top:14px;font-size:13px;color:var(--text-secondary);text-align:center;">
+                <code>biznesmusoxon@gmail.com</code>
+            </p>
+        </div>
+
+        <div class="card">
+            <h2>🔒 Privacy commitment</h2>
+            <p>
+                LifeBack never sends your personal data to a server, never sells it
+                to third parties, and never uses it for advertising. For more details,
+                read our <a href="privacy.html">Privacy Policy</a>.
+            </p>
+        </div>
+
+    </div>
+
+    <footer>
+        LifeBack © <span id="year"></span> ·
+        <a href="privacy.html">Maxfiylik siyosati / Privacy Policy</a>
+    </footer>
+
+</div>
+
+<script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    function showLang(lang) {
+        document.getElementById('lang-uz').classList.toggle('active', lang === 'uz');
+        document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+        document.getElementById('btnUz').classList.toggle('active', lang === 'uz');
+        document.getElementById('btnEn').classList.toggle('active', lang === 'en');
+        document.documentElement.lang = lang;
+
+        var title = document.getElementById('title');
+        var subtitle = document.getElementById('subtitle');
+        if (lang === 'uz') {
+            title.innerHTML = "Ma'lumotlarni o'chirish<br><span style='font-weight:400;font-size:0.65em;color:var(--text-secondary);'>Data Deletion</span>";
+            subtitle.innerHTML = "Oxirgi yangilanish: <strong>2025</strong>";
+        } else {
+            title.innerHTML = "Data Deletion<br><span style='font-weight:400;font-size:0.65em;color:var(--text-secondary);'>Ma'lumotlarni o'chirish</span>";
+            subtitle.innerHTML = "Last updated: <strong>2025</strong>";
+        }
+    }
+
+    // Mobil brauzerlarda ikki marta bosish zoomini oldini olish
+    document.querySelectorAll('.lang-toggle button').forEach(function(btn) {
+        btn.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            this.click();
+        }, { passive: false });
+    });
+</script>
+
+</body>
+</html>
