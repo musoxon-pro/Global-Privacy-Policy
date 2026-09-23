@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>LifeBack — Maxfiylik siyosati / Privacy Policy</title>
+<style>
+    :root {
+        --bg: #F5F7F9;
+        --surface: #FFFFFF;
+        --text: #141C26;
+        --text-secondary: #5B6B7A;
+        --accent: #2F9C82;
+        --border: #E2E8ED;
+        --radius-card: 20px;
+        --radius-btn: 14px;
+        --font-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg: #0F1620;
+            --surface: #1E2C40;
+            --text: #F2F5F7;
+            --text-secondary: #A9B7C6;
+            --accent: #5AC8A8;
+            --border: #2A3648;
+        }
+    }
+    * {
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+    }
+    html {
+        scroll-behavior: smooth;
+    }
+    body {
+        margin: 0;
+        padding: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--font-base);
+        line-height: 1.6;
+        font-size: 16px;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+    }
+    .container {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: clamp(16px, 4vw, 40px) clamp(12px, 5vw, 24px) clamp(48px, 10vw, 80px);
+        width: 100%;
+    }
+    .brand {
+        color: var(--accent);
+        font-weight: 700;
+        font-size: 14px;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        margin-bottom: 6px;
+    }
+    h1 {
+        font-size: clamp(22px, 6vw, 28px);
+        margin: 0 0 4px;
+        font-weight: 700;
+        line-height: 1.3;
+        word-break: break-word;
+    }
+    .updated {
+        color: var(--text-secondary);
+        font-size: 14px;
+        margin-bottom: 24px;
+        word-break: break-word;
+    }
+    .lang-toggle {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 24px;
+        flex-wrap: wrap;
+    }
+    .lang-toggle button {
+        flex: 1 1 auto;
+        min-width: 120px;
+        background: var(--surface);
+        border: 1.5px solid var(--border);
+        color: var(--text);
+        padding: 12px 16px;
+        border-radius: var(--radius-btn);
+        font-size: 15px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background 0.2s, border-color 0.2s, color 0.2s;
+        font-family: inherit;
+        touch-action: manipulation;
+        user-select: none;
+    }
+    .lang-toggle button:active {
+        transform: scale(0.98);
+    }
+    .lang-toggle button.active {
+        background: var(--accent);
+        color: var(--bg);
+        border-color: var(--accent);
+        font-weight: 600;
+    }
+    section {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-card);
+        padding: clamp(16px, 4.5vw, 24px);
+        margin-bottom: 14px;
+        overflow: hidden;
+        word-break: break-word;
+    }
+    h2 {
+        font-size: clamp(16px, 4.5vw, 18px);
+        margin: 0 0 12px;
+        font-weight: 700;
+        line-height: 1.35;
+        word-break: break-word;
+    }
+    p, li {
+        color: var(--text);
+        font-size: 15px;
+        line-height: 1.65;
+    }
+    p {
+        margin: 0 0 12px;
+    }
+    p:last-child {
+        margin-bottom: 0;
+    }
+    ul {
+        margin: 8px 0;
+        padding-left: 20px;
+    }
+    li {
+        margin-bottom: 8px;
+        padding-left: 4px;
+    }
+    a {
+        color: var(--accent);
+        word-break: break-word;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 14px 0;
+        font-size: 14px;
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        table-layout: auto;
+    }
+    thead, tbody {
+        display: table;
+        width: 100%;
+        min-width: 560px;
+    }
+    th, td {
+        text-align: left;
+        padding: 12px 10px;
+        border-bottom: 1px solid var(--border);
+        vertical-align: top;
+        font-size: 14px;
+        line-height: 1.5;
+        word-break: break-word;
+    }
+    th {
+        color: var(--text-secondary);
+        font-weight: 600;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        white-space: nowrap;
+    }
+    td:first-child {
+        font-weight: 500;
+    }
+    .lang-block {
+        display: none;
+    }
+    .lang-block.active {
+        display: block;
+    }
+    .callout {
+        background: rgba(47, 156, 130, 0.1);
+        border: 1.5px solid var(--accent);
+        border-radius: 14px;
+        padding: 14px 16px;
+        margin: 14px 0;
+        font-size: 14.5px;
+        line-height: 1.6;
+        word-break: break-word;
+    }
+    .callout strong {
+        color: var(--accent);
+    }
+    footer {
+        text-align: center;
+        color: var(--text-secondary);
+        font-size: 13px;
+        margin-top: 36px;
+        line-height: 1.6;
+        padding: 0 4px;
+        word-break: break-word;
+    }
+    code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        background: rgba(47, 156, 130, 0.12);
+        padding: 2px 6px;
+        border-radius: 6px;
+        font-size: 0.9em;
+        word-break: break-all;
+        color: var(--accent);
+    }
+    strong {
+        font-weight: 600;
+    }
+
+    /* Telefon uchun qo'shimcha moslashuv */
+    @media (max-width: 480px) {
+        .container {
+            padding: 16px 14px 48px;
+        }
+        section {
+            padding: 16px 14px;
+            border-radius: 16px;
+        }
+        h2 {
+            font-size: 16px;
+        }
+        p, li {
+            font-size: 14.5px;
+        }
+        th, td {
+            padding: 10px 8px;
+            font-size: 13px;
+        }
+        .lang-toggle button {
+            padding: 11px 12px;
+            font-size: 14px;
+            min-width: 0;
+        }
+        .callout {
+            padding: 12px 14px;
+            font-size: 14px;
+            border-radius: 12px;
+        }
+        table {
+            margin: 10px -4px;
+            width: calc(100% + 8px);
+        }
+    }
+
+    /* Planshet va katta ekranlar */
+    @media (min-width: 768px) {
+        section {
+            border-radius: 18px;
+        }
+        table {
+            display: table;
+            overflow-x: visible;
+        }
+        thead, tbody {
+            min-width: 0;
+        }
+    }
+</style>
+</head>
+<body>
+<div class="container">
+
+    <div class="brand">LifeBack</div>
+    <h1>Maxfiylik siyosati / Privacy Policy</h1>
+    <div class="updated">Oxirgi yangilanish / Last updated: <strong>[SANANI KIRITING / INSERT DATE]</strong></div>
+
+    <div class="lang-toggle">
+        <button id="btnUz" class="active" onclick="showLang('uz')" aria-label="O'zbekcha">O'zbekcha</button>
+        <button id="btnEn" onclick="showLang('en')" aria-label="English">English</button>
+    </div>
+
+    <!-- ============== UZBEK ============== -->
+    <div class="lang-block active" id="lang-uz">
+
+        <section>
+            <h2>1. Kirish</h2>
+            <p>
+                Ushbu Maxfiylik siyosati "LifeBack" mobil ilovasi (bundan buyon "Ilova" deb
+                yuritiladi) qanday ma'lumotlarga ega bo'lishi, ularni qanday ishlatishi va
+                himoya qilishini tushuntiradi. Ilovadan foydalanish orqali siz ushbu siyosat
+                shartlariga rozilik bildirasiz.
+            </p>
+            <p>
+                Ilova ishlab chiqaruvchisi: <strong>[ISHLAB CHIQARUVCHI NOMINI / KOMPANIYA
+                NOMINI KIRITING]</strong><br>
+                Aloqa uchun email: <strong>[EMAIL MANZILINI KIRITING]</strong>
+            </p>
+        </section>
+
+        <section>
+            <h2>2. Ilova nima qiladi</h2>
+            <p>
+                LifeBack — foydalanuvchi tanlagan ilovalarda (masalan, ijtimoiy tarmoqlar,
+                video ilovalar, o'yinlar) qancha vaqt o'tkazilganini kuzatib, belgilangan
+                vaqt chegarasiga yetganda ekranda motivatsion eslatma ko'rsatuvchi ilova.
+                Ilova foydalanuvchiga o'z maqsadlarini ("goals") belgilash, ularni eslab
+                qolish va kunlik bajarish ketma-ketligini (streak) kuzatish imkonini beradi.
+            </p>
+        </section>
+
+        <section>
+            <h2>3. Biz to'playdigan ma'lumotlar</h2>
+            <div class="callout">
+                <strong>Muhim:</strong> LifeBack sizning shaxsiy foydalanish ma'lumotlaringizni
+                (qaysi ilovada qancha vaqt o'tkazganingiz, maqsadlaringiz, sozlamalaringiz)
+                hech qachon serverga yubormaydi. Barcha bunday ma'lumot faqat sizning
+                qurilmangizda saqlanadi.
+            </div>
+            <table>
+                <thead>
+                    <tr><th>Ma'lumot turi</th><th>Nima uchun to'planadi</th><th>Qayerda saqlanadi</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Qaysi ilova ochiqligi va qancha vaqt oldingi joriy holatda turgani
+                            (ilova nomi/paket nomi va vaqt uzunligi)</td>
+                        <td>Belgilangan vaqt chegarasiga yetganda eslatma ko'rsatish va
+                            foydalanish statistikasini ko'rsatish uchun</td>
+                        <td>Faqat qurilmangizda (SharedPreferences), hech qachon serverga
+                            yuborilmaydi</td>
+                    </tr>
+                    <tr>
+                        <td>Siz yozgan shaxsiy maqsadlar (masalan, "15 daqiqa kitob o'qish")
+                            va ularni bajargan kunlaringiz</td>
+                        <td>Eslatma ko'rsatilganda sizga aynan shu maqsadni eslatish va
+                            kunlik ketma-ketlik (streak) hisoblash uchun</td>
+                        <td>Faqat qurilmangizda</td>
+                    </tr>
+                    <tr>
+                        <td>Til, tovush/tebranish sozlamalari, tinch soatlar vaqti, bosh
+                            ekranga qaytarish sozlamasi</td>
+                        <td>Ilovani sizga moslashtirish uchun</td>
+                        <td>Faqat qurilmangizda</td>
+                    </tr>
+                    <tr>
+                        <td>Google Play xarid ma'lumotlari (oylik/yillik obuna, umrbod
+                            xarid, ixtiyoriy hadya)</td>
+                        <td>Xaridni tasdiqlash va Pro funksiyalarini ochish uchun</td>
+                        <td>Google Play Billing tizimi orqali — bu ma'lumotni Google
+                            boshqaradi, biz emas. Ilova faqat "xarid faolmi yoki yo'qmi"
+                            holatini o'zining qurilmasida saqlaydi</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                LifeBack hech qachon ekraningizdagi matnni, xabarlaringizni, parollaringizni
+                yoki boshqa shaxsiy kontentni o'qimaydi. Accessibility xizmati faqat qaysi
+                ilova ochiqligini va qancha vaqt o'tganini bilish uchun ishlatiladi
+                (<code>canRetrieveWindowContent="false"</code> — texnik jihatdan ekran
+                kontentini olish imkoniyati o'chirilgan).
+            </p>
+        </section>
+
+        <section>
+            <h2>4. Reklama tizimi</h2>
+            <p>
+                LifeBack <strong>hech qanday tashqi reklama tarmog'idan (Google AdMob yoki
+                boshqa uchinchi tomon reklama tarmog'idan) foydalanmaydi</strong>. Bepul
+                versiyada ko'rinadigan reklama banneri to'liq ishlab chiquvchining o'zi
+                tomonidan boshqariladigan, oddiy matn va rasmdan iborat statik kontent
+                bo'lib, u ishlab chiquvchining o'z serveridan (GitHub orqali joylashtirilgan
+                oddiy fayl) yuklab olinadi.
+            </p>
+            <p>
+                Bu reklama tizimi orqali sizning shaxsiy ma'lumotlaringiz (qurilma
+                identifikatori, joylashuv, reklama identifikatori va h.k.) hech qayerga
+                yuborilmaydi va yig'ilmaydi — ilova shunchaki reklama rasmi/matnini
+                ko'rsatish uchun oddiy tarmoq so'rovi (HTTP GET) yuboradi, xuddi veb-sahifa
+                rasm yuklaganidek. Reklama bosilganda, brauzeringiz orqali tegishli havola
+                ochiladi.
+            </p>
+        </section>
+
+        <section>
+            <h2>5. Ruxsatlar (Permissions) va ular nima uchun kerak</h2>
+            <table>
+                <thead>
+                    <tr><th>Ruxsat</th><th>Maqsad</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Accessibility Service (Maxsus imkoniyatlar xizmati)</td>
+                        <td>Qaysi ilova ochiqligini va qancha vaqt davomida ochiq turganini
+                            aniqlash uchun. Ekran matnini yoki shaxsiy ma'lumotni o'qish uchun
+                            EMAS.</td>
+                    </tr>
+                    <tr>
+                        <td>Boshqa ilovalar ustida ko'rsatish (SYSTEM_ALERT_WINDOW)</td>
+                        <td>Eslatma xabarini to'liq ekranli oyna sifatida ko'rsatish uchun.</td>
+                    </tr>
+                    <tr>
+                        <td>Bildirishnomalar (POST_NOTIFICATIONS)</td>
+                        <td>Kelajakda eslatma bildirishnomalari uchun zaxira sifatida.</td>
+                    </tr>
+                    <tr>
+                        <td>Batareya optimallashtirishni chetlab o'tish</td>
+                        <td>Ba'zi qurilmalarda fon xizmatining barqaror ishlashini ta'minlash
+                            uchun (ixtiyoriy, foydalanuvchi rozilik bilan yoqadi).</td>
+                    </tr>
+                    <tr>
+                        <td>Internet va tarmoq holati</td>
+                        <td>Reklama matni/rasmini yuklab olish va xarid tekshiruvi (Google
+                            Play Billing) uchun ishlatiladi.</td>
+                    </tr>
+                    <tr>
+                        <td>Tebranish (Vibrate)</td>
+                        <td>Eslatma chiqqanda ixtiyoriy tebranish effekti uchun.</td>
+                    </tr>
+                    <tr>
+                        <td>Qurilma yoqilganda ishga tushirish (RECEIVE_BOOT_COMPLETED)</td>
+                        <td>Kelajakdagi kengaytmalar uchun zaxiralangan; hozirda faol
+                            funksiyani ishga tushirmaydi.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2>6. Uchinchi tomon xizmatlari</h2>
+            <p>Ilova quyidagi uchinchi tomon xizmatidan foydalanadi:</p>
+            <ul>
+                <li>
+                    <strong>Google Play Billing</strong> — oylik/yillik obuna, umrbod
+                    (lifetime) xarid va ixtiyoriy hadyalar uchun. To'lov ma'lumotlarini
+                    biz emas, Google Play boshqaradi. Batafsil: <a
+                    href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google
+                    Maxfiylik siyosati</a>.
+                </li>
+            </ul>
+            <p>
+                Ilova <strong>Google AdMob yoki boshqa hech qanday reklama tarmog'idan
+                foydalanmaydi</strong> — shuning uchun reklama identifikatori (Advertising
+                ID) yoki shunga o'xshash kuzatuv ma'lumotlari umuman yig'ilmaydi.
+            </p>
+        </section>
+
+        <section>
+            <h2>7. Ma'lumotlarni saqlash va o'chirish</h2>
+            <p>
+                Barcha shaxsiy sozlamalar, maqsadlar va foydalanish statistikasi faqat
+                qurilmangizda saqlanadi. Ilovani qurilmangizdan o'chirsangiz, barcha
+                ma'lumot butunlay yo'q qilinadi. Bizda sizning ma'lumotlaringizni
+                saqlaydigan markaziy server yo'q, shuning uchun "ma'lumotlarimni o'chirib
+                bering" so'rovini yuborishga hojat yo'q — buni ilovani o'chirish orqali
+                o'zingiz amalga oshira olasiz.
+            </p>
+        </section>
+
+        <section>
+            <h2>8. Bolalar maxfiyligi</h2>
+            <p>
+                LifeBack 13 yoshdan kichik bolalarga qaratilgan emas va ulardan ongli
+                ravishda ma'lumot to'plamaydi. Agar 13 yoshdan kichik bolangiz ushbu
+                ilovadan foydalanganini bilib qolsangiz, biz bilan bog'laning.
+            </p>
+        </section>
+
+        <section>
+            <h2>9. Xavfsizlik</h2>
+            <p>
+                Barcha shaxsiy foydalanish ma'lumoti qurilmangizning ichki xotirasida,
+                boshqa ilovalar kira olmaydigan himoyalangan joyda (Android
+                SharedPreferences) saqlanadi. Bu ma'lumot hech qachon tashqi serverga
+                yuborilmagani uchun, tarmoq orqali sizib chiqish xavfi mavjud emas.
+            </p>
+        </section>
+
+        <section>
+            <h2>10. Ushbu siyosatdagi o'zgarishlar</h2>
+            <p>
+                Ushbu Maxfiylik siyosati vaqti-vaqti bilan yangilanishi mumkin. Har qanday
+                muhim o'zgarish ushbu sahifada e'lon qilinadi va sahifa yuqorisidagi
+                "Oxirgi yangilanish" sanasi yangilanadi.
+            </p>
+        </section>
+
+        <section>
+            <h2>11. Bog'lanish</h2>
+            <p>
+                Ushbu Maxfiylik siyosati yoki ilova bo'yicha savollaringiz bo'lsa, biz bilan
+                bog'laning: <strong>[EMAIL MANZILINI KIRITING]</strong>
+            </p>
+        </section>
+
+    </div>
+
+    <!-- ============== ENGLISH ============== -->
+    <div class="lang-block" id="lang-en">
+
+        <section>
+            <h2>1. Introduction</h2>
+            <p>
+                This Privacy Policy explains what information the "LifeBack" mobile
+                application (the "App") has access to, how it is used, and how it is
+                protected. By using the App, you agree to the terms of this policy.
+            </p>
+            <p>
+                App developer: <strong>[ENTER DEVELOPER / COMPANY NAME]</strong><br>
+                Contact email: <strong>[ENTER EMAIL ADDRESS]</strong>
+            </p>
+        </section>
+
+        <section>
+            <h2>2. What the App does</h2>
+            <p>
+                LifeBack tracks how long you've spent in apps you choose to monitor (e.g.
+                social media, video, or game apps) and shows a motivational full-screen
+                reminder once a time threshold you set is reached. The App also lets you
+                set personal "goals," track them, and keep a daily completion streak.
+            </p>
+        </section>
+
+        <section>
+            <h2>3. Information we collect</h2>
+            <div class="callout">
+                <strong>Important:</strong> LifeBack never sends your personal usage data
+                (which apps you use and for how long, your goals, your settings) to any
+                server. All such data is stored locally on your device only.
+            </div>
+            <table>
+                <thead>
+                    <tr><th>Data type</th><th>Why it's collected</th><th>Where it's stored</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Which app is currently in the foreground and for how long
+                            (app/package name and elapsed duration)</td>
+                        <td>To show a reminder once your configured time threshold is
+                            reached, and to display your usage statistics</td>
+                        <td>On your device only (SharedPreferences), never sent to any
+                            server</td>
+                    </tr>
+                    <tr>
+                        <td>Personal goals you type in (e.g. "read for 15 minutes") and
+                            the days you complete them</td>
+                        <td>To display that exact goal back to you inside a reminder and
+                            to calculate your daily completion streak</td>
+                        <td>On your device only</td>
+                    </tr>
+                    <tr>
+                        <td>Language, sound/vibration settings, quiet-hours schedule,
+                            return-to-home-on-dismiss setting</td>
+                        <td>To personalize the App to your preferences</td>
+                        <td>On your device only</td>
+                    </tr>
+                    <tr>
+                        <td>Google Play purchase data (monthly/yearly subscription,
+                            lifetime purchase, optional donations)</td>
+                        <td>To verify purchases and unlock Pro features</td>
+                        <td>Handled by Google Play Billing — this data is managed by
+                            Google, not by us. The App only stores a simple "purchase
+                            active or not" state on your own device</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                LifeBack never reads on-screen text, messages, passwords, or any other
+                personal content. The Accessibility Service is used solely to detect
+                which app is open and for how long
+                (<code>canRetrieveWindowContent="false"</code> — the ability to read
+                screen content is technically disabled).
+            </p>
+        </section>
+
+        <section>
+            <h2>4. Advertising</h2>
+            <p>
+                LifeBack <strong>does not use any third-party ad network</strong>
+                (not Google AdMob, not any other ad network). The ad banner shown in
+                the free version is simple text-and-image content fully managed by the
+                developer and fetched from the developer's own hosted file (via GitHub).
+            </p>
+            <p>
+                No personal data (device identifiers, location, advertising ID, etc.)
+                is ever sent or collected through this ad system — the App simply makes
+                a plain network request (HTTP GET) to load ad text/images, similar to a
+                web page loading an image. Tapping the ad opens the relevant link in
+                your browser.
+            </p>
+        </section>
+
+        <section>
+            <h2>5. Permissions and why they're needed</h2>
+            <table>
+                <thead>
+                    <tr><th>Permission</th><th>Purpose</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Accessibility Service</td>
+                        <td>To detect which app is open and for how long. NOT used to read
+                            screen text or personal data.</td>
+                    </tr>
+                    <tr>
+                        <td>Display over other apps (SYSTEM_ALERT_WINDOW)</td>
+                        <td>To show the reminder message as a full-screen overlay.</td>
+                    </tr>
+                    <tr>
+                        <td>Notifications (POST_NOTIFICATIONS)</td>
+                        <td>Reserved for future reminder-notification functionality.</td>
+                    </tr>
+                    <tr>
+                        <td>Ignore battery optimizations</td>
+                        <td>To help the background service run reliably on some devices
+                            (optional, user-granted).</td>
+                    </tr>
+                    <tr>
+                        <td>Internet and network state</td>
+                        <td>Used to load ad text/images and to verify purchases (Google
+                            Play Billing).</td>
+                    </tr>
+                    <tr>
+                        <td>Vibration</td>
+                        <td>For an optional vibration effect when a reminder appears.</td>
+                    </tr>
+                    <tr>
+                        <td>Run at device boot (RECEIVE_BOOT_COMPLETED)</td>
+                        <td>Reserved for future functionality; currently does not start any
+                            active feature.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2>6. Third-party services</h2>
+            <p>The App uses the following third-party service:</p>
+            <ul>
+                <li>
+                    <strong>Google Play Billing</strong> — used for monthly/yearly
+                    subscriptions, the one-time lifetime purchase, and optional
+                    donations. Payment information is handled by Google Play, not by
+                    us. See: <a href="https://policies.google.com/privacy"
+                    target="_blank" rel="noopener">Google Privacy Policy</a>.
+                </li>
+            </ul>
+            <p>
+                The App <strong>does not use Google AdMob or any other ad network</strong>
+                — so no advertising identifier or similar tracking data is collected at
+                all.
+            </p>
+        </section>
+
+        <section>
+            <h2>7. Data retention and deletion</h2>
+            <p>
+                All personal settings, goals, and usage statistics are stored only on
+                your device. Uninstalling the App permanently deletes all associated
+                data. Since we do not operate a central server storing your data, there
+                is no need to submit a data-deletion request to us — uninstalling the
+                App achieves the same result.
+            </p>
+        </section>
+
+        <section>
+            <h2>8. Children's privacy</h2>
+            <p>
+                LifeBack is not directed at children under 13 and does not knowingly
+                collect information from them. If you believe a child under 13 has used
+                this App, please contact us.
+            </p>
+        </section>
+
+        <section>
+            <h2>9. Security</h2>
+            <p>
+                All personal usage data is stored in your device's protected internal
+                storage (Android SharedPreferences), inaccessible to other apps. Because
+                this data is never transmitted to an external server, there is no risk
+                of data interception over the network.
+            </p>
+        </section>
+
+        <section>
+            <h2>10. Changes to this policy</h2>
+            <p>
+                This Privacy Policy may be updated from time to time. Any material
+                change will be posted on this page, and the "Last updated" date above
+                will be revised accordingly.
+            </p>
+        </section>
+
+        <section>
+            <h2>11. Contact us</h2>
+            <p>
+                If you have questions about this Privacy Policy or the App, contact us
+                at: <strong>[ENTER EMAIL ADDRESS]</strong>
+            </p>
+        </section>
+
+    </div>
+
+    <footer>
+        LifeBack © <span id="year"></span>. "Men sizni o'zgartira olmayman. Men sizga
+        yo'l ko'rsataman." / "I can't change you. I can only point the way."
+    </footer>
+
+</div>
+
+<script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    function showLang(lang) {
+        var uzBlock = document.getElementById('lang-uz');
+        var enBlock = document.getElementById('lang-en');
+        var btnUz = document.getElementById('btnUz');
+        var btnEn = document.getElementById('btnEn');
+
+        if (lang === 'uz') {
+            uzBlock.classList.add('active');
+            enBlock.classList.remove('active');
+            btnUz.classList.add('active');
+            btnEn.classList.remove('active');
+            document.documentElement.lang = 'uz';
+        } else {
+            enBlock.classList.add('active');
+            uzBlock.classList.remove('active');
+            btnEn.classList.add('active');
+            btnUz.classList.remove('active');
+            document.documentElement.lang = 'en';
+        }
+    }
+
+    // Mobil brauzerlarda ikki marta bosish zoomini oldini olish uchun
+    document.querySelectorAll('.lang-toggle button').forEach(function(btn) {
+        btn.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            this.click();
+        }, { passive: false });
+    });
+</script>
+
+</body>
+</html>
