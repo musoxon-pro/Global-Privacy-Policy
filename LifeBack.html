@@ -1,305 +1,470 @@
 <!DOCTYPE html>
-<html lang="uz">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>LifeBack — Maxfiylik siyosati / Privacy Policy</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LifeBack — Privacy Policy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
     :root {
-        --bg: #F5F7F9;
-        --surface: #FFFFFF;
-        --text: #141C26;
-        --text-secondary: #5B6B7A;
-        --accent: #2F9C82;
-        --border: #E2E8ED;
-        --radius-card: 20px;
-        --radius-btn: 14px;
-        --font-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        /* LifeBack Brand Colors */
+        --brand-blue: #0F62FE; 
+        --brand-green: #00B374; 
+        --bg-dark: #050B14;
+        --bg-light: #F4F7FB; 
+        --text-dark: #0F172A;
+        --text-light: #F8FAFC;
+        --text-muted-dark: #334155; 
+        --text-muted-light: #CBD5E1;
+        
+        --bg: var(--bg-light);
+        --text: var(--text-dark);
+        --text-muted: var(--text-muted-dark);
+        
+        --glass-bg: rgba(255, 255, 255, 0.85);
+        --glass-border: rgba(255, 255, 255, 0.95);
+        --card-shadow: 0 8px 30px rgba(15, 98, 254, 0.08);
+        --gradient: linear-gradient(135deg, var(--brand-green), var(--brand-blue));
     }
+
     @media (prefers-color-scheme: dark) {
         :root {
-            --bg: #0F1620;
-            --surface: #1E2C40;
-            --text: #F2F5F7;
-            --text-secondary: #A9B7C6;
-            --accent: #5AC8A8;
-            --border: #2A3648;
+            --bg: var(--bg-dark);
+            --text: var(--text-light);
+            --text-muted: var(--text-muted-light);
+            --glass-bg: rgba(15, 23, 42, 0.75);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --card-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            --brand-green: #00F298; 
         }
     }
-    * {
-        box-sizing: border-box;
-        -webkit-tap-highlight-color: transparent;
-    }
-    html {
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+        background-color: var(--bg);
+        color: var(--text);
+        font-family: 'Outfit', sans-serif;
+        line-height: 1.7;
+        overflow-x: hidden;
+        transition: background-color 0.4s ease, color 0.4s ease;
         scroll-behavior: smooth;
     }
-    body {
-        margin: 0;
-        padding: 0;
-        background: var(--bg);
-        color: var(--text);
-        font-family: var(--font-base);
-        line-height: 1.6;
-        font-size: 16px;
-        text-rendering: optimizeLegibility;
-        -webkit-font-smoothing: antialiased;
-    }
-    .container {
-        max-width: 760px;
-        margin: 0 auto;
-        padding: clamp(16px, 4vw, 40px) clamp(12px, 5vw, 24px) clamp(48px, 10vw, 80px);
-        width: 100%;
-    }
-    .brand {
-        color: var(--accent);
-        font-weight: 700;
-        font-size: 14px;
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-        margin-bottom: 6px;
-    }
-    h1 {
-        font-size: clamp(22px, 6vw, 28px);
-        margin: 0 0 4px;
-        font-weight: 700;
-        line-height: 1.3;
-        word-break: break-word;
-    }
-    .updated {
-        color: var(--text-secondary);
-        font-size: 14px;
-        margin-bottom: 24px;
-        word-break: break-word;
-    }
-    .lang-toggle {
-        display: flex;
-        gap: 8px;
-        margin-bottom: 24px;
-        flex-wrap: wrap;
-    }
-    .lang-toggle button {
-        flex: 1 1 auto;
-        min-width: 120px;
-        background: var(--surface);
-        border: 1.5px solid var(--border);
-        color: var(--text);
-        padding: 12px 16px;
-        border-radius: var(--radius-btn);
-        font-size: 15px;
-        font-weight: 500;
-        cursor: pointer;
-        transition: background 0.2s, border-color 0.2s, color 0.2s;
-        font-family: inherit;
-        touch-action: manipulation;
-        user-select: none;
-    }
-    .lang-toggle button:active {
-        transform: scale(0.98);
-    }
-    .lang-toggle button.active {
-        background: var(--accent);
-        color: var(--bg);
-        border-color: var(--accent);
-        font-weight: 600;
-    }
-    section {
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-radius: var(--radius-card);
-        padding: clamp(16px, 4.5vw, 24px);
-        margin-bottom: 14px;
+
+    /* Interactive Animated Background */
+    .bg-orbs {
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        z-index: -1;
         overflow: hidden;
-        word-break: break-word;
+        pointer-events: none;
     }
-    h2 {
-        font-size: clamp(16px, 4.5vw, 18px);
-        margin: 0 0 12px;
-        font-weight: 700;
-        line-height: 1.35;
-        word-break: break-word;
+    .orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(100px);
+        opacity: 0.15; 
+        animation: float 20s infinite ease-in-out alternate;
     }
-    p, li {
+    .orb-1 { width: 600px; height: 600px; background: var(--brand-blue); top: -20%; right: -10%; animation-delay: 0s; }
+    .orb-2 { width: 500px; height: 500px; background: var(--brand-green); bottom: -10%; left: -10%; animation-delay: -5s; }
+    .orb-3 { width: 300px; height: 300px; background: #8B5CF6; top: 40%; left: 30%; opacity: 0.1; animation-delay: -10s; }
+
+    @keyframes float {
+        0% { transform: translate(0, 0) scale(1); }
+        100% { transform: translate(-50px, 50px) scale(1.1); }
+    }
+
+    /* Layout */
+    .app-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 80px 24px 100px;
+        position: relative;
+        z-index: 1;
+    }
+
+    /* Top Header Area */
+    .top-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 60px;
+    }
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 24px;
+        font-weight: 800;
+        letter-spacing: -0.5px;
         color: var(--text);
-        font-size: 15px;
-        line-height: 1.65;
     }
-    p {
-        margin: 0 0 12px;
+    .logo-icon {
+        width: 40px; height: 40px;
+        background: var(--gradient);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0 20px rgba(0, 242, 152, 0.4);
     }
-    p:last-child {
-        margin-bottom: 0;
+    .logo-icon svg { width: 24px; height: 24px; fill: #fff; }
+
+    .lang-switch {
+        display: flex;
+        background: var(--glass-bg);
+        border: 1px solid var(--glass-border);
+        border-radius: 30px;
+        padding: 4px;
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     }
-    ul {
-        margin: 8px 0;
-        padding-left: 20px;
-    }
-    li {
-        margin-bottom: 8px;
-        padding-left: 4px;
-    }
-    a {
-        color: var(--accent);
-        word-break: break-word;
-        text-decoration: underline;
-        text-underline-offset: 2px;
-    }
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 14px 0;
+    .lang-switch button {
+        background: transparent;
+        border: none;
+        padding: 8px 20px;
+        border-radius: 26px;
+        font-family: inherit;
         font-size: 14px;
-        display: block;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        table-layout: auto;
+        font-weight: 700;
+        color: var(--text-muted);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 6px;
     }
-    thead, tbody {
-        display: table;
-        width: 100%;
-        min-width: 560px;
+    .lang-switch button.active {
+        background: var(--text);
+        color: var(--bg);
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
-    th, td {
-        text-align: left;
-        padding: 12px 10px;
-        border-bottom: 1px solid var(--border);
-        vertical-align: top;
+    .lang-switch svg { width: 16px; height: 16px; fill: currentColor; }
+
+    /* Hero Section */
+    .hero {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+    .hero h1 {
+        font-size: clamp(32px, 5vw, 48px);
+        font-weight: 800;
+        line-height: 1.1;
+        letter-spacing: -1.5px;
+        margin-bottom: 16px;
+        color: var(--text);
+    }
+    .hero h1 span {
+        background: var(--gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .hero .meta {
+        display: inline-flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
         font-size: 14px;
-        line-height: 1.5;
-        word-break: break-word;
-    }
-    th {
-        color: var(--text-secondary);
+        color: var(--text-muted);
         font-weight: 600;
+    }
+    .meta-badge {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(0, 179, 116, 0.15);
+        color: var(--brand-green);
+        padding: 6px 16px;
+        border-radius: 20px;
+        border: 1px solid rgba(0, 179, 116, 0.3);
+        font-weight: 700;
+    }
+    .meta-badge svg { width: 16px; height: 16px; fill: currentColor; }
+
+    /* Content Blocks */
+    .lang-block { display: none; }
+    .lang-block.active { 
+        display: block; 
+        animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; 
+    }
+
+    .policy-section {
+        margin-bottom: 48px;
+        position: relative;
+    }
+    .policy-section h2 {
+        font-size: 24px;
+        font-weight: 800;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        letter-spacing: -0.5px;
+        color: var(--text);
+    }
+    .policy-section h2 .num {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px; height: 34px;
+        border-radius: 10px;
+        background: var(--glass-bg);
+        border: 1px solid var(--glass-border);
+        font-size: 15px;
+        color: var(--brand-green);
+        font-weight: 800;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        backdrop-filter: blur(10px);
+    }
+
+    p, li {
+        font-size: 16px;
+        color: var(--text-muted);
+        font-weight: 500;
+    }
+    strong { color: var(--text); font-weight: 700; }
+    a { color: var(--brand-blue); font-weight: 700; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    
+    ul { margin: 16px 0; padding-left: 24px; }
+    li { margin-bottom: 12px; }
+    li::marker { color: var(--brand-green); }
+
+    /* Inline Code */
+    code.inline-code {
+        font-family: 'Courier New', Courier, monospace;
+        background: var(--glass-bg);
+        border: 1px solid var(--glass-border);
+        color: var(--brand-blue);
+        padding: 3px 8px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 700;
+        word-break: break-word;
+        display: inline-block;
+        vertical-align: middle;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        margin: 4px 0;
+        backdrop-filter: blur(10px);
+    }
+    @media (prefers-color-scheme: dark) {
+        code.inline-code { color: var(--brand-green); }
+    }
+
+    /* Callout */
+    .callout {
+        background: linear-gradient(90deg, rgba(0, 179, 116, 0.12) 0%, transparent 100%);
+        border-left: 4px solid var(--brand-green);
+        padding: 20px 24px;
+        border-radius: 0 16px 16px 0;
+        margin: 24px 0;
+        font-size: 15px;
+        color: var(--text);
+        font-weight: 500;
+    }
+    .callout strong { color: var(--brand-green); display: block; margin-bottom: 6px; font-weight: 700;}
+
+    /* Modern Data Grid */
+    .data-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        margin-top: 24px;
+    }
+    .data-card {
+        background: var(--glass-bg);
+        border: 1px solid var(--glass-border);
+        border-radius: 20px;
+        padding: 24px;
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        box-shadow: var(--card-shadow);
+        transition: transform 0.3s ease, border-color 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    .data-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: radial-gradient(circle at top right, rgba(255,255,255,0.2), transparent 50%);
+        pointer-events: none;
+    }
+    .data-card:hover {
+        transform: translateY(-4px);
+        border-color: var(--brand-green);
+    }
+    
+    .dc-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 16px;
+        padding-bottom: 16px;
+        border-bottom: 1px dashed var(--glass-border);
+    }
+    
+    /* SVG Icons styling */
+    .dc-icon {
+        width: 44px; height: 44px;
+        border-radius: 12px;
+        background: rgba(15, 98, 254, 0.1);
+        color: var(--brand-blue);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+    .dc-icon svg {
+        width: 22px;
+        height: 22px;
+        stroke: currentColor;
+        fill: none;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
+    
+    .dc-title {
+        font-weight: 800;
+        font-size: 16px;
+        color: var(--text);
+    }
+    
+    .dc-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
+    @media (max-width: 600px) {
+        .dc-grid { grid-template-columns: 1fr; gap: 12px; }
+    }
+    .dc-item {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+    .dc-label {
         font-size: 12px;
         text-transform: uppercase;
-        letter-spacing: 0.05em;
-        white-space: nowrap;
+        letter-spacing: 0.5px;
+        color: var(--text-muted);
+        font-weight: 700;
+        opacity: 0.8;
     }
-    td:first-child {
+    .dc-value {
+        font-size: 15px;
+        color: var(--text);
+        font-weight: 600;
+        line-height: 1.5;
+    }
+
+    /* Footer */
+    footer {
+        margin-top: 80px;
+        padding-top: 32px;
+        border-top: 1px solid var(--glass-border);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        text-align: center;
+        font-size: 14px;
+        color: var(--text-muted);
         font-weight: 500;
     }
-    .lang-block {
-        display: none;
+    .footer-brand {
+        font-weight: 800;
+        color: var(--text);
+        display: flex;
+        align-items: center;
+        gap: 8px;
     }
-    .lang-block.active {
-        display: block;
-    }
-    .callout {
-        background: rgba(47, 156, 130, 0.1);
-        border: 1.5px solid var(--accent);
-        border-radius: 14px;
-        padding: 14px 16px;
-        margin: 14px 0;
-        font-size: 14.5px;
-        line-height: 1.6;
-        word-break: break-word;
-    }
-    .callout strong {
-        color: var(--accent);
-    }
-    footer {
-        text-align: center;
-        color: var(--text-secondary);
-        font-size: 13px;
-        margin-top: 36px;
-        line-height: 1.6;
-        padding: 0 4px;
-        word-break: break-word;
-    }
-    code {
-        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-        background: rgba(47, 156, 130, 0.12);
-        padding: 2px 6px;
-        border-radius: 6px;
-        font-size: 0.9em;
-        word-break: break-all;
-        color: var(--accent);
-    }
-    strong {
-        font-weight: 600;
+    .footer-brand svg { width: 20px; height: 20px; fill: var(--brand-green); }
+    .footer-quote {
+        font-style: italic;
+        opacity: 0.9;
+        max-width: 500px;
     }
 
-    /* Telefon uchun qo'shimcha moslashuv */
+    /* Animations */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
     @media (max-width: 480px) {
-        .container {
-            padding: 16px 14px 48px;
-        }
-        section {
-            padding: 16px 14px;
-            border-radius: 16px;
-        }
-        h2 {
-            font-size: 16px;
-        }
-        p, li {
-            font-size: 14.5px;
-        }
-        th, td {
-            padding: 10px 8px;
-            font-size: 13px;
-        }
-        .lang-toggle button {
-            padding: 11px 12px;
-            font-size: 14px;
-            min-width: 0;
-        }
-        .callout {
-            padding: 12px 14px;
-            font-size: 14px;
-            border-radius: 12px;
-        }
-        table {
-            margin: 10px -4px;
-            width: calc(100% + 8px);
-        }
-    }
-
-    /* Planshet va katta ekranlar */
-    @media (min-width: 768px) {
-        section {
-            border-radius: 18px;
-        }
-        table {
-            display: table;
-            overflow-x: visible;
-        }
-        thead, tbody {
-            min-width: 0;
-        }
+        .top-nav { flex-direction: column; gap: 16px; }
     }
 </style>
 </head>
 <body>
-<div class="container">
 
-    <div class="brand">LifeBack</div>
-    <h1>Maxfiylik siyosati / Privacy Policy</h1>
-    <div class="updated">Oxirgi yangilanish / Last updated: <strong>[10.10.2026]</strong></div>
+<!-- Animated Background -->
+<div class="bg-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+</div>
 
-    <div class="lang-toggle">
-        <button id="btnUz" class="active" onclick="showLang('uz')" aria-label="O'zbekcha">O'zbekcha</button>
-        <button id="btnEn" onclick="showLang('en')" aria-label="English">English</button>
+<div class="app-container">
+
+    <!-- Top Nav -->
+    <div class="top-nav">
+        <div class="logo">
+            <div class="logo-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            </div>
+            LifeBack
+        </div>
+        
+        <div class="lang-switch">
+            <button id="btnUz" onclick="showLang('uz')">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                UZ
+            </button>
+            <button id="btnEn" class="active" onclick="showLang('en')">
+                <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2 0 .68.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.9-4.33-3.56zm2.95-8H5.08c.96-1.66 2.49-2.93 4.33-3.56C8.81 5.55 8.35 6.75 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2 0-.68.07-1.35.16-2h4.68c.09.65.16 1.32.16 2 0 .68-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.65-2.49 2.93-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2 0-.68-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"/></svg>
+                EN
+            </button>
+        </div>
+    </div>
+
+    <!-- Hero (Dinamik) -->
+    <div class="hero">
+        <h1 id="hero-title">Privacy <span>Policy</span></h1>
+        <div class="meta">
+            <span class="meta-badge">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                Zetra Studio
+            </span>
+            <span id="last-updated" style="padding: 6px 0;">Last updated: Today</span>
+        </div>
     </div>
 
     <!-- ============== UZBEK ============== -->
-    <div class="lang-block active" id="lang-uz">
+    <div class="lang-block" id="lang-uz">
 
-        <section>
-            <h2>1. Kirish</h2>
+        <div class="policy-section">
+            <h2><span class="num">1</span> Kirish</h2>
             <p>
                 Ushbu Maxfiylik siyosati "LifeBack" mobil ilovasi (bundan buyon "Ilova" deb
                 yuritiladi) qanday ma'lumotlarga ega bo'lishi, ularni qanday ishlatishi va
                 himoya qilishini tushuntiradi. Ilovadan foydalanish orqali siz ushbu siyosat
                 shartlariga rozilik bildirasiz.
             </p>
-            <p>
-                Ilova ishlab chiqaruvchisi: <strong>[Zetra Studio]</strong><br>
-                Aloqa uchun email: <strong>[biznesmusoxon@gmail.com] </strong>
+            <p style="margin-top: 16px;">
+                <strong>Ishlab chiqaruvchi:</strong> Zetra Studio<br>
+                <strong>Aloqa uchun:</strong> <a href="mailto:biznesmusoxon@gmail.com">biznesmusoxon@gmail.com</a>
             </p>
-        </section>
+        </div>
 
-        <section>
-            <h2>2. Ilova nima qiladi</h2>
+        <div class="policy-section">
+            <h2><span class="num">2</span> Ilova nima qiladi</h2>
             <p>
                 LifeBack — foydalanuvchi tanlagan ilovalarda (masalan, ijtimoiy tarmoqlar,
                 video ilovalar, o'yinlar) qancha vaqt o'tkazilganini kuzatib, belgilangan
@@ -307,353 +472,467 @@
                 Ilova foydalanuvchiga o'z maqsadlarini ("goals") belgilash, ularni eslab
                 qolish va kunlik bajarish ketma-ketligini (streak) kuzatish imkonini beradi.
             </p>
-        </section>
+        </div>
 
-        <section>
-            <h2>3. Biz to'playdigan ma'lumotlar</h2>
+        <div class="policy-section">
+            <h2><span class="num">3</span> Biz to'playdigan ma'lumotlar</h2>
             <div class="callout">
                 <strong>Muhim:</strong> LifeBack sizning shaxsiy foydalanish ma'lumotlaringizni
                 (qaysi ilovada qancha vaqt o'tkazganingiz, maqsadlaringiz, sozlamalaringiz)
                 hech qachon serverga yubormaydi. Barcha bunday ma'lumot faqat sizning
                 qurilmangizda saqlanadi.
             </div>
-            <table>
-                <thead>
-                    <tr><th>Ma'lumot turi</th><th>Nima uchun to'planadi</th><th>Qayerda saqlanadi</th></tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Qaysi ilova ochiqligi va qancha vaqt oldingi joriy holatda turgani
-                            (ilova nomi/paket nomi va vaqt uzunligi)</td>
-                        <td>Belgilangan vaqt chegarasiga yetganda eslatma ko'rsatish va
-                            foydalanish statistikasini ko'rsatish uchun</td>
-                        <td>Faqat qurilmangizda (SharedPreferences), hech qachon serverga
-                            yuborilmaydi</td>
-                    </tr>
-                    <tr>
-                        <td>Siz yozgan shaxsiy maqsadlar (masalan, "15 daqiqa kitob o'qish")
-                            va ularni bajargan kunlaringiz</td>
-                        <td>Eslatma ko'rsatilganda sizga aynan shu maqsadni eslatish va
-                            kunlik ketma-ketlik (streak) hisoblash uchun</td>
-                        <td>Faqat qurilmangizda</td>
-                    </tr>
-                    <tr>
-                        <td>Til, tovush/tebranish sozlamalari, tinch soatlar vaqti, bosh
-                            ekranga qaytarish sozlamasi</td>
-                        <td>Ilovani sizga moslashtirish uchun</td>
-                        <td>Faqat qurilmangizda</td>
-                    </tr>
-                    <tr>
-                        <td>Google Play xarid ma'lumotlari (oylik/yillik obuna, umrbod
-                            xarid, ixtiyoriy hadya)</td>
-                        <td>Xaridni tasdiqlash va Pro funksiyalarini ochish uchun</td>
-                        <td>Google Play Billing tizimi orqali — bu ma'lumotni Google
-                            boshqaradi, biz emas. Ilova faqat "xarid faolmi yoki yo'qmi"
-                            holatini o'zining qurilmasida saqlaydi</td>
-                    </tr>
-                </tbody>
-            </table>
-            <p>
+            
+            <div class="data-grid">
+                <div class="data-card">
+                    <div class="dc-header">
+                        <div class="dc-icon">
+                            <!-- Smartphone Icon -->
+                            <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+                        </div>
+                        <div class="dc-title">Ilovalar statistikasi</div>
+                    </div>
+                    <div class="dc-grid">
+                        <div class="dc-item">
+                            <span class="dc-label">Ma'lumot turi</span>
+                            <span class="dc-value">Qaysi ilova ochiqligi va qancha vaqt oldingi joriy holatda turgani</span>
+                        </div>
+                        <div class="dc-item">
+                            <span class="dc-label">Nima uchun to'planadi</span>
+                            <span class="dc-value">Vaqt chegarasiga yetganda eslatma ko'rsatish va foydalanish statistikasini ko'rsatish</span>
+                        </div>
+                        <div class="dc-item">
+                            <span class="dc-label">Qayerda saqlanadi</span>
+                            <span class="dc-value">Faqat qurilmangizda (SharedPreferences). Serverga yuborilmaydi.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="data-card">
+                    <div class="dc-header">
+                        <div class="dc-icon">
+                            <!-- Target Icon -->
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                        </div>
+                        <div class="dc-title">Shaxsiy maqsadlar</div>
+                    </div>
+                    <div class="dc-grid">
+                        <div class="dc-item">
+                            <span class="dc-label">Ma'lumot turi</span>
+                            <span class="dc-value">Siz yozgan maqsadlar va ularni bajargan kunlaringiz</span>
+                        </div>
+                        <div class="dc-item">
+                            <span class="dc-label">Nima uchun to'planadi</span>
+                            <span class="dc-value">Eslatma paytida maqsadni eslatish va kunlik streak hisoblash</span>
+                        </div>
+                        <div class="dc-item">
+                            <span class="dc-label">Qayerda saqlanadi</span>
+                            <span class="dc-value">Faqat qurilmangizda.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="data-card">
+                    <div class="dc-header">
+                        <div class="dc-icon">
+                            <!-- Settings Icon -->
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                        </div>
+                        <div class="dc-title">Sozlamalar</div>
+                    </div>
+                    <div class="dc-grid">
+                        <div class="dc-item">
+                            <span class="dc-label">Ma'lumot turi</span>
+                            <span class="dc-value">Til, tovush/tebranish, tinch soatlar, bosh ekranga qaytarish</span>
+                        </div>
+                        <div class="dc-item">
+                            <span class="dc-label">Nima uchun to'planadi</span>
+                            <span class="dc-value">Ilovani sizga moslashtirish</span>
+                        </div>
+                        <div class="dc-item">
+                            <span class="dc-label">Qayerda saqlanadi</span>
+                            <span class="dc-value">Faqat qurilmangizda.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="data-card">
+                    <div class="dc-header">
+                        <div class="dc-icon">
+                            <!-- Credit Card Icon -->
+                            <svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+                        </div>
+                        <div class="dc-title">Xaridlar</div>
+                    </div>
+                    <div class="dc-grid">
+                        <div class="dc-item">
+                            <span class="dc-label">Ma'lumot turi</span>
+                            <span class="dc-value">Google Play xarid ma'lumotlari (obuna, umrbod xarid)</span>
+                        </div>
+                        <div class="dc-item">
+                            <span class="dc-label">Nima uchun to'planadi</span>
+                            <span class="dc-value">Xaridni tasdiqlash va Pro funksiyalarni ochish</span>
+                        </div>
+                        <div class="dc-item">
+                            <span class="dc-label">Qayerda saqlanadi</span>
+                            <span class="dc-value">Google Play Billing tizimida (Google boshqaradi). Ilova faqat "faol" holatini saqlaydi.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p style="margin-top: 24px;">
                 LifeBack hech qachon ekraningizdagi matnni, xabarlaringizni, parollaringizni
                 yoki boshqa shaxsiy kontentni o'qimaydi. Accessibility xizmati faqat qaysi
                 ilova ochiqligini va qancha vaqt o'tganini bilish uchun ishlatiladi
-                (<code>canRetrieveWindowContent="false"</code> — texnik jihatdan ekran
-                kontentini olish imkoniyati o'chirilgan).
+                (<code class="inline-code">canRetrieveWindowContent="false"</code>).
             </p>
-        </section>
+        </div>
 
-        <section>
-            <h2>4. Reklama tizimi</h2>
+        <div class="policy-section">
+            <h2><span class="num">4</span> Reklama tizimi</h2>
             <p>
                 LifeBack <strong>hech qanday tashqi reklama tarmog'idan (Google AdMob yoki
-                boshqa uchinchi tomon reklama tarmog'idan) foydalanmaydi</strong>. Bepul
-                versiyada ko'rinadigan reklama banneri to'liq ishlab chiquvchining o'zi
-                tomonidan boshqariladigan, oddiy matn va rasmdan iborat statik kontent
-                bo'lib, u ishlab chiquvchining o'z serveridan (GitHub orqali joylashtirilgan
-                oddiy fayl) yuklab olinadi.
+                boshqa) foydalanmaydi</strong>. Bepul versiyada ko'rinadigan reklama banneri
+                to'liq ishlab chiquvchining o'zi tomonidan boshqariladigan, statik kontent
+                bo'lib, ishlab chiquvchining serveridan yuklab olinadi.
             </p>
-            <p>
-                Bu reklama tizimi orqali sizning shaxsiy ma'lumotlaringiz (qurilma
-                identifikatori, joylashuv, reklama identifikatori va h.k.) hech qayerga
-                yuborilmaydi va yig'ilmaydi — ilova shunchaki reklama rasmi/matnini
-                ko'rsatish uchun oddiy tarmoq so'rovi (HTTP GET) yuboradi, xuddi veb-sahifa
-                rasm yuklaganidek. Reklama bosilganda, brauzeringiz orqali tegishli havola
-                ochiladi.
+            <p style="margin-top: 12px;">
+                Bu tizim orqali sizning shaxsiy ma'lumotlaringiz (qurilma identifikatori,
+                joylashuv, reklama ID va h.k.) hech qayerga yuborilmaydi. Ilova shunchaki
+                rasm/matn ko'rsatish uchun oddiy tarmoq so'rovi (HTTP GET) yuboradi.
             </p>
-        </section>
+        </div>
 
-        <section>
-            <h2>5. Ruxsatlar (Permissions) va ular nima uchun kerak</h2>
-            <table>
-                <thead>
-                    <tr><th>Ruxsat</th><th>Maqsad</th></tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Accessibility Service (Maxsus imkoniyatlar xizmati)</td>
-                        <td>Qaysi ilova ochiqligini va qancha vaqt davomida ochiq turganini
-                            aniqlash uchun. Ekran matnini yoki shaxsiy ma'lumotni o'qish uchun
-                            EMAS.</td>
-                    </tr>
-                    <tr>
-                        <td>Boshqa ilovalar ustida ko'rsatish (SYSTEM_ALERT_WINDOW)</td>
-                        <td>Eslatma xabarini to'liq ekranli oyna sifatida ko'rsatish uchun.</td>
-                    </tr>
-                    <tr>
-                        <td>Bildirishnomalar (POST_NOTIFICATIONS)</td>
-                        <td>Kelajakda eslatma bildirishnomalari uchun zaxira sifatida.</td>
-                    </tr>
-                    <tr>
-                        <td>Batareya optimallashtirishni chetlab o'tish</td>
-                        <td>Ba'zi qurilmalarda fon xizmatining barqaror ishlashini ta'minlash
-                            uchun (ixtiyoriy, foydalanuvchi rozilik bilan yoqadi).</td>
-                    </tr>
-                    <tr>
-                        <td>Internet va tarmoq holati</td>
-                        <td>Reklama matni/rasmini yuklab olish va xarid tekshiruvi (Google
-                            Play Billing) uchun ishlatiladi.</td>
-                    </tr>
-                    <tr>
-                        <td>Tebranish (Vibrate)</td>
-                        <td>Eslatma chiqqanda ixtiyoriy tebranish effekti uchun.</td>
-                    </tr>
-                    <tr>
-                        <td>Qurilma yoqilganda ishga tushirish (RECEIVE_BOOT_COMPLETED)</td>
-                        <td>Kelajakdagi kengaytmalar uchun zaxiralangan; hozirda faol
-                            funksiyani ishga tushirmaydi.</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
+        <div class="policy-section">
+            <h2><span class="num">5</span> Ruxsatlar (Permissions)</h2>
+            <div class="callout">
+                <strong>Accessibility Service haqida:</strong> LifeBack bu xizmatdan faqat qaysi ilova ochiqligini va qancha vaqt ochiq turganini aniqlash uchun foydalanadi. Ekran matni, xabarlar yoki parollar o'qilmaydi. Foydalanuvchi ilova ichida aniq rozilik bergandan keyingina Android sozlamalariga yo'naltiriladi. "Bosh ekranga qaytarish" sozlamasini Sozlamalarda o'chirish mumkin. Ma'lumot qurilmadan tashqariga chiqmaydi.
+            </div>
 
-        <section>
-            <h2>6. Uchinchi tomon xizmatlari</h2>
+            <div class="data-grid">
+                <div class="data-card">
+                    <div class="dc-header">
+                        <div class="dc-icon">
+                            <!-- Accessibility Icon -->
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="4" r="2"></circle><path d="M19 13v-2c-1.54.02-3.09-.75-4.07-1.83l-1.29-1.43c-.17-.19-.38-.34-.61-.45-.01 0-.01-.01-.02-.01H13c-.35-.2-.75-.3-1.19-.26C10.76 7.11 10 8.04 10 9.09V15c0 1.1.9 2 2 2h5v5h2v-5.5c0-1.1-.9-2-2-2h-3v-3.45c1.29 1.07 3.25 1.94 5 1.95zm-6.17 5c-.41 1.16-1.52 2-2.83 2-1.66 0-3-1.34-3-3 0-1.31.84-2.41 2-2.83V12.1c-2.28.46-4 2.48-4 4.9 0 2.76 2.24 5 5 5 2.42 0 4.44-1.72 4.9-4h-2.07z"></path></svg>
+                        </div>
+                        <div class="dc-title">Accessibility Service</div>
+                    </div>
+                    <p style="font-size: 15px; margin-top: 8px;">Qaysi ilova ochiqligini va qancha vaqt davomida ochiq turganini aniqlash uchun. Ekran matnini yoki shaxsiy ma'lumotni o'qish uchun EMAS.</p>
+                </div>
+                
+                <div class="data-card">
+                    <div class="dc-header">
+                        <div class="dc-icon">
+                            <!-- Layers/Overlay Icon -->
+                            <svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                        </div>
+                        <div class="dc-title">Boshqa ilovalar ustida ko'rsatish</div>
+                    </div>
+                    <p style="font-size: 15px; margin-top: 8px;">(SYSTEM_ALERT_WINDOW) Eslatma xabarini to'liq ekranli oyna sifatida ko'rsatish uchun.</p>
+                </div>
+
+                <div class="data-card">
+                    <div class="dc-header">
+                        <div class="dc-icon">
+                            <!-- Battery Icon -->
+                            <svg viewBox="0 0 24 24"><rect x="2" y="7" width="16" height="10" rx="2" ry="2"></rect><line x1="22" y1="11" x2="22" y2="13"></line></svg>
+                        </div>
+                        <div class="dc-title">Batareya optimallashtirish</div>
+                    </div>
+                    <p style="font-size: 15px; margin-top: 8px;">Ba'zi qurilmalarda fon xizmatining barqaror ishlashini ta'minlash uchun (ixtiyoriy).</p>
+                </div>
+
+                <div class="data-card">
+                    <div class="dc-header">
+                        <div class="dc-icon">
+                            <!-- Globe/Wifi Icon -->
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                        </div>
+                        <div class="dc-title">Internet va Tebranish</div>
+                    </div>
+                    <p style="font-size: 15px; margin-top: 8px;">Internet — reklama yuklash va xaridni tekshirish. Tebranish — eslatma chiqqanda ixtiyoriy effekt uchun.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="policy-section">
+            <h2><span class="num">6</span> Uchinchi tomon xizmatlari</h2>
             <p>Ilova quyidagi uchinchi tomon xizmatidan foydalanadi:</p>
             <ul>
                 <li>
-                    <strong>Google Play Billing</strong> — oylik/yillik obuna, umrbod
-                    (lifetime) xarid va ixtiyoriy hadyalar uchun. To'lov ma'lumotlarini
-                    biz emas, Google Play boshqaradi. Batafsil: <a
-                    href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google
-                    Maxfiylik siyosati</a>.
+                    <strong>Google Play Billing</strong> — obunalar, umrbod xarid va ixtiyoriy hadyalar uchun. To'lov ma'lumotlarini Google Play boshqaradi. Batafsil: <a href="https://policies.google.com/privacy" target="_blank">Google Maxfiylik siyosati</a>.
                 </li>
             </ul>
             <p>
-                Ilova <strong>Google AdMob yoki boshqa hech qanday reklama tarmog'idan
-                foydalanmaydi</strong> — shuning uchun reklama identifikatori (Advertising
-                ID) yoki shunga o'xshash kuzatuv ma'lumotlari umuman yig'ilmaydi.
+                Ilova <strong>Google AdMob yoki boshqa reklama tarmog'idan foydalanmaydi</strong> — shuning uchun reklama identifikatori (Advertising ID) yig'ilmaydi.
             </p>
-        </section>
+        </div>
 
-        <section>
-            <h2>7. Ma'lumotlarni saqlash va o'chirish</h2>
+        <div class="policy-section">
+            <h2><span class="num">7</span> Ma'lumotlarni saqlash va o'chirish</h2>
             <p>
-                Barcha shaxsiy sozlamalar, maqsadlar va foydalanish statistikasi faqat
-                qurilmangizda saqlanadi. Ilovani qurilmangizdan o'chirsangiz, barcha
-                ma'lumot butunlay yo'q qilinadi. Bizda sizning ma'lumotlaringizni
-                saqlaydigan markaziy server yo'q, shuning uchun "ma'lumotlarimni o'chirib
-                bering" so'rovini yuborishga hojat yo'q — buni ilovani o'chirish orqali
-                o'zingiz amalga oshira olasiz.
+                Barcha shaxsiy sozlamalar va statistika faqat qurilmangizda saqlanadi.
+                Ilovani o'chirsangiz, barcha ma'lumot butunlay yo'q qilinadi. Markaziy serverimiz
+                yo'qligi sababli, "ma'lumotlarimni o'chirib bering" so'rovini yuborishga hojat
+                yo'q — buni ilovani o'chirish orqali amalga oshirasiz.
             </p>
-        </section>
+        </div>
 
-        <section>
-            <h2>8. Bolalar maxfiyligi</h2>
+        <div class="policy-section">
+            <h2><span class="num">8</span> Bolalar maxfiyligi</h2>
             <p>
                 LifeBack 13 yoshdan kichik bolalarga qaratilgan emas va ulardan ongli
                 ravishda ma'lumot to'plamaydi. Agar 13 yoshdan kichik bolangiz ushbu
                 ilovadan foydalanganini bilib qolsangiz, biz bilan bog'laning.
             </p>
-        </section>
+        </div>
 
-        <section>
-            <h2>9. Xavfsizlik</h2>
+        <div class="policy-section">
+            <h2><span class="num">9</span> Xavfsizlik</h2>
             <p>
-                Barcha shaxsiy foydalanish ma'lumoti qurilmangizning ichki xotirasida,
-                boshqa ilovalar kira olmaydigan himoyalangan joyda (Android
-                SharedPreferences) saqlanadi. Bu ma'lumot hech qachon tashqi serverga
-                yuborilmagani uchun, tarmoq orqali sizib chiqish xavfi mavjud emas.
+                Barcha ma'lumotlar qurilmangizning ichki xotirasida, boshqa ilovalar kira
+                olmaydigan himoyalangan joyda (Android SharedPreferences) saqlanadi. Bu
+                ma'lumot hech qachon tashqi serverga yuborilmagani uchun, tarmoq orqali
+                sizib chiqish xavfi mavjud emas.
             </p>
-        </section>
+        </div>
 
-        <section>
-            <h2>10. Ushbu siyosatdagi o'zgarishlar</h2>
+        <div class="policy-section">
+            <h2><span class="num">10</span> O'zgarishlar</h2>
             <p>
                 Ushbu Maxfiylik siyosati vaqti-vaqti bilan yangilanishi mumkin. Har qanday
-                muhim o'zgarish ushbu sahifada e'lon qilinadi va sahifa yuqorisidagi
+                muhim o'zgarish ushbu sahifada e'lon qilinadi va yuqoridagi
                 "Oxirgi yangilanish" sanasi yangilanadi.
             </p>
-        </section>
+        </div>
 
-        <section>
-            <h2>11. Bog'lanish</h2>
+        <div class="policy-section">
+            <h2><span class="num">11</span> Bog'lanish</h2>
             <p>
-                Ushbu Maxfiylik siyosati yoki ilova bo'yicha savollaringiz bo'lsa, biz bilan
-                bog'laning: <strong>[biznesmusoxon@gmail.com]</strong>
+                Savollaringiz bo'lsa, biz bilan bog'laning:<br>
+                <a href="mailto:biznesmusoxon@gmail.com" style="font-size: 18px; margin-top: 8px; display: inline-block;">biznesmusoxon@gmail.com</a>
             </p>
-        </section>
+        </div>
 
     </div>
 
     <!-- ============== ENGLISH ============== -->
-    <div class="lang-block" id="lang-en">
+    <div class="lang-block active" id="lang-en">
 
-        <section>
-            <h2>1. Introduction</h2>
+        <div class="policy-section">
+            <h2><span class="num">1</span> Introduction</h2>
             <p>
                 This Privacy Policy explains what information the "LifeBack" mobile
                 application (the "App") has access to, how it is used, and how it is
                 protected. By using the App, you agree to the terms of this policy.
             </p>
-            <p>
-                App developer: <strong>[Zetra Studio]</strong><br>
-                Contact email: <strong>[biznesmusoxon@gmail.com]</strong>
+            <p style="margin-top: 16px;">
+                <strong>Developer:</strong> Zetra Studio<br>
+                <strong>Contact:</strong> <a href="mailto:biznesmusoxon@gmail.com">biznesmusoxon@gmail.com</a>
             </p>
-        </section>
+        </div>
 
-        <section>
-            <h2>2. What the App does</h2>
+        <div class="policy-section">
+            <h2><span class="num">2</span> What the App does</h2>
             <p>
                 LifeBack tracks how long you've spent in apps you choose to monitor (e.g.
                 social media, video, or game apps) and shows a motivational full-screen
                 reminder once a time threshold you set is reached. The App also lets you
                 set personal "goals," track them, and keep a daily completion streak.
             </p>
-        </section>
+        </div>
 
-        <section>
-            <h2>3. Information we collect</h2>
+        <div class="policy-section">
+            <h2><span class="num">3</span> Information we collect</h2>
             <div class="callout">
                 <strong>Important:</strong> LifeBack never sends your personal usage data
                 (which apps you use and for how long, your goals, your settings) to any
                 server. All such data is stored locally on your device only.
             </div>
-            <table>
-                <thead>
-                    <tr><th>Data type</th><th>Why it's collected</th><th>Where it's stored</th></tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Which app is currently in the foreground and for how long
-                            (app/package name and elapsed duration)</td>
-                        <td>To show a reminder once your configured time threshold is
-                            reached, and to display your usage statistics</td>
-                        <td>On your device only (SharedPreferences), never sent to any
-                            server</td>
-                    </tr>
-                    <tr>
-                        <td>Personal goals you type in (e.g. "read for 15 minutes") and
-                            the days you complete them</td>
-                        <td>To display that exact goal back to you inside a reminder and
-                            to calculate your daily completion streak</td>
-                        <td>On your device only</td>
-                    </tr>
-                    <tr>
-                        <td>Language, sound/vibration settings, quiet-hours schedule,
-                            return-to-home-on-dismiss setting</td>
-                        <td>To personalize the App to your preferences</td>
-                        <td>On your device only</td>
-                    </tr>
-                    <tr>
-                        <td>Google Play purchase data (monthly/yearly subscription,
-                            lifetime purchase, optional donations)</td>
-                        <td>To verify purchases and unlock Pro features</td>
-                        <td>Handled by Google Play Billing — this data is managed by
-                            Google, not by us. The App only stores a simple "purchase
-                            active or not" state on your own device</td>
-                    </tr>
-                </tbody>
-            </table>
-            <p>
+
+            <div class="data-grid">
+                <div class="data-card">
+                    <div class="dc-header">
+                        <div class="dc-icon">
+                            <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+                        </div>
+                        <div class="dc-title">App Usage</div>
+                    </div>
+                    <div class="dc-grid">
+                        <div class="dc-item">
+                            <span class="dc-label">Data Type</span>
+                            <span class="dc-value">Which app is currently in the foreground and for how long</span>
+                        </div>
+                        <div class="dc-item">
+                            <span class="dc-label">Why</span>
+                            <span class="dc-value">To show a reminder at your time threshold and display usage stats</span>
+                        </div>
+                        <div class="dc-item">
+                            <span class="dc-label">Storage</span>
+                            <span class="dc-value">On your device only (SharedPreferences). Never sent to a server.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="data-card">
+                    <div class="dc-header">
+                        <div class="dc-icon">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                        </div>
+                        <div class="dc-title">Personal Goals</div>
+                    </div>
+                    <div class="dc-grid">
+                        <div class="dc-item">
+                            <span class="dc-label">Data Type</span>
+                            <span class="dc-value">Goals you type in and the days you complete them</span>
+                        </div>
+                        <div class="dc-item">
+                            <span class="dc-label">Why</span>
+                            <span class="dc-value">To display your goal in reminders and calculate streaks</span>
+                        </div>
+                        <div class="dc-item">
+                            <span class="dc-label">Storage</span>
+                            <span class="dc-value">On your device only.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="data-card">
+                    <div class="dc-header">
+                        <div class="dc-icon">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                        </div>
+                        <div class="dc-title">Settings</div>
+                    </div>
+                    <div class="dc-grid">
+                        <div class="dc-item">
+                            <span class="dc-label">Data Type</span>
+                            <span class="dc-value">Language, sound/vibration, quiet hours, return-to-home</span>
+                        </div>
+                        <div class="dc-item">
+                            <span class="dc-label">Why</span>
+                            <span class="dc-value">To personalize the App</span>
+                        </div>
+                        <div class="dc-item">
+                            <span class="dc-label">Storage</span>
+                            <span class="dc-value">On your device only.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="data-card">
+                    <div class="dc-header">
+                        <div class="dc-icon">
+                            <svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+                        </div>
+                        <div class="dc-title">Purchases</div>
+                    </div>
+                    <div class="dc-grid">
+                        <div class="dc-item">
+                            <span class="dc-label">Data Type</span>
+                            <span class="dc-value">Google Play purchase data (subscriptions, lifetime)</span>
+                        </div>
+                        <div class="dc-item">
+                            <span class="dc-label">Why</span>
+                            <span class="dc-value">To verify purchases and unlock Pro features</span>
+                        </div>
+                        <div class="dc-item">
+                            <span class="dc-label">Storage</span>
+                            <span class="dc-value">Handled by Google Play Billing (managed by Google). The App only stores a "purchase active" state.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p style="margin-top: 24px;">
                 LifeBack never reads on-screen text, messages, passwords, or any other
                 personal content. The Accessibility Service is used solely to detect
                 which app is open and for how long
-                (<code>canRetrieveWindowContent="false"</code> — the ability to read
-                screen content is technically disabled).
+                (<code class="inline-code">canRetrieveWindowContent="false"</code>).
             </p>
-        </section>
+        </div>
 
-        <section>
-            <h2>4. Advertising</h2>
+        <div class="policy-section">
+            <h2><span class="num">4</span> Advertising</h2>
             <p>
                 LifeBack <strong>does not use any third-party ad network</strong>
                 (not Google AdMob, not any other ad network). The ad banner shown in
                 the free version is simple text-and-image content fully managed by the
-                developer and fetched from the developer's own hosted file (via GitHub).
+                developer and fetched from the developer's own hosted file.
             </p>
-            <p>
+            <p style="margin-top: 12px;">
                 No personal data (device identifiers, location, advertising ID, etc.)
-                is ever sent or collected through this ad system — the App simply makes
-                a plain network request (HTTP GET) to load ad text/images, similar to a
-                web page loading an image. Tapping the ad opens the relevant link in
-                your browser.
+                is ever sent or collected through this ad system. The App simply makes
+                a plain network request (HTTP GET) to load ad text/images.
             </p>
-        </section>
+        </div>
 
-        <section>
-            <h2>5. Permissions and why they're needed</h2>
-            <table>
-                <thead>
-                    <tr><th>Permission</th><th>Purpose</th></tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Accessibility Service</td>
-                        <td>To detect which app is open and for how long. NOT used to read
-                            screen text or personal data.</td>
-                    </tr>
-                    <tr>
-                        <td>Display over other apps (SYSTEM_ALERT_WINDOW)</td>
-                        <td>To show the reminder message as a full-screen overlay.</td>
-                    </tr>
-                    <tr>
-                        <td>Notifications (POST_NOTIFICATIONS)</td>
-                        <td>Reserved for future reminder-notification functionality.</td>
-                    </tr>
-                    <tr>
-                        <td>Ignore battery optimizations</td>
-                        <td>To help the background service run reliably on some devices
-                            (optional, user-granted).</td>
-                    </tr>
-                    <tr>
-                        <td>Internet and network state</td>
-                        <td>Used to load ad text/images and to verify purchases (Google
-                            Play Billing).</td>
-                    </tr>
-                    <tr>
-                        <td>Vibration</td>
-                        <td>For an optional vibration effect when a reminder appears.</td>
-                    </tr>
-                    <tr>
-                        <td>Run at device boot (RECEIVE_BOOT_COMPLETED)</td>
-                        <td>Reserved for future functionality; currently does not start any
-                            active feature.</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
+        <div class="policy-section">
+            <h2><span class="num">5</span> Permissions</h2>
+            <div class="callout">
+                <strong>About the Accessibility Service:</strong> LifeBack uses it only to detect which app is open and for how long. It does not read screen content, messages, passwords or anything you type. You are asked for explicit consent inside the app before being sent to Android settings. If "Return to home screen" is on, the service presses the Home button after you dismiss a reminder; you can turn this off in Settings. The data never leaves your device.
+            </div>
 
-        <section>
-            <h2>6. Third-party services</h2>
+            <div class="data-grid">
+                <div class="data-card">
+                    <div class="dc-header">
+                        <div class="dc-icon">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="4" r="2"></circle><path d="M19 13v-2c-1.54.02-3.09-.75-4.07-1.83l-1.29-1.43c-.17-.19-.38-.34-.61-.45-.01 0-.01-.01-.02-.01H13c-.35-.2-.75-.3-1.19-.26C10.76 7.11 10 8.04 10 9.09V15c0 1.1.9 2 2 2h5v5h2v-5.5c0-1.1-.9-2-2-2h-3v-3.45c1.29 1.07 3.25 1.94 5 1.95zm-6.17 5c-.41 1.16-1.52 2-2.83 2-1.66 0-3-1.34-3-3 0-1.31.84-2.41 2-2.83V12.1c-2.28.46-4 2.48-4 4.9 0 2.76 2.24 5 5 5 2.42 0 4.44-1.72 4.9-4h-2.07z"></path></svg>
+                        </div>
+                        <div class="dc-title">Accessibility Service</div>
+                    </div>
+                    <p style="font-size: 15px; margin-top: 8px;">To detect which app is open and for how long. NOT used to read screen text or personal data.</p>
+                </div>
+                
+                <div class="data-card">
+                    <div class="dc-header">
+                        <div class="dc-icon">
+                            <svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                        </div>
+                        <div class="dc-title">Display over other apps</div>
+                    </div>
+                    <p style="font-size: 15px; margin-top: 8px;">(SYSTEM_ALERT_WINDOW) To show the reminder message as a full-screen overlay.</p>
+                </div>
+
+                <div class="data-card">
+                    <div class="dc-header">
+                        <div class="dc-icon">
+                            <svg viewBox="0 0 24 24"><rect x="2" y="7" width="16" height="10" rx="2" ry="2"></rect><line x1="22" y1="11" x2="22" y2="13"></line></svg>
+                        </div>
+                        <div class="dc-title">Ignore battery optimizations</div>
+                    </div>
+                    <p style="font-size: 15px; margin-top: 8px;">To help the background service run reliably on some devices (optional).</p>
+                </div>
+
+                <div class="data-card">
+                    <div class="dc-header">
+                        <div class="dc-icon">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                        </div>
+                        <div class="dc-title">Internet & Vibration</div>
+                    </div>
+                    <p style="font-size: 15px; margin-top: 8px;">Internet — to load ad text/images and verify purchases. Vibration — for an optional effect when a reminder appears.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="policy-section">
+            <h2><span class="num">6</span> Third-party services</h2>
             <p>The App uses the following third-party service:</p>
             <ul>
                 <li>
-                    <strong>Google Play Billing</strong> — used for monthly/yearly
-                    subscriptions, the one-time lifetime purchase, and optional
-                    donations. Payment information is handled by Google Play, not by
-                    us. See: <a href="https://policies.google.com/privacy"
-                    target="_blank" rel="noopener">Google Privacy Policy</a>.
+                    <strong>Google Play Billing</strong> — used for subscriptions, the one-time lifetime purchase, and optional donations. Payment information is handled by Google Play. See: <a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a>.
                 </li>
             </ul>
             <p>
-                The App <strong>does not use Google AdMob or any other ad network</strong>
-                — so no advertising identifier or similar tracking data is collected at
-                all.
+                The App <strong>does not use Google AdMob or any other ad network</strong> — so no advertising identifier or similar tracking data is collected.
             </p>
-        </section>
+        </div>
 
-        <section>
-            <h2>7. Data retention and deletion</h2>
+        <div class="policy-section">
+            <h2><span class="num">7</span> Data retention and deletion</h2>
             <p>
                 All personal settings, goals, and usage statistics are stored only on
                 your device. Uninstalling the App permanently deletes all associated
@@ -661,83 +940,106 @@
                 is no need to submit a data-deletion request to us — uninstalling the
                 App achieves the same result.
             </p>
-        </section>
+        </div>
 
-        <section>
-            <h2>8. Children's privacy</h2>
+        <div class="policy-section">
+            <h2><span class="num">8</span> Children's privacy</h2>
             <p>
                 LifeBack is not directed at children under 13 and does not knowingly
                 collect information from them. If you believe a child under 13 has used
                 this App, please contact us.
             </p>
-        </section>
+        </div>
 
-        <section>
-            <h2>9. Security</h2>
+        <div class="policy-section">
+            <h2><span class="num">9</span> Security</h2>
             <p>
                 All personal usage data is stored in your device's protected internal
                 storage (Android SharedPreferences), inaccessible to other apps. Because
                 this data is never transmitted to an external server, there is no risk
                 of data interception over the network.
             </p>
-        </section>
+        </div>
 
-        <section>
-            <h2>10. Changes to this policy</h2>
+        <div class="policy-section">
+            <h2><span class="num">10</span> Changes to this policy</h2>
             <p>
                 This Privacy Policy may be updated from time to time. Any material
                 change will be posted on this page, and the "Last updated" date above
                 will be revised accordingly.
             </p>
-        </section>
+        </div>
 
-        <section>
-            <h2>11. Contact us</h2>
+        <div class="policy-section">
+            <h2><span class="num">11</span> Contact us</h2>
             <p>
-                If you have questions about this Privacy Policy or the App, contact us
-                at: <strong>[biznesmusoxon@gmail.com]</strong>
+                If you have questions, contact us at:<br>
+                <a href="mailto:biznesmusoxon@gmail.com" style="font-size: 18px; margin-top: 8px; display: inline-block;">biznesmusoxon@gmail.com</a>
             </p>
-        </section>
+        </div>
 
     </div>
 
+    <!-- Footer -->
     <footer>
-        LifeBack © <span id="year"></span>. "Men sizni o'zgartira olmayman. Men sizga
-        yo'l ko'rsataman." / "I can't change you. I can only point the way."
+        <div class="footer-brand">
+            <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            LifeBack © <span id="year"></span> | Zetra Studio
+        </div>
+        <div class="footer-quote" id="footer-quote">
+            "I can't change you. I can only point the way."
+        </div>
     </footer>
 
 </div>
 
 <script>
+    // 1. Set Year dynamically
     document.getElementById('year').textContent = new Date().getFullYear();
 
+    // 2. Tilni almashtirish funksiyasi
     function showLang(lang) {
-        var uzBlock = document.getElementById('lang-uz');
-        var enBlock = document.getElementById('lang-en');
-        var btnUz = document.getElementById('btnUz');
-        var btnEn = document.getElementById('btnEn');
+        // Bloklarni almashtirish
+        document.getElementById('lang-uz').classList.toggle('active', lang === 'uz');
+        document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+        
+        // Tugmalarni almashtirish
+        document.getElementById('btnUz').classList.toggle('active', lang === 'uz');
+        document.getElementById('btnEn').classList.toggle('active', lang === 'en');
+        
+        // HTML lang atributini yangilash
+        document.documentElement.lang = lang;
+
+        // Dinamik sarlavha va matnlarni yangilash
+        const heroTitle = document.getElementById('hero-title');
+        const lastUpdated = document.getElementById('last-updated');
+        const footerQuote = document.getElementById('footer-quote');
+        const today = new Date();
 
         if (lang === 'uz') {
-            uzBlock.classList.add('active');
-            enBlock.classList.remove('active');
-            btnUz.classList.add('active');
-            btnEn.classList.remove('active');
-            document.documentElement.lang = 'uz';
+            heroTitle.innerHTML = 'Maxfiylik <span>Siyosati</span>';
+            document.title = 'LifeBack — Maxfiylik Siyosati';
+            lastUpdated.textContent = "Oxirgi yangilanish: " + today.toLocaleDateString('uz-UZ', { year: 'numeric', month: 'long', day: 'numeric' });
+            footerQuote.innerHTML = '"Men sizni o\'zgartira olmayman. Men sizga yo\'l ko\'rsataman."';
         } else {
-            enBlock.classList.add('active');
-            uzBlock.classList.remove('active');
-            btnEn.classList.add('active');
-            btnUz.classList.remove('active');
-            document.documentElement.lang = 'en';
+            heroTitle.innerHTML = 'Privacy <span>Policy</span>';
+            document.title = 'LifeBack — Privacy Policy';
+            lastUpdated.textContent = "Last updated: " + today.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+            footerQuote.innerHTML = '"I can\'t change you. I can only point the way."';
         }
     }
 
-    // Mobil brauzerlarda ikki marta bosish zoomini oldini olish uchun
-    document.querySelectorAll('.lang-toggle button').forEach(function(btn) {
-        btn.addEventListener('touchend', function(e) {
-            e.preventDefault();
-            this.click();
-        }, { passive: false });
+    // 3. Avtomatik tilni aniqlash (Default: English)
+    window.addEventListener('DOMContentLoaded', () => {
+        const userLang = navigator.language || navigator.userLanguage;
+        
+        // Agar qurilma tili o'zbekcha bo'lsa (masalan: uz, uz-UZ), u holda o'zbekchaga o'tadi.
+        // Aks holda, default ingliz tili qoladi.
+        if (userLang.toLowerCase().startsWith('uz')) {
+            showLang('uz');
+        } else {
+            showLang('en');
+        }
     });
 </script>
 
