@@ -184,6 +184,13 @@
         font-weight: 700;
     }
     .meta-badge svg { width: 16px; height: 16px; fill: currentColor; }
+    
+    /* Last updated text */
+    #last-updated {
+        padding: 6px 0;
+        color: var(--text-muted);
+        font-weight: 600;
+    }
 
     /* Content Blocks */
     .lang-block { display: none; }
@@ -442,7 +449,8 @@
                 <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
                 Zetra Studio
             </span>
-            <span id="last-updated" style="padding: 6px 0;">Last updated: Today</span>
+            <!-- MANA SHU YERDA SANANI O'ZGARTIRASIZ (Istalgan vaqtda yangilab turing) -->
+            <span id="last-updated">Last updated: October 20, 2026</span>
         </div>
     </div>
 
@@ -994,7 +1002,7 @@
 </div>
 
 <script>
-    // 1. Set Year dynamically
+    // 1. Set Year dynamically (Faqat footer yilini avtomatik qilamiz)
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // 2. Tilni almashtirish funksiyasi
@@ -1014,17 +1022,24 @@
         const heroTitle = document.getElementById('hero-title');
         const lastUpdated = document.getElementById('last-updated');
         const footerQuote = document.getElementById('footer-quote');
-        const today = new Date();
 
         if (lang === 'uz') {
             heroTitle.innerHTML = 'Maxfiylik <span>Siyosati</span>';
             document.title = 'LifeBack — Maxfiylik Siyosati';
-            lastUpdated.textContent = "Oxirgi yangilanish: " + today.toLocaleDateString('uz-UZ', { year: 'numeric', month: 'long', day: 'numeric' });
+            
+            // O'ZBEKCHA SANA
+            // Diqqat: Siyosat matniga o'zgartirish kiritsangiz, shu yerdagi sanani ham qo'lda yangilang!
+            lastUpdated.textContent = "Oxirgi yangilanish: 20-oktabr, 2026"; 
+            
             footerQuote.innerHTML = '"Men sizni o\'zgartira olmayman. Men sizga yo\'l ko\'rsataman."';
         } else {
             heroTitle.innerHTML = 'Privacy <span>Policy</span>';
             document.title = 'LifeBack — Privacy Policy';
-            lastUpdated.textContent = "Last updated: " + today.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+            
+            // INGLIZCHA SANA
+            // Diqqat: Siyosat matniga o'zgartirish kiritsangiz, shu yerdagi sanani ham qo'lda yangilang!
+            lastUpdated.textContent = "Last updated: October 20, 2026";
+            
             footerQuote.innerHTML = '"I can\'t change you. I can only point the way."';
         }
     }
